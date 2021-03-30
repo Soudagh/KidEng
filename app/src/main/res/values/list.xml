@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes">
+    <item>Family</item>
+    <item>Colours</item>
+    <item>Food</item>
+    <item>Animals</item>
+    <item>Buildings</item>
+    </string-array>
+</resources>
