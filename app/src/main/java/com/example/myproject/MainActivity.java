@@ -9,13 +9,11 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerView mRecycler;
-    private ThemeAdapter mAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void continueClick(View view) {
@@ -31,4 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void settingsClick(View view) {
     }
+
+
 }
