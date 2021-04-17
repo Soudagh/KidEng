@@ -40,7 +40,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Theme theme = themes.get(position);
         holder.bindView(theme);
-        holder.themeNum.setText(String.valueOf(theme.getThemeNumber()));
         holder.themeName.setText(theme.getTheme());
         holder.themeDescription.setText(theme.getDescriptionTheme());
         holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
@@ -53,10 +52,9 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         public Theme theme;
-        final TextView themeNum, themeName, themeDescription;
+        final TextView themeName, themeDescription;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            themeNum = itemView.findViewById(R.id.themeNum_tv);
             themeName = itemView.findViewById(R.id.themeName_tv);
             themeDescription = itemView.findViewById(R.id.description_tv);
 
