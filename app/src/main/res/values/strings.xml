@@ -6,4 +6,8 @@
     <string name="theme_name">Тема:</string>
     <string name="theme_number">Номер темы:</string>
     <string name="theme_description">Описание темы:</string>
+    <string name="dialog_title">Начать заново</string>
+    <string name="dialog_description">После нажатия кнопки \"OK\" весь полученный вами прогресс будет сброшен.\nВы точно хотите сделать это?</string>
+    <string name="dialogBtn_ok">OK</string>
+    <string name="dialogBtn_cancel">Отмена</string>
 </resources>

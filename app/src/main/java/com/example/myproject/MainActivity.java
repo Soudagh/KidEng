@@ -3,6 +3,7 @@ package com.example.myproject;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void restartClick(View view) {
+        MainDialogFragment dialog = new MainDialogFragment();
+        dialog.show(getFragmentManager(), "custom");
     }
 
     public void settingsClick(View view) {
