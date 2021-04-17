@@ -9,7 +9,7 @@
     android:layout_marginHorizontal="8dp"
     app:contentPadding="16dp"
     app:contentPaddingBottom="24sp"
-    android:onClick="themeChoiceClick">
+    android:onClick="onThemeChoiceClick">
 
     <LinearLayout
         android:layout_width="match_parent"

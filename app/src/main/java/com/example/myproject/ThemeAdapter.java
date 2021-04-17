@@ -9,18 +9,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
-import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
 public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> {
+
+    interface ThemeChoiceListener {
+        void onThemeChoiceClick(Theme theme, int position);
+    }
+
+    private final ThemeChoiceListener onClickListener;
 
     private final LayoutInflater inflater;
     private final List<Theme> themes;
 
-    public ThemeAdapter(Context context, List<Theme> themes) {
+    public ThemeAdapter(Context context, List<Theme> themes, ThemeChoiceListener onClickListener) {
+        this.onClickListener = onClickListener;
         this.themes = themes;
         this.inflater = LayoutInflater.from(context);
     }
@@ -40,6 +43,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         holder.themeNum.setText(String.valueOf(theme.getThemeNumber()));
         holder.themeName.setText(theme.getTheme());
         holder.themeDescription.setText(theme.getDescriptionTheme());
+        holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
     }
 
     @Override
@@ -55,6 +59,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeNum = itemView.findViewById(R.id.themeNum_tv);
             themeName = itemView.findViewById(R.id.themeName_tv);
             themeDescription = itemView.findViewById(R.id.description_tv);
+
         }
 
         void bindView(Theme theme) {
