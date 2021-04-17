@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class ChooseTheme extends AppCompatActivity {
+public class ChooseThemeActivity extends AppCompatActivity {
 
     private RecyclerView mRecycler;
     private ThemeAdapter mThemeAdapter;
