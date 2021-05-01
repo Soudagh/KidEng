@@ -1,7 +1,9 @@
 package com.example.myproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -29,6 +31,11 @@ public class ChooseThemeActivity extends AppCompatActivity {
         mThemeAdapter = new ThemeAdapter(this, themes, themeChoiceListener);
         mRecycler.setAdapter(mThemeAdapter);
 
+    }
+
+    public void onThemeChoiceClick(View view) {
+        Intent intent = new Intent(this, ThemeActivity.class);
+        startActivityForResult(intent, 0);
     }
 
     private void setInitialData() {
