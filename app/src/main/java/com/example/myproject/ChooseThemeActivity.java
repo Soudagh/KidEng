@@ -14,9 +14,6 @@ import java.util.ArrayList;
 
 public class ChooseThemeActivity extends AppCompatActivity {
 
-    private RecyclerView mRecycler;
-    private ThemeAdapter mThemeAdapter;
-
     ArrayList<Theme> themes = new ArrayList<>();
 
     @Override
@@ -25,10 +22,10 @@ public class ChooseThemeActivity extends AppCompatActivity {
         setContentView(R.layout.choose_theme);
 
         setInitialData();
-        mRecycler = findViewById(R.id.recycler);
+        RecyclerView mRecycler = findViewById(R.id.recycler);
         ThemeAdapter.ThemeChoiceListener themeChoiceListener = (theme, position) -> Toast.makeText(getApplicationContext(), "Был выбран пункт " + theme.getTheme(),
                 Toast.LENGTH_SHORT).show();
-        mThemeAdapter = new ThemeAdapter(this, themes, themeChoiceListener);
+        ThemeAdapter mThemeAdapter = new ThemeAdapter(this, themes, themeChoiceListener);
         mRecycler.setAdapter(mThemeAdapter);
 
     }
