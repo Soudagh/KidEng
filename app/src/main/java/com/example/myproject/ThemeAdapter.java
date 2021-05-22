@@ -23,9 +23,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     private final ThemeChoiceListener onClickListener;
 
     private final LayoutInflater inflater;
-   // private final List<Theme> themes;
-    //ArrayList theme_title, theme_description;
-
 
     public ThemeAdapter(Context context, ThemeChoiceListener onClickListener, List<Theme> themes) {
         this.onClickListener = onClickListener;
@@ -45,10 +42,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         Theme theme = themes.get(position);
         holder.themeName.setText(themes.get(position).getTheme());
         holder.themeDescription.setText(themes.get(position).getDescriptionTheme());
-//          holder.bindView(theme);
-//          holder.themeName.setText(theme.getTheme());
-//          holder.themeDescription.setText(theme.getDescriptionTheme());
-            holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
+        holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
     }
 
     @Override
@@ -57,9 +51,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-
-
-        public Theme theme;
         final TextView themeName, themeDescription;
 
         public ViewHolder(@NonNull View itemView) {
@@ -68,10 +59,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName = itemView.findViewById(R.id.themeName_tv);
             themeDescription = itemView.findViewById(R.id.description_tv);
 
-        }
-
-        void bindView(Theme theme) {
-            this.theme = theme;
         }
 
 

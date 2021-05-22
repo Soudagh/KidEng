@@ -4,16 +4,13 @@ import java.io.Serializable;
 import java.util.Collection;
 
 public class Theme implements Serializable {
-//    private final long id;
     private String theme;
     private String descriptionTheme;
-    private int pages;
 
-    public Theme(String theme, String descriptionTheme, int pages) {
-
+    public Theme(String theme, String descriptionTheme) {
         this.theme = theme;
         this.descriptionTheme = descriptionTheme;
-        this.pages = pages;
+
     }
 
     public String getTheme() {
@@ -32,9 +29,6 @@ public class Theme implements Serializable {
         this.descriptionTheme = descriptionTheme;
     }
 
-    public int getPages() { return pages;}
-
-    public void setPages(int pages) {this.pages = pages;}
 
 //    public long getId() {
 //        return id;

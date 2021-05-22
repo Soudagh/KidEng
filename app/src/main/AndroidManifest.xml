@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
         <activity android:name=".ChooseThemeActivity"></activity>
-        <activity android:name=".ThemeActivity"></activity>
+        <activity android:name=".WordActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
