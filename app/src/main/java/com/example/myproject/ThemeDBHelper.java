@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +98,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return theme;
     }
 
-    public List<Word> getWord(/*String id*/) {
+    public List<Word> getWord(long id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, null, null, null, null, null, null);
@@ -106,6 +107,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
+                
                     //TODO: Проверка на соответствие COLUMN_WORD_THEME_ID  и COLUMN_THEME_ID
                     word.add(new Word(cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
                             cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
