@@ -1,3 +1,4 @@
+
 package com.example.myproject;
 
 import android.content.Intent;
@@ -28,21 +29,15 @@ public class ChooseThemeActivity extends AppCompatActivity {
         databaseHelper = new ThemeDBHelper(this);
         List<Theme> themeList = databaseHelper.getTheme();
 
-        ThemeAdapter.ThemeChoiceListener themeChoiceListener = (theme, position) ->
-                Toast.makeText(getApplicationContext(), "Был выбран пункт " + theme.getTheme(),
-                Toast.LENGTH_SHORT).show();
+
+//        ThemeAdapter.ThemeChoiceListener themeChoiceListener = (theme, position) ->
+//                Toast.makeText(getApplicationContext(), "Был выбран пункт " + theme.getTheme(),
+//                        Toast.LENGTH_SHORT).show();
 
 
-        mThemeAdapter = new ThemeAdapter(this, themeChoiceListener, themeList);
+        mThemeAdapter = new ThemeAdapter(this, themeList);
 
         mRecycler.setAdapter(mThemeAdapter);
     }
-
-
-    public void onThemeChoiceClick(View view) {
-        Intent intent = new Intent(this, WordActivity.class);
-        startActivityForResult(intent, 0);
-    }
-
 
 }

@@ -17,20 +17,12 @@ public class Theme implements Serializable {
         return theme;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
-
     public String getDescriptionTheme() {
         return descriptionTheme;
     }
 
-    public void setDescriptionTheme(String descriptionTheme) {
-        this.descriptionTheme = descriptionTheme;
-    }
 
 
-//    public long getId() {
-//        return id;
-//    }
+
+
 }

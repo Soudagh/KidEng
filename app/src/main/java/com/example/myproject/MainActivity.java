@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gameClick(View view) {
+
     }
 
     public void themeClick(View view) {
