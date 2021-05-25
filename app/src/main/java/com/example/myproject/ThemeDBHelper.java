@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 2;
+    private static final int SCHEMA = 5;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
 
@@ -67,9 +67,9 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + COLUMN_WORD_THEME + ", "
                 + COLUMN_ENG + ", "
                 + COLUMN_RU + ") VALUES " +
-                "('Животные', 'cat', 'кот')," +
-                "('Цифры', 'one', 'один')," +
-                "('Приветствия и фразы', 'hello', 'привет')"
+                "(7, 'cat', 'кот')," +
+                "(2, 'one', 'один')," +
+                "(3, 'hello', 'привет')"
         );
     }
 
@@ -91,7 +91,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                theme.add(new Theme(cursor.getString(cursor.getColumnIndex(COLUMN_THEME_ID)),
+                theme.add(new Theme(cursor.getInt(cursor.getColumnIndex(COLUMN_THEME_ID)),
                         cursor.getString(cursor.getColumnIndex(COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION))));
                 cursor.moveToNext();
@@ -100,12 +100,12 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return theme;
     }
 
-    public List<Word> getWord(String id) {
+    public List<Word> getWord(int id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "id_theme = ?",
-                new String[] {id},  null, null, null);
+                new String[] {Integer.toString(id)},  null, null, null);
 
         List<Word> word = new ArrayList<>();
 

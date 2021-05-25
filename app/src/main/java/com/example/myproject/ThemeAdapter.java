@@ -72,6 +72,7 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
                 Toast.makeText(mContext, "ID = " + themes.get(position).getId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, WordActivity.class);
                 intent.putExtra("id", themes.get(position).getId());
+//                intent.putExtra("id", themes.get(position).getId());
                 mContext.startActivity(intent);
             });
         }
