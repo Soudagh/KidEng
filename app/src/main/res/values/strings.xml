@@ -6,6 +6,7 @@
     <string name="btn_eng">Английский перевод</string>
     <string name="btn_rus">Русский перевод</string>
     <string name="tv_choice">Выберите режим</string>
+    <string name="tv_start_game">Игра начнётся через  </string>
     <string name="theme_name">Тема:</string>
     <string name="theme_number">Номер темы:</string>
     <string name="theme_description">Описание темы:</string>
@@ -16,7 +17,9 @@
     <string name="dialogBtn_cancel">Отмена</string>
     <string name="word_English">Английское</string>
     <string name="word_Russian">Перевод</string>
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="time_counter_tv">"Осталось времени: "</string>
 
 
 </resources>
