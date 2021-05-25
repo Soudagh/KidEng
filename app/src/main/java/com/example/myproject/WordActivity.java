@@ -25,9 +25,10 @@ public class WordActivity extends AppCompatActivity {
         mRecycler = findViewById(R.id.recycler_words);
 
         Intent intent = getIntent();
-        long id = intent.getLongExtra("id", 1);
+        String id = intent.getStringExtra("id");
 
         databaseHelper = new ThemeDBHelper(this);
+
         List<Word> wordList = databaseHelper.getWord(id);
 
         mWordAdapter = new WordAdapter(this, wordList);

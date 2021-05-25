@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -20,11 +21,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     List<Theme> themes;
     Context mContext;
 
-    interface ThemeChoiceListener {
-        void onThemeChoiceClick(View view, int position);
-    }
-
-//    private final ThemeChoiceListener onClickListener;
 
     private final LayoutInflater inflater;
 
@@ -44,9 +40,10 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Theme theme = themes.get(position);
-        holder.themeName.setText(themes.get(position).getTheme());
-        holder.themeDescription.setText(themes.get(position).getDescriptionTheme());
+          holder.bindView(position);
+//        Theme theme = themes.get(position);
+//        holder.themeName.setText(themes.get(position).getTheme());
+//        holder.themeDescription.setText(themes.get(position).getDescriptionTheme());
 //        holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
     }
 
@@ -65,14 +62,17 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName = itemView.findViewById(R.id.themeName_tv);
             themeDescription = itemView.findViewById(R.id.description_tv);
             linearLayout = itemView.findViewById(R.id.linear);
-            linearLayout.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(mContext, WordActivity.class);
-                    intent.putExtra("id", getLayoutPosition());
-                    mContext.startActivity(intent);
-                }
+        }
+
+        public void bindView(int position) {
+            themeName.setText(themes.get(position).getTheme());
+            themeDescription.setText(themes.get(position).getDescriptionTheme());
+            linearLayout.setOnClickListener(v -> {
+                Toast.makeText(mContext, "ID = " + themes.get(position).getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, WordActivity.class);
+                intent.putExtra("id", themes.get(position).getId());
+                mContext.startActivity(intent);
             });
         }
 

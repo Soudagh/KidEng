@@ -13,20 +13,21 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 14;
+    private static final int SCHEMA = 2;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
 
     public static final String COLUMN_THEME_ID = "_id";
     public static final String COLUMN_WORD_ID = "_id";
-    public static final String COLUMN_WORD_THEME_ID = "id_theme";
+    public static final String COLUMN_WORD_THEME = "id_theme";
     public static final String COLUMN_ENG = "eng";
     public static final String COLUMN_RU = "ru";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DESCRIPTION = "description";
 
     public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
-    public static final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME_ID, COLUMN_ENG, COLUMN_RU};
+    final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
+
 
     private static final String CREATE_THEMES_LIST_TABLE_NAME = "CREATE TABLE " + THEMES_LIST_TABLE_NAME + "("
             + COLUMN_THEME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -35,7 +36,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
 
     private static final String CREATE_WORDS_LIST_TABLE_NAME = "CREATE TABLE " + WORDS_LIST_TABLE_NAME + "("
             + COLUMN_WORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + COLUMN_WORD_THEME_ID + " REFERENCES THEMES_LIST_TABLE_NAME(COLUMN_THEME_ID), "
+            + COLUMN_WORD_THEME + " TEXT, "
             + COLUMN_ENG + " TEXT, "
             + COLUMN_RU + " TEXT )";
 
@@ -63,12 +64,12 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         );
 
         db.execSQL("INSERT INTO " + WORDS_LIST_TABLE_NAME + " ("
-                + COLUMN_WORD_THEME_ID + ", "
+                + COLUMN_WORD_THEME + ", "
                 + COLUMN_ENG + ", "
                 + COLUMN_RU + ") VALUES " +
-                "(7, 'cat', 'кот')," +
-                "(2, 'one', 'один')," +
-                "(3, 'hello', 'привет')"
+                "('Животные', 'cat', 'кот')," +
+                "('Цифры', 'one', 'один')," +
+                "('Приветствия и фразы', 'hello', 'привет')"
         );
     }
 
@@ -90,7 +91,8 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                theme.add(new Theme(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)),
+                theme.add(new Theme(cursor.getString(cursor.getColumnIndex(COLUMN_THEME_ID)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_NAME)),
                         cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION))));
                 cursor.moveToNext();
             }
@@ -98,16 +100,18 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return theme;
     }
 
-    public List<Word> getWord(long id) {
+    public List<Word> getWord(String id) {
+
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, null, null, null, null, null, null);
+        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "id_theme = ?",
+                new String[] {id},  null, null, null);
 
         List<Word> word = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                
+
                     //TODO: Проверка на соответствие COLUMN_WORD_THEME_ID  и COLUMN_THEME_ID
                     word.add(new Word(cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
                             cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
