@@ -25,8 +25,8 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DESCRIPTION = "description";
 
-    public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
-    final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
+    public static final String[] THEMES_COLUMNS = { COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION };
+    final String[] WORDS_COLUMNS = { COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU };
 
 
     private static final String CREATE_THEMES_LIST_TABLE_NAME = "CREATE TABLE " + THEMES_LIST_TABLE_NAME + "("
@@ -77,8 +77,9 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + "(2, 'eight', 'восемь'),"
                 + "(2, 'nine', 'девять'),"
                 + "(2, 'ten', 'десять'),"
-                + "(7, 'cat', 'кот'),"
-                + "(3, 'hello', 'привет')"
+                + "(3, 'hello', 'привет'),"
+                 +"(7, 'cat', 'кот')"
+
         );
     }
 
