@@ -2,7 +2,6 @@ package com.example.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +19,7 @@ public class WordActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.theme_fragment);
+        setContentView(R.layout.theme_activity);
 
         mRecycler = findViewById(R.id.recycler_words);
 

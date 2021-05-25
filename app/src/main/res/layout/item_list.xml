@@ -25,9 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ellipsize="end"
+            android:fontFamily="@font/montserrat_medium"
             android:maxLines="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-            tools:text="@string/theme_name"/>
+            android:textStyle="bold"
+            tools:text="@string/theme_name" />
 
         <TextView
             android:id="@+id/description_tv"
@@ -35,6 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:ellipsize="end"
+            android:fontFamily="@font/montserrat_medium"
             android:maxLines="5"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@android:color/black"

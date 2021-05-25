@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 5;
+    private static final int SCHEMA = 6;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
 
@@ -66,10 +66,19 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + WORDS_LIST_TABLE_NAME + " ("
                 + COLUMN_WORD_THEME + ", "
                 + COLUMN_ENG + ", "
-                + COLUMN_RU + ") VALUES " +
-                "(7, 'cat', 'кот')," +
-                "(2, 'one', 'один')," +
-                "(3, 'hello', 'привет')"
+                + COLUMN_RU + ") VALUES "
+                + "(2, 'one', 'один'),"
+                + "(2, 'two', 'два'),"
+                + "(2, 'three', 'три'),"
+                + "(2, 'four', 'четыре'),"
+                + "(2, 'five', 'пять'),"
+                + "(2, 'six', 'шесть'),"
+                + "(2, 'seven', 'семь'),"
+                + "(2, 'eight', 'восемь'),"
+                + "(2, 'nine', 'девять'),"
+                + "(2, 'ten', 'десять'),"
+                + "(7, 'cat', 'кот'),"
+                + "(3, 'hello', 'привет')"
         );
     }
 

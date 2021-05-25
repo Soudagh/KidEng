@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">KidEng</string>
-    <string name="btn_continue">Продолжить</string>
-    <string name="btn_theme">Выбор темы</string>
+    <string name="btn_continue">Тренировка</string>
+    <string name="btn_theme">Словарик по темам</string>
     <string name="btn_restart">Сброс статистики</string>
+    <string name="btn_eng">Английский перевод</string>
+    <string name="btn_rus">Русский перевод</string>
+    <string name="tv_choice">Выберите режим</string>
     <string name="theme_name">Тема:</string>
     <string name="theme_number">Номер темы:</string>
     <string name="theme_description">Описание темы:</string>
@@ -13,4 +16,7 @@
     <string name="dialogBtn_cancel">Отмена</string>
     <string name="word_English">Английское</string>
     <string name="word_Russian">Перевод</string>
+
+
+
 </resources>

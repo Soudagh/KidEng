@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void gameClick(View view) {
-
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
     }
 
     public void themeClick(View view) {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show(getFragmentManager(), "custom");
     }
 
-    public void settingsClick(View view) {
+    public void profileClick(View view) {
     }
 
 
