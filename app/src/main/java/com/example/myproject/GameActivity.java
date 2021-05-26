@@ -40,10 +40,11 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void onGameStop(int rCounter, int wCounter, int tCounter) {
+    public void onGameStop(String counter1, String counter2, String counter3) {
+        //Toast.makeText(this, "counter1 = " + counter1, Toast.LENGTH_SHORT).show();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, GameResultFragment.newInstance(rCounter, wCounter, tCounter))
+                .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3))
                 .commit();
     }
 

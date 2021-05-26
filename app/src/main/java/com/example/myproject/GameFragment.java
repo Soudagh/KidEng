@@ -76,7 +76,7 @@ public class GameFragment extends Fragment {
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
@@ -86,10 +86,14 @@ public class GameFragment extends Fragment {
             @Override
             public void onFinish() {
                 counterTimeTv.setText("");
-                Toast.makeText(getActivity(), "tCounter = " + tCounter, Toast.LENGTH_SHORT).show();
+
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
-                    ((GameActivity) activity).onGameStop(rCounter, wCounter, tCounter);
+                    String rString = String.valueOf(rCounter);
+                    String wString = String.valueOf(wCounter);
+                    String tString = String.valueOf(tCounter);
+                   // Toast.makeText(getActivity(), "rString = " + rString, Toast.LENGTH_SHORT).show();
+                    ((GameActivity) activity).onGameStop(rString, wString, tString);
                 }
             }
         }.start();
@@ -130,6 +134,8 @@ public class GameFragment extends Fragment {
             translateTv.setText("");
             wCounter++;
         }
-        tCounter++;
+
     }
+
+
 }
