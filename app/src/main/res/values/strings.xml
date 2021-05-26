@@ -17,9 +17,15 @@
     <string name="dialogBtn_cancel">Отмена</string>
     <string name="word_English">Английское</string>
     <string name="word_Russian">Перевод</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="time_counter_tv">"Осталось времени: "</string>
+    <string name="time_counter_tv">Осталось времени: </string>
+    <string name="check_answer_btn">Проверить</string>
+    <string name="enter_translate_et">Введите перевод</string>
+    <string name="skip_answer_btn">Пропустить</string>
+    <string name="total_questions_tv">Всего вопросов:</string>
+    <string name="mark_tv">Оценка:</string>
+    <string name="wrong_answers_tv">Неправильные ответы:</string>
+    <string name="right_answers_tv">Правильные ответы:</string>
 
 
 </resources>

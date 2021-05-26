@@ -41,10 +41,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
           holder.bindView(position);
-//        Theme theme = themes.get(position);
-//        holder.themeName.setText(themes.get(position).getTheme());
-//        holder.themeDescription.setText(themes.get(position).getDescriptionTheme());
-//        holder.itemView.setOnClickListener(v -> onClickListener.onThemeChoiceClick(theme, position));
     }
 
     @Override
@@ -69,10 +65,8 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName.setText(themes.get(position).getTheme());
             themeDescription.setText(themes.get(position).getDescriptionTheme());
             linearLayout.setOnClickListener(v -> {
-                Toast.makeText(mContext, "ID = " + themes.get(position).getId(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, WordActivity.class);
                 intent.putExtra("id", themes.get(position).getId());
-//                intent.putExtra("id", themes.get(position).getId());
                 mContext.startActivity(intent);
             });
         }

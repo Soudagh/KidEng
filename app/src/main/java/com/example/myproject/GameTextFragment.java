@@ -15,52 +15,15 @@ import android.widget.Toast;
 
 public class GameTextFragment extends Fragment {
 
-    private static final String ARG_TEXT = "text";
-
     TextView textView;
+
     public GameTextFragment() {
 
-    }
-
-
-    public static GameTextFragment newInstance(String text) {
-        GameTextFragment fragment = new GameTextFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_TEXT, text);
-
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        Thread thread = new Thread() {
-//            @Override
-//          public void run() {
-//              try {
-//                  while(!thread.isInterrupted()) {
-//                      Thread.sleep(1000);
-//                      runOnUiThread(new Runnable() {
-//                          @Override
-//                                  public void run() {
-//
-//                          }
-//                      });
-//                  }
-//              } catch (InterruptedException e) {
-//
-//              }
-//          }
-//        };
-//
-//        thread.start();
-
-        if (getArguments() != null) {
-
-        }
-
-
     }
 
     @Override
@@ -79,7 +42,7 @@ public class GameTextFragment extends Fragment {
 
             @Override
             public void onFinish() {
-                textView.setText(" GO!");
+                textView.setText("");
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
                     ((GameActivity)activity).onGameStart();

@@ -1,5 +1,6 @@
 package com.example.myproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -23,16 +24,12 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onGameCountDown(String language) {
-        //Fragment f1 = getSupportFragmentManager().findFragmentById(R.id.container_start);
+
         Fragment f1 = new GameTextFragment();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_start, f1)
                 .commit();
-
-
-
-
     }
 
     public void onGameStart() {
@@ -41,6 +38,17 @@ public class GameActivity extends AppCompatActivity {
                 .beginTransaction()
                 .replace(R.id.container_start, f1)
                 .commit();
+    }
 
+    public void onGameStop(int rCounter, int wCounter, int tCounter) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_start, GameResultFragment.newInstance(rCounter, wCounter, tCounter))
+                .commit();
+    }
+
+    public void onHome() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
