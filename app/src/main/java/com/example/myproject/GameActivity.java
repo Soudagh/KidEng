@@ -24,24 +24,20 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onGameCountDown(String language) {
-
-        Fragment f1 = new GameTextFragment();
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, f1)
+                .replace(R.id.container_start, GameTextFragment.newInstance(language))
                 .commit();
     }
 
-    public void onGameStart() {
-        Fragment f1 = new GameFragment();
+    public void onGameStart(String language) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, f1)
+                .replace(R.id.container_start, GameFragment.newInstance(language))
                 .commit();
     }
 
     public void onGameStop(String counter1, String counter2, String counter3) {
-        //Toast.makeText(this, "counter1 = " + counter1, Toast.LENGTH_SHORT).show();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3))

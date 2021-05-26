@@ -242,42 +242,5 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return cursor.getInt(0);
     }
 
-//    public List<Word> getEngWord(int id) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
-//                new String[] {Integer.toString(id)},  null, null, null);
-//
-//        List<Word> word = new ArrayList<>();
-//
-//        if (cursor.moveToFirst()) {
-//            while (!cursor.isAfterLast()) {
-//                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-//                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-//                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-//                cursor.moveToNext();
-//            }
-//        }
-//        return word;
-//    }
-//
-//    public List<Word> getRusWord(int id) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
-//                new String[] {Integer.toString(id)},  null, null, null);
-//
-//        List<Word> word = new ArrayList<>();
-//
-//        if (cursor.moveToFirst()) {
-//            while (!cursor.isAfterLast()) {
-//                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-//                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-//                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-//                cursor.moveToNext();
-//            }
-//        }
-//        return word;
-//    }
 
 }

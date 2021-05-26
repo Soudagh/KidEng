@@ -26,11 +26,16 @@ import static com.example.myproject.ThemeDBHelper.WORDS_LIST_TABLE_NAME;
 
 public class GameFragment extends Fragment {
 
+    private static final String ARG_L = "language";
+
+    private String mLanguage;
+
     TextView wordTv, counterTimeTv;
     EditText translateTv;
     ImageView tick, cross;
     String translate;
     Random random = new Random();
+
     int id;
     int rCounter = 0, wCounter = 0, tCounter = 0;
 
@@ -38,9 +43,22 @@ public class GameFragment extends Fragment {
 
     }
 
+    public static GameFragment newInstance(String language) {
+        GameFragment fragment = new GameFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_L, language);
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mLanguage = getArguments().getString(ARG_L);
+        }
     }
 
     @Override
@@ -66,17 +84,25 @@ public class GameFragment extends Fragment {
         ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
         id = random.nextInt(dbHelper.getDBNoteCount() + 1);
         Cursor cursor = dbHelper.getWord1(id);
-        if (!cursor.isAfterLast()) {
-            wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-            translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+        if (mLanguage.equals("English")) {
+            if (!cursor.isAfterLast()) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+            }
+        } else {
+            if (!cursor.isAfterLast()) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
+            }
         }
+
 
         Button applyButton = (Button) view.findViewById(R.id.answer_btn);
         Button skipButton = (Button) view.findViewById(R.id.skip_btn);
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
@@ -92,7 +118,6 @@ public class GameFragment extends Fragment {
                     String rString = String.valueOf(rCounter);
                     String wString = String.valueOf(wCounter);
                     String tString = String.valueOf(tCounter);
-                   // Toast.makeText(getActivity(), "rString = " + rString, Toast.LENGTH_SHORT).show();
                     ((GameActivity) activity).onGameStop(rString, wString, tString);
                 }
             }
@@ -110,11 +135,16 @@ public class GameFragment extends Fragment {
         ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
         id = random.nextInt(dbHelper.getDBNoteCount() + 1);
         Cursor cursor = dbHelper.getWord1(id);
-        if (!cursor.isAfterLast()) {
-            translate = "";
-            wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-            translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
-            translateTv.setText("");
+        if (mLanguage.equals("English")) {
+            if (!cursor.isAfterLast()) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+            }
+        } else {
+            if (!cursor.isAfterLast()) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
+            }
         }
         tCounter++;
 
@@ -133,6 +163,7 @@ public class GameFragment extends Fragment {
             tick.setVisibility(View.INVISIBLE);
             translateTv.setText("");
             wCounter++;
+            tCounter++;
         }
 
     }

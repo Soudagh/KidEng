@@ -15,15 +15,31 @@ import android.widget.Toast;
 
 public class GameTextFragment extends Fragment {
 
+    private static final String ARG_L = "language";
+
+    private String mLanguage;
+
     TextView textView;
 
     public GameTextFragment() {
 
     }
 
+    public static GameTextFragment newInstance(String language) {
+        GameTextFragment fragment = new GameTextFragment();
+        Bundle args = new Bundle();
+        args.putString(ARG_L, language);
+
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mLanguage = getArguments().getString(ARG_L);
+        }
     }
 
     @Override
@@ -45,7 +61,7 @@ public class GameTextFragment extends Fragment {
                 textView.setText("");
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
-                    ((GameActivity)activity).onGameStart();
+                    ((GameActivity)activity).onGameStart(mLanguage);
                 }
             }
         }.start();
