@@ -16,6 +16,7 @@ public class Word implements Serializable {
 
 
     public int getId() {return id;}
+
     public String getWordRus() {
         return wordRus;
     }

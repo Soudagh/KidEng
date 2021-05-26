@@ -26,25 +26,16 @@ import static com.example.myproject.ThemeDBHelper.WORDS_LIST_TABLE_NAME;
 
 public class GameFragment extends Fragment {
 
-    ThemeDBHelper db;
-
-
-   TextView wordTv, counterTimeTv;
-   EditText translateTv;
-   ImageView tick, cross;
-   String translate;
-   int rCounter = 0, wCounter = 0, tCounter = 0;
+    TextView wordTv, counterTimeTv;
+    EditText translateTv;
+    ImageView tick, cross;
+    String translate;
+    Random random = new Random();
+    int id;
+    int rCounter = 0, wCounter = 0, tCounter = 0;
 
     public GameFragment() {
 
-    }
-
-
-    public static GameFragment newInstance() {
-        GameFragment fragment = new GameFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
@@ -58,13 +49,10 @@ public class GameFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
-        db = new ThemeDBHelper(getContext());
-
         counterTimeTv = (TextView) view.findViewById(R.id.time_counter_tv);
         wordTv = (TextView) view.findViewById(R.id.word_tv);
 
         translateTv = (EditText) view.findViewById(R.id.translate_et);
-        translate = translateTv.getText().toString();
 
         tick = (ImageView) view.findViewById(R.id.tick_iv);
         cross = (ImageView) view.findViewById(R.id.cross_iv);
@@ -72,35 +60,41 @@ public class GameFragment extends Fragment {
         tick.setVisibility(View.INVISIBLE);
         cross.setVisibility(View.INVISIBLE);
 
-        //wordTv.setText((databaseHelper.getEngWord(id)).getWordEng());
+        translate = "";
+        random = new Random();
+
+        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
+        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
+        Cursor cursor = dbHelper.getWord1(id);
+        if (!cursor.isAfterLast()) {
+            wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+            translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+        }
 
         Button applyButton = (Button) view.findViewById(R.id.answer_btn);
         Button skipButton = (Button) view.findViewById(R.id.skip_btn);
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(final long l) {
-                counterTimeTv.setText("Осталось времени: "  + (int) (l * .001f));
+                counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
 
             }
 
             @Override
             public void onFinish() {
                 counterTimeTv.setText("");
+                Toast.makeText(getActivity(), "tCounter = " + tCounter, Toast.LENGTH_SHORT).show();
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
-                    ((GameActivity)activity).onGameStop(rCounter, wCounter, tCounter);
+                    ((GameActivity) activity).onGameStop(rCounter, wCounter, tCounter);
                 }
             }
         }.start();
         return view;
-
     }
-
-
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -109,31 +103,31 @@ public class GameFragment extends Fragment {
     }
 
     private void onSkipClick(View view) {
-//        ThemeDBHelper databaseHelper;
-//        databaseHelper = new ThemeDBHelper(getContext());
-//
-//        String word = "";
-//
-//
-//        Cursor cursor = databaseHelper.getReadableDatabase().query(databaseHelper.getDatabaseName(), new String[] {"END", "RUS"}, null, null, null, null, null, null);
-//        while (!cursor.isAfterLast()) {
-//            word = cursor.getString(1);
-//            cursor.moveToNext();
-//        }
-//        cursor.close();
-//
-//        wordTv.setText(word);
+        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
+        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
+        Cursor cursor = dbHelper.getWord1(id);
+        if (!cursor.isAfterLast()) {
+            translate = "";
+            wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+            translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+            translateTv.setText("");
+        }
+        tCounter++;
+
     }
 
     private void onApplyClick(View view) {
-
-        if (translate.equals(wordTv.getText().toString())) {
+        if (translateTv.getText().toString().equals(translate)) {
             tick.setVisibility(View.VISIBLE);
             cross.setVisibility(View.INVISIBLE);
             rCounter++;
+            translate = "";
+            translateTv.setText("");
+            onSkipClick(getView());
         } else {
             cross.setVisibility(View.VISIBLE);
             tick.setVisibility(View.INVISIBLE);
+            translateTv.setText("");
             wCounter++;
         }
         tCounter++;

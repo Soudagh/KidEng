@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 7;
+    private static final int SCHEMA = 8;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
 
@@ -224,25 +224,24 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return word;
     }
 
-    /*public List<Word> getWord1() {
+    public Cursor getWord1(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-
         Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, null,
                 null, null, null, null);
 
-        List<Word> word = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-                cursor.moveToNext();
-            }
+        if (cursor != null) {
+            cursor.moveToPosition(id);
         }
-        return word;
+        return cursor;
     }
-*/
+
+    public int getDBNoteCount() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT Count(*) FROM WORDS_LIST", null);
+        cursor.moveToLast();
+        return cursor.getInt(0);
+    }
+
 //    public List<Word> getEngWord(int id) {
 //        SQLiteDatabase db = this.getReadableDatabase();
 //
