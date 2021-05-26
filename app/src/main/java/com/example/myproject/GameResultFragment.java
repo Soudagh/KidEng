@@ -75,17 +75,24 @@ public class GameResultFragment extends Fragment {
         TextView tAnswer_tv = view.findViewById(R.id.total_counter_tv);
         TextView mark_tv =  view.findViewById(R.id.mark_counter_tv);
 
-
-        int mark = Integer.parseInt(mRCount);
-
-        if ((Integer.parseInt(mRCount)) != 0 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 <= 100 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 85) mark_tv.setText("5");
-        else if ((Integer.parseInt(mRCount)) != 0 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 < 85 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 75) mark_tv.setText("4");
-        else if ((Integer.parseInt(mRCount)) != 0 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 < 75 && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 55) mark_tv.setText("3");
+        if ((Integer.parseInt(mRCount)) != 0
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 <= 100
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 85)
+            mark_tv.setText("5");
+        else if ((Integer.parseInt(mRCount)) != 0
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 < 85
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 75)
+            mark_tv.setText("4");
+        else if ((Integer.parseInt(mRCount)) != 0
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) * 100 < 75
+                && (Integer.parseInt(mRCount) % Integer.parseInt(mRCount)) >= 55)
+            mark_tv.setText("3");
         else mark_tv.setText("2");
+
         rAnswer_tv.setText(mRCount);
         wAnswer_tv.setText(mWCount);
         tAnswer_tv.setText(mTCount);
-        
+
         return view;
     }
 
