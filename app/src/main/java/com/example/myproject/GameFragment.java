@@ -80,7 +80,7 @@ public class GameFragment extends Fragment {
         skipButton.setOnClickListener(this::onSkipClick);
 
 
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: "  + (int) (l * .001f));
