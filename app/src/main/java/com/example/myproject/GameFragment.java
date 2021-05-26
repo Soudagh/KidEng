@@ -109,20 +109,20 @@ public class GameFragment extends Fragment {
     }
 
     private void onSkipClick(View view) {
-        ThemeDBHelper databaseHelper;
-        databaseHelper = new ThemeDBHelper(getContext());
-
-        String word = "";
-
-
-        Cursor cursor = databaseHelper.getReadableDatabase().query(databaseHelper.getDatabaseName(), new String[] {"END", "RUS"}, null, null, null, null, null, null);
-        while (!cursor.isAfterLast()) {
-            word = cursor.getString(1);
-            cursor.moveToNext();
-        }
-        cursor.close();
-
-        wordTv.setText(word);
+//        ThemeDBHelper databaseHelper;
+//        databaseHelper = new ThemeDBHelper(getContext());
+//
+//        String word = "";
+//
+//
+//        Cursor cursor = databaseHelper.getReadableDatabase().query(databaseHelper.getDatabaseName(), new String[] {"END", "RUS"}, null, null, null, null, null, null);
+//        while (!cursor.isAfterLast()) {
+//            word = cursor.getString(1);
+//            cursor.moveToNext();
+//        }
+//        cursor.close();
+//
+//        wordTv.setText(word);
     }
 
     private void onApplyClick(View view) {
