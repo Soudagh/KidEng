@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 0);
     }
 
-    public void restartClick(View view) {
-        MainDialogFragment dialog = new MainDialogFragment();
-        dialog.show(getFragmentManager(), "custom");
-    }
+//    public void restartClick(View view) {
+//        MainDialogFragment dialog = new MainDialogFragment();
+//        dialog.show(getFragmentManager(), "custom");
+//    }
 
     public void profileClick(View view) {
     }
