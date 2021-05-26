@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 6;
+    private static final int SCHEMA = 5;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
 
@@ -25,8 +25,8 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_DESCRIPTION = "description";
 
-    public static final String[] THEMES_COLUMNS = { COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION };
-    final String[] WORDS_COLUMNS = { COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU };
+    public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
+    final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
 
 
     private static final String CREATE_THEMES_LIST_TABLE_NAME = "CREATE TABLE " + THEMES_LIST_TABLE_NAME + "("
@@ -67,6 +67,32 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + COLUMN_WORD_THEME + ", "
                 + COLUMN_ENG + ", "
                 + COLUMN_RU + ") VALUES "
+                + "(1, 'ant', 'муравей'),"
+                + "(1, 'ball', 'мяч'),"
+                + "(1, 'carrot', 'морковка'),"
+                + "(1, 'dog', 'собака'),"
+                + "(1, 'eggs', 'яйца'),"
+                + "(1, 'frog', 'лягушка'),"
+                + "(1, 'grapes', 'виноград'),"
+                + "(1, 'house', 'дом'),"
+                + "(1, 'ice-cream', 'мороженое'),"
+                + "(1, 'jelly-fish', 'медуза'),"
+                + "(1, 'kite', 'воздушный змей'),"
+                + "(1, 'lion', 'лев'),"
+                + "(1, 'mouse', 'мышь'),"
+                + "(1, 'nut', 'орех'),"
+                + "(1, 'orange', 'апельсин'),"
+                + "(1, 'peas', 'горох'),"
+                + "(1, 'queen', 'королева'),"
+                + "(1, 'rabbit', 'кролик'),"
+                + "(1, 'strawberry', 'клубника'),"
+                + "(1, 'tomato', 'помидор'),"
+                + "(1, 'umbrella', 'зонтик'),"
+                + "(1, 'volcano', 'вулкан'),"
+                + "(1, 'water', 'вода'),"
+                + "(1, 'xylophone', 'ксилофон'),"
+                + "(1, 'yogurt', 'йогурт'),"
+                + "(1, 'zebra', 'зебра'),"
                 + "(2, 'one', 'один'),"
                 + "(2, 'two', 'два'),"
                 + "(2, 'three', 'три'),"
@@ -78,7 +104,74 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + "(2, 'nine', 'девять'),"
                 + "(2, 'ten', 'десять'),"
                 + "(3, 'hello', 'привет'),"
-                 +"(7, 'cat', 'кот')"
+                + "(3, 'hi', 'привет'),"
+                + "(3, 'goodbye', 'до свидания'),"
+                + "(3, 'bye', 'пока'),"
+                + "(3, 'good morning', 'доброе утро'),"
+                + "(3, 'good afternoon', 'добрый день'),"
+                + "(3, 'good evening', 'добрый вечер'),"
+                + "(3, 'good night', 'доброй ночи'),"
+                + "(3, 'how are you?', 'как дела?'),"
+                + "(3, 'see you later', 'до встречи'),"
+                + "(3, 'see you soon', 'до скорой встречи'),"
+                + "(4, 'mother', 'мама'),"
+                + "(4, 'father', 'папа'),"
+                + "(4, 'brother', 'брат'),"
+                + "(4, 'sister', 'сестра'),"
+                + "(4, 'grandfather', 'дедушка'),"
+                + "(4, 'grandmother', 'бабушка'),"
+                + "(4, 'aunt', 'тётя'),"
+                + "(4, 'uncle', 'дядя'),"
+                + "(4, 'son', 'сын'),"
+                + "(4, 'daughter', 'дочь'),"
+                + "(5, 'red', 'красный'),"
+                + "(5, 'orange', 'оранжевый'),"
+                + "(5, 'yellow', 'жёлтый'),"
+                + "(5, 'green', 'зелёный'),"
+                + "(5, 'blue', 'голубой'),"
+                + "(5, 'dark blue', 'синий'),"
+                + "(5, 'purple', 'фиолетовый'),"
+                + "(5, 'white', 'белый'),"
+                + "(5, 'black', 'чёрный'),"
+                + "(5, 'brown', 'коричневый'),"
+                + "(6, 'milk', 'молоко'),"
+                + "(6, 'water', 'вода'),"
+                + "(6, 'tea', 'чай'),"
+                + "(6, 'coffee', 'кофе'),"
+                + "(6, 'juice', 'сок'),"
+                + "(6, 'cucumber', 'огурец'),"
+                + "(6, 'apple', 'яблоко'),"
+                + "(6, 'banana', 'банан'),"
+                + "(6, 'cereal', 'хлопья'),"
+                + "(6, 'pear', 'груша'),"
+                + "(7, 'cat', 'кот'),"
+                + "(7, 'chicken', 'курица'),"
+                + "(7, 'parrot', 'попугай'),"
+                + "(7, 'pig', 'свинья'),"
+                + "(7, 'sheep', 'овца'),"
+                + "(7, 'cow', 'корова'),"
+                + "(7, 'pigeon', 'голубь'),"
+                + "(7, 'sparrow', 'воробей'),"
+                + "(7, 'rat', 'крыса'),"
+                + "(7, 'dragon', 'дракон'),"
+                + "(7, 'dog', 'собака'),"
+                + "(8, 'city', 'город'),"
+                + "(8, 'street', 'улица'),"
+                + "(8, 'square', 'площадь'),"
+                + "(8, 'forest', 'лес'),"
+                + "(8, 'bridge', 'мост'),"
+                + "(8, 'scyscraper', 'небоскрёб'),"
+                + "(8, 'house', 'дом'),"
+                + "(8, 'building', 'здание'),"
+                + "(8, 'school', 'школа'),"
+                + "(8, 'store', 'магазин'),"
+                + "(8, 'garden', 'сад'),"
+                + "(8, 'river', 'река'),"
+                + "(8, 'sea', 'море'),"
+                + "(8, 'ocean', 'океан'),"
+                + "(8, 'sun', 'солнце'),"
+                + "(8, 'moon', 'луна'),"
+                + "(8, 'lake', 'озеро')"
 
         );
     }
@@ -115,27 +208,27 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "id_theme = ?",
-                new String[] {Integer.toString(id)},  null, null, null);
+                new String[]{Integer.toString(id)}, null, null, null);
 
         List<Word> word = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
 
-                    word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-                            cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-                            cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-                    cursor.moveToNext();
+                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
+                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
+                cursor.moveToNext();
             }
         }
         return word;
     }
 
-    public List<Word> getWord1() {
+    /*public List<Word> getWord1() {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, null,
-                null,  null, null, null);
+                null, null, null, null);
 
         List<Word> word = new ArrayList<>();
 
@@ -149,43 +242,43 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         }
         return word;
     }
-
-    public List<Word> getEngWord(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
-                new String[] {Integer.toString(id)},  null, null, null);
-
-        List<Word> word = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-                cursor.moveToNext();
-            }
-        }
-        return word;
-    }
-
-    public List<Word> getRusWord(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
-                new String[] {Integer.toString(id)},  null, null, null);
-
-        List<Word> word = new ArrayList<>();
-
-        if (cursor.moveToFirst()) {
-            while (!cursor.isAfterLast()) {
-                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
-                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
-                cursor.moveToNext();
-            }
-        }
-        return word;
-    }
+*/
+//    public List<Word> getEngWord(int id) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
+//                new String[] {Integer.toString(id)},  null, null, null);
+//
+//        List<Word> word = new ArrayList<>();
+//
+//        if (cursor.moveToFirst()) {
+//            while (!cursor.isAfterLast()) {
+//                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
+//                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
+//                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
+//                cursor.moveToNext();
+//            }
+//        }
+//        return word;
+//    }
+//
+//    public List<Word> getRusWord(int id) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//
+//        Cursor cursor = db.query(WORDS_LIST_TABLE_NAME, WORDS_COLUMNS, "_id = ?",
+//                new String[] {Integer.toString(id)},  null, null, null);
+//
+//        List<Word> word = new ArrayList<>();
+//
+//        if (cursor.moveToFirst()) {
+//            while (!cursor.isAfterLast()) {
+//                word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
+//                        cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
+//                        cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
+//                cursor.moveToNext();
+//            }
+//        }
+//        return word;
+//    }
 
 }

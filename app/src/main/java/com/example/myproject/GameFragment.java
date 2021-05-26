@@ -1,6 +1,7 @@
 package com.example.myproject;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,8 +21,13 @@ import android.widget.Toast;
 import java.util.List;
 import java.util.Random;
 
+import static com.example.myproject.ThemeDBHelper.WORDS_LIST_TABLE_NAME;
+
 
 public class GameFragment extends Fragment {
+
+    ThemeDBHelper db;
+
 
    TextView wordTv, counterTimeTv;
    EditText translateTv;
@@ -50,15 +56,9 @@ public class GameFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ThemeDBHelper databaseHelper;
-
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
-        boolean answer = false;
-        databaseHelper = new ThemeDBHelper(getActivity());
-        List<Word> words = databaseHelper.getWord1();
-        Random random = new Random();
-        int id = (words.get(random.nextInt(words.size()))).getId();
+        db = new ThemeDBHelper(getContext());
 
         counterTimeTv = (TextView) view.findViewById(R.id.time_counter_tv);
         wordTv = (TextView) view.findViewById(R.id.word_tv);
@@ -80,7 +80,7 @@ public class GameFragment extends Fragment {
         skipButton.setOnClickListener(this::onSkipClick);
 
 
-        new CountDownTimer(6000, 1000) {
+        new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: "  + (int) (l * .001f));
@@ -100,6 +100,8 @@ public class GameFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -107,7 +109,20 @@ public class GameFragment extends Fragment {
     }
 
     private void onSkipClick(View view) {
+        ThemeDBHelper databaseHelper;
+        databaseHelper = new ThemeDBHelper(getContext());
 
+        String word = "";
+
+
+        Cursor cursor = databaseHelper.getReadableDatabase().query(databaseHelper.getDatabaseName(), new String[] {"END", "RUS"}, null, null, null, null, null, null);
+        while (!cursor.isAfterLast()) {
+            word = cursor.getString(1);
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        wordTv.setText(word);
     }
 
     private void onApplyClick(View view) {
@@ -116,12 +131,11 @@ public class GameFragment extends Fragment {
             tick.setVisibility(View.VISIBLE);
             cross.setVisibility(View.INVISIBLE);
             rCounter++;
-            tCounter++;
         } else {
             cross.setVisibility(View.VISIBLE);
             tick.setVisibility(View.INVISIBLE);
             wCounter++;
-            tCounter++;
         }
+        tCounter++;
     }
 }

@@ -29,12 +29,6 @@ public class ChooseThemeActivity extends AppCompatActivity {
         databaseHelper = new ThemeDBHelper(this);
         List<Theme> themeList = databaseHelper.getTheme();
 
-
-//        ThemeAdapter.ThemeChoiceListener themeChoiceListener = (theme, position) ->
-//                Toast.makeText(getApplicationContext(), "Был выбран пункт " + theme.getTheme(),
-//                        Toast.LENGTH_SHORT).show();
-
-
         mThemeAdapter = new ThemeAdapter(this, themeList);
 
         mRecycler.setAdapter(mThemeAdapter);
