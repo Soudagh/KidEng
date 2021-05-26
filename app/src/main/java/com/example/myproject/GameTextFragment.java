@@ -52,7 +52,6 @@ public class GameTextFragment extends Fragment {
         new CountDownTimer(6000, 1000) {
             @Override
             public void onTick(final long l) {
-                ;
                 textView.setText(" " + (int) (l * .001f));
             }
 
