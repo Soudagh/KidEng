@@ -1,4 +1,4 @@
-package com.example.kideng.fragments;
+package com.example.myproject.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.kideng.R;
-import com.example.kideng.activities.GameActivity;
+import com.example.myproject.R;
+import com.example.myproject.activities.GameActivity;
 
 public class GameStartFragment extends Fragment {
 

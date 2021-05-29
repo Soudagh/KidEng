@@ -1,5 +1,5 @@
 
-package com.example.kideng.activities;
+package com.example.myproject.activities;
 
 import android.os.Bundle;
 
@@ -7,10 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kideng.R;
-import com.example.kideng.entities.Theme;
-import com.example.kideng.supporting.ThemeAdapter;
-import com.example.kideng.supporting.ThemeDBHelper;
+import com.example.myproject.R;
+import com.example.myproject.entities.Theme;
+import com.example.myproject.supporting.ThemeAdapter;
+import com.example.myproject.supporting.ThemeDBHelper;
 
 import java.util.List;
 

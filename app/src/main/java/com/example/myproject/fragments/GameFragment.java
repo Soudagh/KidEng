@@ -1,4 +1,4 @@
-package com.example.kideng.fragments;
+package com.example.myproject.fragments;
 
 import android.app.Activity;
 import android.database.Cursor;
@@ -15,9 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.kideng.R;
-import com.example.kideng.supporting.ThemeDBHelper;
-import com.example.kideng.activities.GameActivity;
+import com.example.myproject.R;
+import com.example.myproject.supporting.ThemeDBHelper;
+import com.example.myproject.activities.GameActivity;
 
 import java.util.Random;
 

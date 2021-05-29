@@ -1,4 +1,4 @@
-package com.example.kideng.entities;
+package com.example.myproject.entities;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package com.example.kideng.activities;
+package com.example.myproject.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,10 +7,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kideng.R;
-import com.example.kideng.entities.Word;
-import com.example.kideng.supporting.ThemeDBHelper;
-import com.example.kideng.supporting.WordAdapter;
+import com.example.myproject.R;
+import com.example.myproject.entities.Word;
+import com.example.myproject.supporting.ThemeDBHelper;
+import com.example.myproject.supporting.WordAdapter;
 
 import java.util.List;
 

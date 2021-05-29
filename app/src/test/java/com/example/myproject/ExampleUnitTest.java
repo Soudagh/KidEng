@@ -1,4 +1,4 @@
-package com.example.kideng;
+package com.example.myproject;
 
 import org.junit.Test;
 
