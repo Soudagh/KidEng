@@ -86,7 +86,7 @@ public class GameFragment extends Fragment {
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(60000, 1000) {
+        new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
@@ -102,7 +102,7 @@ public class GameFragment extends Fragment {
                     String rString = String.valueOf(rCounter);
                     String wString = String.valueOf(wCounter);
                     String tString = String.valueOf(tCounter);
-                    ((GameActivity) activity).onGameStop(rString, wString, tString);
+                    ((GameActivity) activity).onGameStop(rString, wString, tString, mLanguage);
                 }
             }
         }.start();

@@ -20,21 +20,24 @@ public class GameResultFragment extends Fragment {
     private static final String ARG_Int1 = "1";
     private static final String ARG_Int2 = "2";
     private static final String ARG_Int3 = "3";
+    private static final String ARG_L = "language";
 
     private String mRCount;
     private String mWCount;
     private String mTCount;
+    private String mLanguage;
 
     public GameResultFragment() {
 
     }
 
-    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter) {
+    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String language) {
         GameResultFragment fragment = new GameResultFragment();
         Bundle args = new Bundle();
         args.putString(ARG_Int1, rCounter);
         args.putString(ARG_Int2, wCounter);
         args.putString(ARG_Int3, tCounter);
+        args.putString(ARG_L, language);
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,6 +49,7 @@ public class GameResultFragment extends Fragment {
             mRCount = getArguments().getString(ARG_Int1);
             mWCount = getArguments().getString(ARG_Int2);
             mTCount = getArguments().getString(ARG_Int3);
+            mLanguage = getArguments().getString(ARG_L);
         }
     }
 
@@ -70,7 +74,25 @@ public class GameResultFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         FloatingActionButton homeButton = (FloatingActionButton) view.findViewById(R.id.home_btn);
+        FloatingActionButton againButton = (FloatingActionButton) view.findViewById(R.id.again_btn);
+        FloatingActionButton changeModeButton = (FloatingActionButton) view.findViewById(R.id.changeMode_btn);
         homeButton.setOnClickListener(this::onHomeClick);
+        againButton.setOnClickListener(this::onAgainClick);
+        changeModeButton.setOnClickListener(this::onChangeClick);
+    }
+
+    private void onChangeClick(View view) {
+        Activity activity = getActivity();
+        if (activity instanceof GameActivity) {
+            ((GameActivity)activity).onChange();
+        }
+    }
+
+    private void onAgainClick(View view) {
+        Activity activity = getActivity();
+        if (activity instanceof GameActivity) {
+            ((GameActivity)activity).onAgain(mLanguage);
+        }
     }
 
     private void onHomeClick(View view) {

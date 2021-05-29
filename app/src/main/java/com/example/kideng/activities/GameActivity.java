@@ -40,15 +40,29 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void onGameStop(String counter1, String counter2, String counter3) {
+    public void onGameStop(String counter1, String counter2, String counter3, String language) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3))
+                .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3, language))
                 .commit();
     }
 
     public void onHome() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void onAgain(String language) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_start, GameTextFragment.newInstance(language))
+                .commit();
+    }
+
+    public void onChange() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_start, GameStartFragment.newInstance())
+                .commit();
     }
 }
