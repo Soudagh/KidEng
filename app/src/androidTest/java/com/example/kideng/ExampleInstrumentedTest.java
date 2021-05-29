@@ -1,4 +1,4 @@
-package com.example.myproject;
+package com.example.kideng;
 
 import android.content.Context;
 

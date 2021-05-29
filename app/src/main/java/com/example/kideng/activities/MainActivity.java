@@ -1,4 +1,4 @@
-package com.example.myproject.activities;
+package com.example.kideng.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.myproject.R;
+import com.example.kideng.R;
 
 public class MainActivity extends AppCompatActivity {
 

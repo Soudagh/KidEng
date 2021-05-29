@@ -1,4 +1,4 @@
-package com.example.myproject.supporting;
+package com.example.kideng.supporting;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myproject.R;
-import com.example.myproject.activities.WordActivity;
-import com.example.myproject.entities.Theme;
+import com.example.kideng.R;
+import com.example.kideng.activities.WordActivity;
+import com.example.kideng.entities.Theme;
 
 import java.util.List;
 
