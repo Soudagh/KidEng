@@ -1,8 +1,10 @@
-package com.example.myproject;
+package com.example.kideng.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+
+import com.example.kideng.R;
 
 public class MainDialogFragment extends android.app.DialogFragment {
 

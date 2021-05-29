@@ -1,11 +1,9 @@
-package com.example.myproject;
+package com.example.kideng.fragments;
 
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -16,12 +14,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
+import com.example.kideng.R;
+import com.example.kideng.supporting.ThemeDBHelper;
+import com.example.kideng.activities.GameActivity;
+
 import java.util.Random;
-
-import static com.example.myproject.ThemeDBHelper.WORDS_LIST_TABLE_NAME;
 
 
 public class GameFragment extends Fragment {
@@ -81,28 +79,14 @@ public class GameFragment extends Fragment {
         translate = "";
         random = new Random();
 
-        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
-        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
-        Cursor cursor = dbHelper.getWord1(id);
-        if (mLanguage.equals("English")) {
-            if (!cursor.isAfterLast()) {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
-            }
-        } else {
-            if (!cursor.isAfterLast()) {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
-            }
-        }
-
+        setWord();
 
         Button applyButton = (Button) view.findViewById(R.id.answer_btn);
         Button skipButton = (Button) view.findViewById(R.id.skip_btn);
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(10000, 1000) {
+        new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
@@ -132,20 +116,7 @@ public class GameFragment extends Fragment {
     }
 
     private void onSkipClick(View view) {
-        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
-        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
-        Cursor cursor = dbHelper.getWord1(id);
-        if (mLanguage.equals("English")) {
-            if (!cursor.isAfterLast()) {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
-            }
-        } else {
-            if (!cursor.isAfterLast()) {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
-            }
-        }
+        setWord();
         tCounter++;
 
     }
@@ -164,6 +135,22 @@ public class GameFragment extends Fragment {
             translateTv.setText("");
             wCounter++;
             tCounter++;
+        }
+
+    }
+
+    private void setWord() {
+        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
+        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
+        Cursor cursor = dbHelper.getWord1(id);
+        if (!cursor.isAfterLast()) {
+            if (mLanguage.equals("English")) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+            } else {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
+            }
         }
 
     }

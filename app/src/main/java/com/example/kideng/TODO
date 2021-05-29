@@ -1,0 +1,21 @@
+TODO: User object (id, nickname, stats)
+TODO: Activity with first setting/registration
+TODO: Add profile button in MainActivity
+TODO: Make statistics of answers
+TODO: Make dictionary with pictures (on click) (???)
+TODO: Make difficulty in game (different time)
+TODO: Game with training of one or some themes
+TODO: Transfer DB on Room
+TODO: Add/change words in dictionary
+TODO: Add/change nickname in profile
+TODO: Transition to GameStartFragment from GameResultFragment
+TODO: Mode with pictures
+TODO: Dark theme/another language (???)
+TODO: Mind about design
+TODO: Made K/D ratio (good answers/wrong answers)
+TODO: Output of wrong answers
+TODO: Mode with education
+TODO: Panel at left (swipe) with some information
+TODO: solve of math examples
+
+

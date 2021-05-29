@@ -1,14 +1,16 @@
 
-package com.example.myproject;
+package com.example.kideng.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kideng.R;
+import com.example.kideng.entities.Theme;
+import com.example.kideng.supporting.ThemeAdapter;
+import com.example.kideng.supporting.ThemeDBHelper;
 
 import java.util.List;
 

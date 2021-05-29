@@ -1,11 +1,12 @@
-package com.example.myproject;
+package com.example.kideng.supporting;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Bundle;
+
+import com.example.kideng.entities.Word;
+import com.example.kideng.entities.Theme;
 
 import java.util.ArrayList;
 import java.util.List;
