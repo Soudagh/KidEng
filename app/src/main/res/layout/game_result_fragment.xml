@@ -113,28 +113,31 @@
                     android:id="@+id/changeMode_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/change"
+                    android:backgroundTint="#FF008577"
                     android:elevation="0dp"
+                    android:src="@drawable/change"
                     app:elevation="0dp"
-                    app:maxImageSize="48dp"/>
+                    app:maxImageSize="48dp" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/again_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/again"
+                    android:backgroundTint="#FF008577"
                     android:elevation="0dp"
+                    android:src="@drawable/again"
                     app:elevation="0dp"
-                    app:maxImageSize="48dp"/>
+                    app:maxImageSize="48dp" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/home_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/home"
+                    android:id="@+id/home_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FF008577"
                     android:elevation="0dp"
+                    android:src="@drawable/home"
                     app:elevation="0dp"
-                app:maxImageSize="48dp" />
+                    app:maxImageSize="48dp" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

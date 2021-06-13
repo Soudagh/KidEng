@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
 import com.example.kideng.entities.Theme;
+import com.example.kideng.supporting.App;
 import com.example.kideng.supporting.ThemeAdapter;
-import com.example.kideng.supporting.ThemeDBHelper;
+//import com.example.kideng.supporting.ThemeDBHelper;
+import com.example.kideng.supporting.ThemeDao;
 
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class ChooseThemeActivity extends AppCompatActivity {
     private RecyclerView mRecycler;
     private ThemeAdapter mThemeAdapter;
 
-    private ThemeDBHelper databaseHelper;
+    private ThemeDao themeDao;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,10 +30,12 @@ public class ChooseThemeActivity extends AppCompatActivity {
 
         mRecycler = findViewById(R.id.recycler_themes);
 
-        databaseHelper = new ThemeDBHelper(this);
-        List<Theme> themeList = databaseHelper.getTheme();
+        //databaseHelper = new ThemeDBHelper(this);
+        themeDao = App.getInstance().getDatabase().themeDao();
 
-        mThemeAdapter = new ThemeAdapter(this, themeList);
+        //List<Theme> themeList = databaseHelper.getTheme();
+
+        mThemeAdapter = new ThemeAdapter(this, themeDao.getAll());
 
         mRecycler.setAdapter(mThemeAdapter);
     }
