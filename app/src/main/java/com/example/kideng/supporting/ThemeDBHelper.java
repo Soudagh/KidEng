@@ -14,20 +14,29 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 8;
+    private static final int SCHEMA = 10;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
+    static final String USERS_LIST_TABLE_NAME = "USERS_LIST";
 
     public static final String COLUMN_THEME_ID = "_id";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_DESCRIPTION = "description";
     public static final String COLUMN_WORD_ID = "_id";
     public static final String COLUMN_WORD_THEME = "id_theme";
     public static final String COLUMN_ENG = "eng";
     public static final String COLUMN_RU = "ru";
-    public static final String COLUMN_NAME = "name";
-    public static final String COLUMN_DESCRIPTION = "description";
+    public static final String COLUMN_USER_ID = "_id";
+    public static final String COLUMN_USER_NICKNAME = "nickname";
+    public static final String COLUMN_USER_GENDER = "gender";
+    public static final String COLUMN_USER_AGE = "age";
+
+
+
 
     public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
-    final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
+    public static final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
+    public static final String[] USERS_COLUMNS = {COLUMN_USER_ID, COLUMN_USER_NICKNAME, COLUMN_USER_GENDER, COLUMN_USER_AGE};
 
 
     private static final String CREATE_THEMES_LIST_TABLE_NAME = "CREATE TABLE " + THEMES_LIST_TABLE_NAME + "("
@@ -41,6 +50,12 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
             + COLUMN_ENG + " TEXT, "
             + COLUMN_RU + " TEXT )";
 
+    private static final String CREATE_USERS_LIST_TABLE_NAME = "CREATE TABLE " + USERS_LIST_TABLE_NAME + "("
+            + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_USER_NICKNAME + " TEXT, "
+            + COLUMN_USER_AGE + " INTEGER, "
+            + COLUMN_USER_GENDER + " TEXT )";
+
 
     public ThemeDBHelper(Context context) {
         super(context, DATABASE_NAME, null, SCHEMA);
@@ -50,6 +65,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_THEMES_LIST_TABLE_NAME);
         db.execSQL(CREATE_WORDS_LIST_TABLE_NAME);
+        db.execSQL(CREATE_USERS_LIST_TABLE_NAME);
 
         db.execSQL("INSERT INTO " + THEMES_LIST_TABLE_NAME + " ("
                 + COLUMN_NAME + ", "
@@ -182,6 +198,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + THEMES_LIST_TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + WORDS_LIST_TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + USERS_LIST_TABLE_NAME);
         this.onCreate(db);
     }
 

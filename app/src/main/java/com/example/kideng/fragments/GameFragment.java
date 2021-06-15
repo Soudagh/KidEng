@@ -65,13 +65,13 @@ public class GameFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
-        counterTimeTv = (TextView) view.findViewById(R.id.time_counter_tv);
-        wordTv = (TextView) view.findViewById(R.id.word_tv);
+        counterTimeTv = view.findViewById(R.id.time_counter_tv);
+        wordTv = view.findViewById(R.id.word_tv);
 
-        translateTv = (EditText) view.findViewById(R.id.translate_et);
+        translateTv = view.findViewById(R.id.translate_et);
 
-        tick = (ImageView) view.findViewById(R.id.tick_iv);
-        cross = (ImageView) view.findViewById(R.id.cross_iv);
+        tick = view.findViewById(R.id.tick_iv);
+        cross = view.findViewById(R.id.cross_iv);
 
         tick.setVisibility(View.INVISIBLE);
         cross.setVisibility(View.INVISIBLE);
@@ -96,7 +96,7 @@ public class GameFragment extends Fragment {
             @Override
             public void onFinish() {
                 counterTimeTv.setText("");
-
+                onApplyClick(view);
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
                     String rString = String.valueOf(rCounter);
