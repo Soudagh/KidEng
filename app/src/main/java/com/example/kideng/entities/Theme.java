@@ -1,29 +1,40 @@
 package com.example.kideng.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
-public class Theme implements Serializable {
-    private int id;
-    private String theme;
-    private String descriptionTheme;
+@Entity(tableName = "THEMES_LIST")
+public class Theme{
 
-    public Theme(int id, String theme, String descriptionTheme) {
-        this.id = id;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
+    public int themeId;
+    @ColumnInfo(name = "name")
+    public @NonNull
+    String theme;
+    @ColumnInfo(name = "description")
+    public @NonNull
+    String descriptionTheme;
+
+    public Theme(@NonNull int themeId, @NonNull String theme, @NonNull String descriptionTheme) {
+        this.themeId = themeId;
         this.theme = theme;
         this.descriptionTheme = descriptionTheme;
 
     }
-    public int getId() {return id;}
 
-    public String getTheme() {
-        return theme;
-    }
+//    public Theme() {
+//    }
 
-    public String getDescriptionTheme() {
-        return descriptionTheme;
-    }
-
-
+//    public void setThemeId(int themeID) {}
+//
+//    public void setTheme(String theme) {}
+//
+//    public void setDescriptionTheme(String descriptionTheme) {}
 
 
 

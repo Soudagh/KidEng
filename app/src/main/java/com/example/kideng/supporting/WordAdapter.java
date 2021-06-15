@@ -1,6 +1,7 @@
 package com.example.kideng.supporting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
+import com.example.kideng.activities.WordActivity;
+import com.example.kideng.entities.Theme;
 import com.example.kideng.entities.Word;
 
 import java.util.List;
@@ -35,12 +38,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.wordEng.setText(words.get(position).getWordEng());
-        holder.wordRu.setText(words.get(position).getWordRus());
+        holder.bindView(words.get(position));
 
     }
-
 
     @Override
     public int getItemCount() {return words.size();}
@@ -54,6 +54,11 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
             wordEng = itemView.findViewById(R.id.wordEng_tv);
             wordRu = itemView.findViewById(R.id.wordRus_tv);
+        }
+
+        public void bindView(Word word) {
+            wordEng.setText(word.wordEng);
+            wordRu.setText(word.wordRus);
         }
     }
 }

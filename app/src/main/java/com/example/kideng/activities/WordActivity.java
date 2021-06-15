@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
 import com.example.kideng.entities.Word;
-import com.example.kideng.supporting.ThemeDBHelper;
+import com.example.kideng.supporting.App;
+//import com.example.kideng.supporting.ThemeDBHelper;
 import com.example.kideng.supporting.WordAdapter;
+import com.example.kideng.supporting.WordDao;
 
 import java.util.List;
 
@@ -19,7 +21,8 @@ public class WordActivity extends AppCompatActivity {
     private  RecyclerView mRecycler;
     private WordAdapter mWordAdapter;
 
-    private ThemeDBHelper databaseHelper;
+    private WordDao wordDao;
+    //private ThemeDBHelper databaseHelper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,11 +34,12 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
 
-        databaseHelper = new ThemeDBHelper(this);
+        wordDao = App.getInstance().getDatabase().wordDao();
+        //databaseHelper = new ThemeDBHelper(this);
 
-        List<Word> wordList = databaseHelper.getWord(id);
+       // List<Word> wordList = databaseHelper.getWord(id);
 
-        mWordAdapter = new WordAdapter(this, wordList);
+        mWordAdapter = new WordAdapter(this, wordDao.getWords(id));
 
         mRecycler.setAdapter(mWordAdapter);
     }
