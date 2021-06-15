@@ -49,7 +49,7 @@ public class GameTextFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_text_fragment, container, false);
 
-        textView = (TextView) view.findViewById(R.id.seconds_start_tv);
+        textView = view.findViewById(R.id.seconds_start_tv);
 
         new CountDownTimer(6000, 1000) {
             @Override

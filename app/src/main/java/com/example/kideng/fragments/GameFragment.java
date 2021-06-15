@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.kideng.R;
-//import com.example.kideng.supporting.ThemeDBHelper;
+import com.example.kideng.supporting.ThemeDBHelper;
 import com.example.kideng.activities.GameActivity;
 
 import java.util.Random;
@@ -81,12 +81,12 @@ public class GameFragment extends Fragment {
 
         setWord();
 
-        Button applyButton = (Button) view.findViewById(R.id.answer_btn);
-        Button skipButton = (Button) view.findViewById(R.id.skip_btn);
+        Button applyButton = view.findViewById(R.id.answer_btn);
+        Button skipButton = view.findViewById(R.id.skip_btn);
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(20000, 1000) {
+        new CountDownTimer(5000, 1000) {
             @Override
             public void onTick(final long l) {
                 counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
@@ -140,18 +140,18 @@ public class GameFragment extends Fragment {
     }
 
     private void setWord() {
-//        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
-//        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
-//        Cursor cursor = dbHelper.getWord1(id);
-//        if (!cursor.isAfterLast()) {
-//            if (mLanguage.equals("English")) {
-//                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-//                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
-//            } else {
-//                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
-//                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
-//            }
-//        }
+        ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
+        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
+        Cursor cursor = dbHelper.getWord1(id);
+        if (!cursor.isAfterLast()) {
+            if (mLanguage.equals("English")) {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+            } else {
+                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
+                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
+            }
+        }
 
     }
 

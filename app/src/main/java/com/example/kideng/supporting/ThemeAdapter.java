@@ -35,12 +35,13 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.item_list, parent, false);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bindView(themes.get(position));
+        holder.bindView(position);
     }
 
     @Override
@@ -48,9 +49,8 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         return themes.size();
     }
 
-     class ViewHolder extends RecyclerView.ViewHolder  {
+    class ViewHolder extends RecyclerView.ViewHolder  {
         final TextView themeName, themeDescription;
-        public Theme theme;
         LinearLayout linearLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -62,12 +62,12 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
         }
 
-        public void bindView(Theme theme) {
-            themeName.setText(theme.theme);
-            themeDescription.setText(theme.descriptionTheme);
+        public void bindView(int position) {
+            themeName.setText(themes.get(position).getTheme());
+            themeDescription.setText(themes.get(position).getDescriptionTheme());
             linearLayout.setOnClickListener(v -> {
                 Intent intent = new Intent(mContext, WordActivity.class);
-                intent.putExtra("id", theme.themeId);
+                intent.putExtra("id", themes.get(position).getId());
                 mContext.startActivity(intent);
             });
         }

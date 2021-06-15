@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         boolean welcomeScreenShown = mPrefs.getBoolean(welcomeScreenShownPrefs, false);
 
-        if (!welcomeScreenShown) {
-            startActivity(new Intent(this, FirstEntranceActivity.class));
-        }
+//        if (!welcomeScreenShown) {
+//            startActivity(new Intent(this, FirstEntranceActivity.class));
+//        }
     }
 
     public void gameClick(View view) {

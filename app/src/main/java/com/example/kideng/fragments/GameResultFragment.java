@@ -73,9 +73,9 @@ public class GameResultFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        FloatingActionButton homeButton = (FloatingActionButton) view.findViewById(R.id.home_btn);
-        FloatingActionButton againButton = (FloatingActionButton) view.findViewById(R.id.again_btn);
-        FloatingActionButton changeModeButton = (FloatingActionButton) view.findViewById(R.id.changeMode_btn);
+        FloatingActionButton homeButton = view.findViewById(R.id.home_btn);
+        FloatingActionButton againButton = view.findViewById(R.id.again_btn);
+        FloatingActionButton changeModeButton = view.findViewById(R.id.changeMode_btn);
         homeButton.setOnClickListener(this::onHomeClick);
         againButton.setOnClickListener(this::onAgainClick);
         changeModeButton.setOnClickListener(this::onChangeClick);
