@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+/vendor/keystore
+/vendor/keystore
+
