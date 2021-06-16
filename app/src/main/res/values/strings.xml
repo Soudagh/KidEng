@@ -26,6 +26,11 @@
     <string name="mark_tv">Оценка:</string>
     <string name="wrong_answers_tv">Неправильные ответы:</string>
     <string name="right_answers_tv">Правильные ответы:</string>
+    <string name="hello_tv">Привет!</string>
+    <string name="acquaintance_tv">Давай познакомимся?</string>
+    <string name="userNickName_tv">Ник</string>
+    <string name="userName_tv">Имя</string>
+    <string name="userGender_tv">Пол</string>
 
 
 </resources>

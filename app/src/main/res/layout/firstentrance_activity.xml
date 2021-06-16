@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B1D7D2">
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/hello_tv"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_tv"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.421" />
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/acquaintance_tv"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="@string/acquaintance_tv"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello_tv" />
+
+    <TextView
+        android:id="@+id/userNickName_tv"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userNickName_tv"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="40dp"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <EditText
+        android:id="@+id/userNickName_et"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:textSize="20sp"
+        android:hint="Введите никнейм"
+        app:layout_constraintStart_toEndOf="@+id/userNickName_tv"
+        tools:layout_editor_absoluteY="241dp" />
+
+    <TextView
+        android:id="@+id/userName_tv"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/userName_tv"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userNickName_tv" />
+
+    <EditText
+        android:id="@+id/userName_et"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:hint="Введите имя"
+        android:textSize="20sp"
+
+        app:layout_constraintStart_toEndOf="@+id/userName_tv"
+        app:layout_constraintTop_toBottomOf="@+id/userNickName_et"
+        app:layout_constraintVertical_bias="0.434" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/MyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dialogBtn_ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userName_et"
+        app:layout_constraintVertical_bias="0.279"
+        android:onClick="confirmClick"/>
+
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

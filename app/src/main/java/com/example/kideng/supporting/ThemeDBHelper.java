@@ -28,15 +28,14 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_RU = "ru";
     public static final String COLUMN_USER_ID = "_id";
     public static final String COLUMN_USER_NICKNAME = "nickname";
-    public static final String COLUMN_USER_GENDER = "gender";
-    public static final String COLUMN_USER_AGE = "age";
+    public static final String COLUMN_USER_NAME = "name";
 
 
 
 
     public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
     public static final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
-    public static final String[] USERS_COLUMNS = {COLUMN_USER_ID, COLUMN_USER_NICKNAME, COLUMN_USER_GENDER, COLUMN_USER_AGE};
+    public static final String[] USERS_COLUMNS = {COLUMN_USER_ID, COLUMN_USER_NICKNAME, COLUMN_USER_NAME};
 
 
     private static final String CREATE_THEMES_LIST_TABLE_NAME = "CREATE TABLE " + THEMES_LIST_TABLE_NAME + "("
@@ -53,8 +52,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String CREATE_USERS_LIST_TABLE_NAME = "CREATE TABLE " + USERS_LIST_TABLE_NAME + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_USER_NICKNAME + " TEXT, "
-            + COLUMN_USER_AGE + " INTEGER, "
-            + COLUMN_USER_GENDER + " TEXT )";
+            + COLUMN_USER_NAME + " TEXT )";
 
 
     public ThemeDBHelper(Context context) {

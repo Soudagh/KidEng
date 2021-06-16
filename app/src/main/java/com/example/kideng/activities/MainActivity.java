@@ -13,7 +13,9 @@ import com.example.kideng.R;
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences mPrefs;
-    final String welcomeScreenShownPrefs = "welcomeScreenShown";
+    boolean welcomeScreenShown ;
+    final String showWelcomeScreenString = "showWelcome";
+    //inal String welcomeScreenShownPrefs = "welcomeScreenShown";
 
 
     @Override
@@ -21,12 +23,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean welcomeScreenShown = mPrefs.getBoolean(welcomeScreenShownPrefs, false);
+        mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        welcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
-//        if (!welcomeScreenShown) {
-//            startActivity(new Intent(this, FirstEntranceActivity.class));
-//        }
+        if (welcomeScreenShown) {
+            welcomeScreenShown = false;
+
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putBoolean(showWelcomeScreenString, false);
+            editor.apply();
+            startActivity(new Intent(this, FirstEntranceActivity.class));
+
+        }
     }
 
     public void gameClick(View view) {
