@@ -18,10 +18,10 @@ import java.util.List;
 
 public class WordActivity extends AppCompatActivity {
 
-    private  RecyclerView mRecycler;
+    private RecyclerView mRecycler;
     private WordAdapter mWordAdapter;
 
-    private ThemeDBHelper databaseHelper;
+    private ThemeDBHelper mDatabaseHelper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +33,11 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
 
+        mDatabaseHelper = new ThemeDBHelper(this);
 
-        databaseHelper = new ThemeDBHelper(this);
+        List<Word> wordList = mDatabaseHelper.getWord(id);
 
-        List<Word> wordList = databaseHelper.getWord(id);
-
-        mWordAdapter = new WordAdapter(this, wordList);
+        mWordAdapter = new WordAdapter(wordList);
 
         mRecycler.setAdapter(mWordAdapter);
     }

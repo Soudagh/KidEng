@@ -28,11 +28,6 @@ public class GameResultFragment extends Fragment {
     private String mTCount;
     private String mLanguage;
 
-    //TODO: может удалить пустой конструктор?
-    public GameResultFragment() {
-
-    }
-
     public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String language) {
         GameResultFragment fragment = new GameResultFragment();
         Bundle args = new Bundle();

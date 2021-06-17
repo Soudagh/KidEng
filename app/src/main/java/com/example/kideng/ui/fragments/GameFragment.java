@@ -28,19 +28,14 @@ public class GameFragment extends Fragment {
     private String mLanguage;
 
     //TODO: вот выше нейминг один и правильный, а тут ни модификатора доступа, ничего.
-    TextView wordTv, counterTimeTv;
-    EditText translateTv;
-    ImageView tick, cross;
-    String translate;
-    Random random = new Random();
+    private TextView mWordTv, mCounterTimeTv;
+    private EditText mTranslateTv;
+    private ImageView mTick, mCross;
+    private String mTranslate;
+    private Random mRandom = new Random();
 
-    int id;
-    int rCounter = 0, wCounter = 0, tCounter = 0;
-
-    //TODO: может удалить пустой конструктор?
-    public GameFragment() {
-
-    }
+    private int id;
+    private int rCounter = 0, wCounter = 0, tCounter = 0;
 
     public static GameFragment newInstance(String language) {
         GameFragment fragment = new GameFragment();
@@ -66,19 +61,19 @@ public class GameFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
-        counterTimeTv = view.findViewById(R.id.time_counter_tv);
-        wordTv = view.findViewById(R.id.word_tv);
+        mCounterTimeTv = view.findViewById(R.id.time_counter_tv);
+        mWordTv = view.findViewById(R.id.word_tv);
 
-        translateTv = view.findViewById(R.id.translate_et);
+        mTranslateTv = view.findViewById(R.id.translate_et);
 
-        tick = view.findViewById(R.id.tick_iv);
-        cross = view.findViewById(R.id.cross_iv);
+        mTick = view.findViewById(R.id.tick_iv);
+        mCross = view.findViewById(R.id.cross_iv);
 
-        tick.setVisibility(View.INVISIBLE);
-        cross.setVisibility(View.INVISIBLE);
+        mTick.setVisibility(View.INVISIBLE);
+        mCross.setVisibility(View.INVISIBLE);
 
-        translate = "";
-        random = new Random();
+        mTranslate = "";
+        mRandom = new Random();
 
         setWord();
 
@@ -90,13 +85,13 @@ public class GameFragment extends Fragment {
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(final long l) {
-                counterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
+                mCounterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
 
             }
 
             @Override
             public void onFinish() {
-                counterTimeTv.setText("");
+                mCounterTimeTv.setText("");
                 onApplyClick(view);
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
@@ -123,17 +118,17 @@ public class GameFragment extends Fragment {
     }
 
     private void onApplyClick(View view) {
-        if (translateTv.getText().toString().equals(translate)) {
-            tick.setVisibility(View.VISIBLE);
-            cross.setVisibility(View.INVISIBLE);
+        if (mTranslateTv.getText().toString().equals(mTranslate)) {
+            mTick.setVisibility(View.VISIBLE);
+            mCross.setVisibility(View.INVISIBLE);
             rCounter++;
-            translate = "";
-            translateTv.setText("");
+            mTranslate = "";
+            mTranslateTv.setText("");
             onSkipClick(getView());
         } else {
-            cross.setVisibility(View.VISIBLE);
-            tick.setVisibility(View.INVISIBLE);
-            translateTv.setText("");
+            mCross.setVisibility(View.VISIBLE);
+            mTick.setVisibility(View.INVISIBLE);
+            mTranslateTv.setText("");
             wCounter++;
             tCounter++;
         }
@@ -146,15 +141,15 @@ public class GameFragment extends Fragment {
     // и не очень праивльно будет заставлять пользователя ждать 2 секунды
     private void setWord() {
         ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
-        id = random.nextInt(dbHelper.getDBNoteCount() + 1);
+        id = mRandom.nextInt(dbHelper.getDBNoteCount() + 1);
         Cursor cursor = dbHelper.getWord1(id);
         if (!cursor.isAfterLast()) {
             if (mLanguage.equals("English")) {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
+                mWordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
+                mTranslate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
             } else {
-                wordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
-                translate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
+                mWordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
+                mTranslate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
             }
         }
 

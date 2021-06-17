@@ -16,23 +16,11 @@ import com.example.kideng.ui.activities.GameActivity;
 
 public class GameStartFragment extends Fragment {
 
-    //TODO: может удалить пустой конструктор?
-    public GameStartFragment() {
-
-    }
-
     public static GameStartFragment newInstance() {
         GameStartFragment fragment = new GameStartFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
-    }
-
-    //TODO: может удалить пустой метод?
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
     }
 
     @Override

@@ -12,10 +12,8 @@ import com.example.kideng.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO: где то мы соблюдаем нейминг, а где то нет.
-    // Пиши в одном стиле и не забывай про модификаторы доступа
-    SharedPreferences mPrefs;
-    boolean welcomeScreenShown;
+    private SharedPreferences mPrefs;
+    private boolean mWelcomeScreenShown;
     //TODO: можно сделать статичной.
     // Вообще подобные константы обычно выносят в отдельный дополнительный класс
     final String showWelcomeScreenString = "showWelcome";
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        welcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
+        mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
 //        if (welcomeScreenShown) {
 //            welcomeScreenShown = false;
@@ -46,8 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void themeClick(View view) {
         Intent intent = new Intent(this, ChooseThemeActivity.class);
-        //TODO: устаревший метод
-        startActivityForResult(intent, 0);
+        startActivity(intent);
     }
 //TODO: мне кажется неиспользуемый и закомментированный код нужно удалить
 

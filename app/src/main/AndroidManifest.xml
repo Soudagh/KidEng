@@ -12,7 +12,7 @@
         <activity android:name="com.example.kideng.ui.activities.ChooseThemeActivity"></activity>
         <activity android:name="com.example.kideng.ui.activities.WordActivity"></activity>
         <activity android:name="com.example.kideng.ui.activities.GameActivity"></activity>
-        <activity android:name="com.example.kideng.activities.FirstEntranceActivity"></activity>
+        <activity android:name="com.example.kideng.ui.activities.FirstEntranceActivity"></activity>
 
         <activity android:name="com.example.kideng.ui.activities.MainActivity">
             <intent-filter>

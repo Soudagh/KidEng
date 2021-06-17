@@ -18,24 +18,16 @@ import com.example.kideng.ui.activities.WordActivity;
 import java.util.List;
 
 public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> {
-    //TODO: может быть ограничить область видимости?
-    List<Theme> themes;
+    private final List<Theme> themes;
 
-    //TODO: зачем они?!
-    Context mContext;
-    private final LayoutInflater inflater;
-
-    public ThemeAdapter(Context context, List<Theme> themes) {
+    public ThemeAdapter(List<Theme> themes) {
         this.themes = themes;
-        this.inflater = LayoutInflater.from(context); //TODO: утчека памяти
-        mContext = context; //TODO: утчека памяти
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //TODO: Попробуй использовать здесь LayoutInflater.from(parent.getContext())
-        View view = inflater.inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -66,14 +58,12 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName.setText(themes.get(position).getTheme());
             themeDescription.setText(themes.get(position).getDescriptionTheme());
             linearLayout.setOnClickListener(v -> {
-                //TODO: у нас контексты есть во всех VIEW элементах,
-                // т.к. они нужны для того, чтобы понимать когда они нам не нужны
-                // попробуй itemView.getContext()
+                //TODO:
                 // Вообще логикой клика лучше, чтобы управлял не адаптер, а тот кто его создаёт
                 // чтобы если тебе надо было перейти на другую активность не надо было копипастить его
-                Intent intent = new Intent(mContext, WordActivity.class);
+                Intent intent = new Intent(itemView.getContext(), WordActivity.class);
                 intent.putExtra("id", themes.get(position).getId());
-                mContext.startActivity(intent);
+                itemView.getContext().startActivity(intent);
             });
         }
 

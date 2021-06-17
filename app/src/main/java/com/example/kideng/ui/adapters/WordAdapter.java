@@ -16,23 +16,16 @@ import java.util.List;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
-    List<Word> words;
+    private final List<Word> words;
 
-    //TODO: Зачем она здесь?
-    private final LayoutInflater inflater;
-
-    public WordAdapter(Context context, List<Word> words) {
+    public WordAdapter(List<Word> words) {
         this.words = words;
-        //TODO: утечка контекста
-        this.inflater = LayoutInflater.from(context);
     }
-
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //TODO: Попробуй использовать здесь LayoutInflater.from(parent.getContext())
-        View view = inflater.inflate(R.layout.word_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.word_list, parent, false);
         return new ViewHolder(view);
     }
 

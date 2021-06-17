@@ -20,7 +20,7 @@ public class ChooseThemeActivity extends AppCompatActivity {
     private RecyclerView mRecycler;
     private ThemeAdapter mThemeAdapter;
 
-    private ThemeDBHelper databaseHelper;
+    private ThemeDBHelper mDatabaseHelper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,11 +29,11 @@ public class ChooseThemeActivity extends AppCompatActivity {
 
         mRecycler = findViewById(R.id.recycler_themes);
 
-        databaseHelper = new ThemeDBHelper(this);
+        mDatabaseHelper = new ThemeDBHelper(this);
 
-        List<Theme> themeList = databaseHelper.getTheme();
+        List<Theme> themeList = mDatabaseHelper.getTheme();
 
-        mThemeAdapter = new ThemeAdapter(this, themeList);
+        mThemeAdapter = new ThemeAdapter(themeList);
 
         mRecycler.setAdapter(mThemeAdapter);
     }
