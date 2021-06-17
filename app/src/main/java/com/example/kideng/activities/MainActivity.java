@@ -15,8 +15,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mPrefs;
     boolean welcomeScreenShown ;
     final String showWelcomeScreenString = "showWelcome";
-    //inal String welcomeScreenShownPrefs = "welcomeScreenShown";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,15 +24,15 @@ public class MainActivity extends AppCompatActivity {
         mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         welcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
-        if (welcomeScreenShown) {
-            welcomeScreenShown = false;
-
-            SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putBoolean(showWelcomeScreenString, false);
-            editor.apply();
-            startActivity(new Intent(this, FirstEntranceActivity.class));
-
-        }
+//        if (welcomeScreenShown) {
+//            welcomeScreenShown = false;
+//
+//            SharedPreferences.Editor editor = mPrefs.edit();
+//            editor.putBoolean(showWelcomeScreenString, false);
+//            editor.apply();
+//            startActivity(new Intent(this, FirstEntranceActivity.class));
+//
+//        }
     }
 
     public void gameClick(View view) {

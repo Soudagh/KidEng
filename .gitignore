@@ -13,6 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-keystore
-keystore3
+/keystore/
+/keystore3/
 
