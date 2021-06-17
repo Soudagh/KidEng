@@ -1,4 +1,4 @@
-package com.example.kideng.supporting;
+package com.example.kideng.ui.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
-import com.example.kideng.entities.Word;
+import com.example.kideng.db.entities.Word;
 
 import java.util.List;
 
@@ -18,10 +18,12 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     List<Word> words;
 
+    //TODO: Зачем она здесь?
     private final LayoutInflater inflater;
 
     public WordAdapter(Context context, List<Word> words) {
         this.words = words;
+        //TODO: утечка контекста
         this.inflater = LayoutInflater.from(context);
     }
 
@@ -29,24 +31,23 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //TODO: Попробуй использовать здесь LayoutInflater.from(parent.getContext())
         View view = inflater.inflate(R.layout.word_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         holder.wordEng.setText(words.get(position).getWordEng());
         holder.wordRu.setText(words.get(position).getWordRus());
-
     }
 
-
     @Override
-    public int getItemCount() {return words.size();}
+    public int getItemCount() {
+        return words.size();
+    }
 
-
-    static class ViewHolder  extends RecyclerView.ViewHolder {
+    static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView wordEng, wordRu;
 
         public ViewHolder(@NonNull View itemView) {

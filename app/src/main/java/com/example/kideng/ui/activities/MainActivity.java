@@ -1,4 +1,4 @@
-package com.example.kideng.activities;
+package com.example.kideng.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,12 @@ import com.example.kideng.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    //TODO: где то мы соблюдаем нейминг, а где то нет.
+    // Пиши в одном стиле и не забывай про модификаторы доступа
     SharedPreferences mPrefs;
-    boolean welcomeScreenShown ;
+    boolean welcomeScreenShown;
+    //TODO: можно сделать статичной.
+    // Вообще подобные константы обычно выносят в отдельный дополнительный класс
     final String showWelcomeScreenString = "showWelcome";
 
     @Override
@@ -42,8 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void themeClick(View view) {
         Intent intent = new Intent(this, ChooseThemeActivity.class);
+        //TODO: устаревший метод
         startActivityForResult(intent, 0);
     }
+//TODO: мне кажется неиспользуемый и закомментированный код нужно удалить
 
 //    public void restartClick(View view) {
 //        MainDialogFragment dialog = new MainDialogFragment();

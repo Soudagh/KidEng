@@ -1,11 +1,8 @@
-package com.example.kideng.fragments;
+package com.example.kideng.ui.fragments;
 
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +12,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.kideng.R;
-import com.example.kideng.supporting.ThemeDBHelper;
-import com.example.kideng.activities.GameActivity;
+import com.example.kideng.db.legacy.ThemeDBHelper;
+import com.example.kideng.ui.activities.GameActivity;
 
 import java.util.Random;
 
@@ -28,6 +27,7 @@ public class GameFragment extends Fragment {
 
     private String mLanguage;
 
+    //TODO: вот выше нейминг один и правильный, а тут ни модификатора доступа, ничего.
     TextView wordTv, counterTimeTv;
     EditText translateTv;
     ImageView tick, cross;
@@ -37,6 +37,7 @@ public class GameFragment extends Fragment {
     int id;
     int rCounter = 0, wCounter = 0, tCounter = 0;
 
+    //TODO: может удалить пустой конструктор?
     public GameFragment() {
 
     }
@@ -109,6 +110,7 @@ public class GameFragment extends Fragment {
         return view;
     }
 
+    //TODO: может удалить пустой метод?
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -118,7 +120,6 @@ public class GameFragment extends Fragment {
     private void onSkipClick(View view) {
         setWord();
         tCounter++;
-
     }
 
     private void onApplyClick(View view) {
@@ -139,6 +140,10 @@ public class GameFragment extends Fragment {
 
     }
 
+    //TODO: ой сразу две ошибки
+    // 1. Обращение в главном потоке
+    // 2. Лучше кэшировать 1-3 слова, потому что доступ может быть условно 2 секунды
+    // и не очень праивльно будет заставлять пользователя ждать 2 секунды
     private void setWord() {
         ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
         id = random.nextInt(dbHelper.getDBNoteCount() + 1);

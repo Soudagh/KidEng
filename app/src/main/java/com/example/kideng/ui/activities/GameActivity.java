@@ -1,14 +1,14 @@
-package com.example.kideng.activities;
+package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kideng.fragments.GameFragment;
-import com.example.kideng.fragments.GameResultFragment;
-import com.example.kideng.fragments.GameStartFragment;
-import com.example.kideng.fragments.GameTextFragment;
+import com.example.kideng.ui.fragments.GameFragment;
+import com.example.kideng.ui.fragments.GameResultFragment;
+import com.example.kideng.ui.fragments.GameStartFragment;
+import com.example.kideng.ui.fragments.GameTextFragment;
 import com.example.kideng.R;
 
 public class GameActivity extends AppCompatActivity {

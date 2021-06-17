@@ -1,4 +1,4 @@
-package com.example.kideng.activities;
+package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
-import com.example.kideng.entities.Word;
+import com.example.kideng.db.entities.Word;
 
-import com.example.kideng.supporting.ThemeDBHelper;
-import com.example.kideng.supporting.WordAdapter;
+import com.example.kideng.db.legacy.ThemeDBHelper;
+import com.example.kideng.ui.adapters.WordAdapter;
 
 
 import java.util.List;

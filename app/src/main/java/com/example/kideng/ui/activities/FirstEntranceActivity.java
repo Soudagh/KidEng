@@ -1,13 +1,13 @@
-package com.example.kideng.activities;
+package com.example.kideng.ui.activities;
 
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kideng.R;
 
+// TODO: что это? :)
 public class FirstEntranceActivity extends AppCompatActivity {
 
     @Override
