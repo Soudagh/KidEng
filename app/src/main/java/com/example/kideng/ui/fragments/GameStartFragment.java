@@ -1,8 +1,9 @@
-package com.example.kideng.fragments;
+package com.example.kideng.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,11 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.kideng.R;
-import com.example.kideng.activities.GameActivity;
+import com.example.kideng.ui.activities.GameActivity;
 
 public class GameStartFragment extends Fragment {
 
-
+    //TODO: может удалить пустой конструктор?
     public GameStartFragment() {
 
     }
@@ -27,6 +28,7 @@ public class GameStartFragment extends Fragment {
         return fragment;
     }
 
+    //TODO: может удалить пустой метод?
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +42,7 @@ public class GameStartFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Button engButton = view.findViewById(R.id.eng_btn);
         Button rusButton = view.findViewById(R.id.rus_btn);
@@ -48,15 +50,15 @@ public class GameStartFragment extends Fragment {
         rusButton.setOnClickListener(this::onRusClick);
     }
 
-
+    //TODO: не самая правильная логика стучаться на уровень выше.
+    // Лучше тогда сделать возможность реагировать на клики по фрагменту активности
+    // И при уничтожении фрагмента не забывать её отписывать
 
     private void onEngClick(View view) {
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             ((GameActivity)activity).onGameCountDown("English");
         }
-
-
     }
 
     private void onRusClick(View view) {

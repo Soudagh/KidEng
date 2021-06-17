@@ -1,4 +1,4 @@
-package com.example.kideng.fragments;
+package com.example.kideng.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kideng.R;
-import com.example.kideng.activities.GameActivity;
+import com.example.kideng.ui.activities.GameActivity;
 
 
 public class GameTextFragment extends Fragment {
@@ -20,9 +20,10 @@ public class GameTextFragment extends Fragment {
     private static final String ARG_L = "language";
 
     private String mLanguage;
-
+    //TODO: вот выше нейминг один и правильный, а тут ни модификатора доступа, ничего.
     TextView textView;
 
+    //TODO: может удалить пустой конструктор?
     public GameTextFragment() {
 
     }

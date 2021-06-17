@@ -1,8 +1,9 @@
-package com.example.kideng.fragments;
+package com.example.kideng.ui.fragments;
 
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -11,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kideng.R;
-import com.example.kideng.activities.GameActivity;
+import com.example.kideng.ui.activities.GameActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
@@ -27,6 +28,7 @@ public class GameResultFragment extends Fragment {
     private String mTCount;
     private String mLanguage;
 
+    //TODO: может удалить пустой конструктор?
     public GameResultFragment() {
 
     }
@@ -70,7 +72,7 @@ public class GameResultFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         FloatingActionButton homeButton = view.findViewById(R.id.home_btn);
@@ -80,6 +82,10 @@ public class GameResultFragment extends Fragment {
         againButton.setOnClickListener(this::onAgainClick);
         changeModeButton.setOnClickListener(this::onChangeClick);
     }
+
+    //TODO: не самая правильная логика стучаться на уровень выше.
+    // Лучше тогда сделать возможность реагировать на клики по фрагменту активности
+    // И при уничтожении фрагмента не забывать её отписывать
 
     private void onChangeClick(View view) {
         Activity activity = getActivity();

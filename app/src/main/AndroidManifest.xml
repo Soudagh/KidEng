@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyProject">
-        <activity android:name="com.example.kideng.activities.ChooseThemeActivity"></activity>
-        <activity android:name="com.example.kideng.activities.WordActivity"></activity>
-        <activity android:name="com.example.kideng.activities.GameActivity"></activity>
+        <activity android:name="com.example.kideng.ui.activities.ChooseThemeActivity"></activity>
+        <activity android:name="com.example.kideng.ui.activities.WordActivity"></activity>
+        <activity android:name="com.example.kideng.ui.activities.GameActivity"></activity>
         <activity android:name="com.example.kideng.activities.FirstEntranceActivity"></activity>
 
-        <activity android:name="com.example.kideng.activities.MainActivity">
+        <activity android:name="com.example.kideng.ui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
