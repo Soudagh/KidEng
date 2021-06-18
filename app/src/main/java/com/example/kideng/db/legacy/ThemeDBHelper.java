@@ -1,5 +1,6 @@
 package com.example.kideng.db.legacy;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 11;
+    private static final int SCHEMA = 4;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
     static final String USERS_LIST_TABLE_NAME = "USERS_LIST";
@@ -29,9 +30,6 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
     public static final String COLUMN_USER_ID = "_id";
     public static final String COLUMN_USER_NICKNAME = "nickname";
     public static final String COLUMN_USER_NAME = "name";
-
-
-
 
     public static final String[] THEMES_COLUMNS = {COLUMN_THEME_ID, COLUMN_NAME, COLUMN_DESCRIPTION};
     public static final String[] WORDS_COLUMNS = {COLUMN_WORD_ID, COLUMN_WORD_THEME, COLUMN_ENG, COLUMN_RU};
@@ -53,7 +51,6 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_USER_NICKNAME + " TEXT, "
             + COLUMN_USER_NAME + " TEXT )";
-
 
     public ThemeDBHelper(Context context) {
         super(context, DATABASE_NAME, null, SCHEMA);
@@ -191,7 +188,6 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         );
     }
 
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + THEMES_LIST_TABLE_NAME);
@@ -199,7 +195,6 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + USERS_LIST_TABLE_NAME);
         this.onCreate(db);
     }
-
 
     public List<Theme> getTheme() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -251,6 +246,19 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public String getUser() {
+        String nickname = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(USERS_LIST_TABLE_NAME, USERS_COLUMNS, null,
+                null, null, null, null);
+        if ( cursor != null && cursor.moveToFirst() ){
+             nickname = cursor.getString(cursor.getColumnIndex(COLUMN_USER_NICKNAME));
+            cursor.close();
+        }
+        return nickname;
+
+    }
+
     public int getDBNoteCount() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT Count(*) FROM WORDS_LIST", null);
@@ -258,6 +266,14 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return cursor.getInt(0);
     }
 
+    public long insertUser(String nickname, String name) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_USER_NICKNAME, nickname);
+        cv.put(COLUMN_USER_NAME, name);
+        return db.insert(USERS_LIST_TABLE_NAME, null, cv);
+
+    }
 
 }
 

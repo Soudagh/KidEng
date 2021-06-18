@@ -20,13 +20,7 @@ public class GameTextFragment extends Fragment {
     private static final String ARG_L = "language";
 
     private String mLanguage;
-    //TODO: вот выше нейминг один и правильный, а тут ни модификатора доступа, ничего.
-    TextView textView;
-
-    //TODO: может удалить пустой конструктор?
-    public GameTextFragment() {
-
-    }
+    private TextView mTextView;
 
     public static GameTextFragment newInstance(String language) {
         GameTextFragment fragment = new GameTextFragment();
@@ -50,17 +44,17 @@ public class GameTextFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_text_fragment, container, false);
 
-        textView = view.findViewById(R.id.seconds_start_tv);
+        mTextView = view.findViewById(R.id.seconds_start_tv);
 
         new CountDownTimer(6000, 1000) {
             @Override
             public void onTick(final long l) {
-                textView.setText(" " + (int) (l * .001f));
+                mTextView.setText(" " + (int) (l * .001f));
             }
 
             @Override
             public void onFinish() {
-                textView.setText("");
+                mTextView.setText("");
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
                     ((GameActivity)activity).onGameStart(mLanguage);

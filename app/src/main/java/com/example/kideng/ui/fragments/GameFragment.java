@@ -25,14 +25,12 @@ public class GameFragment extends Fragment {
 
     private static final String ARG_L = "language";
 
-    private String mLanguage;
-
-    //TODO: вот выше нейминг один и правильный, а тут ни модификатора доступа, ничего.
     private TextView mWordTv, mCounterTimeTv;
     private EditText mTranslateTv;
     private ImageView mTick, mCross;
     private String mTranslate;
-    private Random mRandom = new Random();
+    private String mLanguage;
+    private Random mRandom;
 
     private int id;
     private int rCounter = 0, wCounter = 0, tCounter = 0;
@@ -63,9 +61,7 @@ public class GameFragment extends Fragment {
 
         mCounterTimeTv = view.findViewById(R.id.time_counter_tv);
         mWordTv = view.findViewById(R.id.word_tv);
-
         mTranslateTv = view.findViewById(R.id.translate_et);
-
         mTick = view.findViewById(R.id.tick_iv);
         mCross = view.findViewById(R.id.cross_iv);
 
@@ -86,7 +82,6 @@ public class GameFragment extends Fragment {
             @Override
             public void onTick(final long l) {
                 mCounterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
-
             }
 
             @Override
@@ -103,13 +98,6 @@ public class GameFragment extends Fragment {
             }
         }.start();
         return view;
-    }
-
-    //TODO: может удалить пустой метод?
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
     }
 
     private void onSkipClick(View view) {

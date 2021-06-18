@@ -51,7 +51,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName = itemView.findViewById(R.id.themeName_tv);
             themeDescription = itemView.findViewById(R.id.description_tv);
             linearLayout = itemView.findViewById(R.id.linear);
-
         }
 
         public void bindView(int position) {

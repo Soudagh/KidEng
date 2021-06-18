@@ -34,11 +34,8 @@ public class WordActivity extends AppCompatActivity {
         int id = intent.getIntExtra("id", 0);
 
         mDatabaseHelper = new ThemeDBHelper(this);
-
         List<Word> wordList = mDatabaseHelper.getWord(id);
-
         mWordAdapter = new WordAdapter(wordList);
-
         mRecycler.setAdapter(mWordAdapter);
     }
 

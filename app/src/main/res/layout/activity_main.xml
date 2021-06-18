@@ -7,6 +7,17 @@
     tools:context=".ui.activities.MainActivity">
 
     <TextView
+        android:id="@+id/user_tv"
+        style="@style/MyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:textSize="20sp"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        />
+
+    <TextView
         style="@style/MyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -8,12 +8,10 @@ public class User implements Serializable {
     private String nickname;
     private String name;
 
-
     public User(int id, String nickname, String age) {
         this.id = id;
         this.nickname = nickname;
         this.name = age;
-
     }
 
     public int getId() {

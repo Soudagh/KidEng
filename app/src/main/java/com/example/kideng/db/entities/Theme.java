@@ -11,8 +11,8 @@ public class Theme implements Serializable {
         this.id = id;
         this.theme = theme;
         this.descriptionTheme = descriptionTheme;
-
     }
+
     public int getId() {return id;}
 
     public String getTheme() {

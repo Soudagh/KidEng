@@ -28,13 +28,9 @@ public class ChooseThemeActivity extends AppCompatActivity {
         setContentView(R.layout.choose_theme);
 
         mRecycler = findViewById(R.id.recycler_themes);
-
         mDatabaseHelper = new ThemeDBHelper(this);
-
         List<Theme> themeList = mDatabaseHelper.getTheme();
-
         mThemeAdapter = new ThemeAdapter(themeList);
-
         mRecycler.setAdapter(mThemeAdapter);
     }
 

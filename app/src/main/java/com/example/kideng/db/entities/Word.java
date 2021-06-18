@@ -14,7 +14,6 @@ public class Word implements Serializable {
         this.wordEng = wordEng;
     }
 
-
     public int getId() {return id;}
 
     public String getWordRus() {
