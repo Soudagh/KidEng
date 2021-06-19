@@ -7,7 +7,6 @@
     android:background="#B1D7D2">
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/hello_tv"
         style="@style/MyText"
         android:layout_width="wrap_content"
@@ -18,71 +17,83 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.421" />
+        app:layout_constraintVertical_bias="0.22" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/acquaintance_tv"
         style="@style/MyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="36dp"
         android:text="@string/acquaintance_tv"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hello_tv" />
 
-    <TextView
-        android:id="@+id/userNickName_tv"
-        style="@style/MyText"
+    <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="@string/userNickName_tv"
-        android:textSize="25sp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/userNickName_tv"
+            style="@style/MyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:text="@string/userNickName_tv"
+            android:textSize="25sp"
+             />
 
-    <EditText
-        android:id="@+id/userNickName_et"
-        style="@style/MyText"
+        <EditText
+            android:id="@+id/userNickName_et"
+            style="@style/MyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:hint="Введите никнейм"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/userNickName_tv"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:hint="Введите никнейм"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/userNickName_tv"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/userName_tv"
-        style="@style/MyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/userName_tv"
-        android:textSize="25sp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userNickName_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/linear">
+        <TextView
+            android:id="@+id/userName_tv"
+            style="@style/MyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/userName_tv"
+            android:textSize="25sp"
+             />
 
-    <EditText
-        android:id="@+id/userName_et"
-        style="@style/MyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:hint="Введите имя"
-        android:textSize="20sp"
+        <EditText
+            android:id="@+id/userName_et"
+            style="@style/MyText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
+            android:hint="Введите имя"
+            android:textSize="20sp"
 
-        app:layout_constraintStart_toEndOf="@+id/userName_tv"
-        app:layout_constraintTop_toBottomOf="@+id/userNickName_et"
-        app:layout_constraintVertical_bias="0.434" />
-
+            app:layout_constraintStart_toEndOf="@+id/userName_tv"
+            app:layout_constraintTop_toBottomOf="@+id/userNickName_et" />
+    </LinearLayout>
     <Button
         android:id="@+id/button"
         android:backgroundTint="#E5E2CA"
