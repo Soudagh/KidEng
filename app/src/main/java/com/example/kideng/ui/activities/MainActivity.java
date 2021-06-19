@@ -1,16 +1,12 @@
 package com.example.kideng.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.kideng.R;
 import com.example.kideng.db.legacy.ThemeDBHelper;
 

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 4;
+    private static final int SCHEMA = 8;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
     static final String USERS_LIST_TABLE_NAME = "USERS_LIST";
@@ -93,7 +93,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + "(1, 'lion', 'лев'),"
                 + "(1, 'mouse', 'мышь'),"
                 + "(1, 'nut', 'орех'),"
-                + "(1, 'orange', 'апельсин'),"
+                + "(1, 'orange (fruit)', 'апельсин'),"
                 + "(1, 'peas', 'горох'),"
                 + "(1, 'queen', 'королева'),"
                 + "(1, 'rabbit', 'кролик'),"
@@ -137,7 +137,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 + "(4, 'son', 'сын'),"
                 + "(4, 'daughter', 'дочь'),"
                 + "(5, 'red', 'красный'),"
-                + "(5, 'orange', 'оранжевый'),"
+                + "(5, 'orange (color)', 'оранжевый'),"
                 + "(5, 'yellow', 'жёлтый'),"
                 + "(5, 'green', 'зелёный'),"
                 + "(5, 'blue', 'голубой'),"
