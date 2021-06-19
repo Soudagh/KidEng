@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView mNickname_tv;
     private ThemeDBHelper mDatabaseHelper;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

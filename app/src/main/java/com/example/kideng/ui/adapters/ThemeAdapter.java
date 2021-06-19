@@ -57,9 +57,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
             themeName.setText(themes.get(position).getTheme());
             themeDescription.setText(themes.get(position).getDescriptionTheme());
             linearLayout.setOnClickListener(v -> {
-                //TODO:
-                // Вообще логикой клика лучше, чтобы управлял не адаптер, а тот кто его создаёт
-                // чтобы если тебе надо было перейти на другую активность не надо было копипастить его
                 Intent intent = new Intent(itemView.getContext(), WordActivity.class);
                 intent.putExtra("id", themes.get(position).getId());
                 itemView.getContext().startActivity(intent);

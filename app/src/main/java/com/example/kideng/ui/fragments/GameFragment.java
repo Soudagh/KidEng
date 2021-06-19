@@ -46,7 +46,6 @@ public class GameFragment extends Fragment {
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,13 +125,8 @@ public class GameFragment extends Fragment {
             wCounter++;
             tCounter++;
         }
-
     }
 
-    //TODO: ой сразу две ошибки
-    // 1. Обращение в главном потоке
-    // 2. Лучше кэшировать 1-3 слова, потому что доступ может быть условно 2 секунды
-    // и не очень праивльно будет заставлять пользователя ждать 2 секунды
     private void setWord() {
         ThemeDBHelper dbHelper = new ThemeDBHelper(getActivity());
         id = mRandom.nextInt(dbHelper.getDBNoteCount() + 1);

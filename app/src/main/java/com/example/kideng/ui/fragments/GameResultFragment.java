@@ -78,10 +78,6 @@ public class GameResultFragment extends Fragment {
         changeModeButton.setOnClickListener(this::onChangeClick);
     }
 
-    //TODO: не самая правильная логика стучаться на уровень выше.
-    // Лучше тогда сделать возможность реагировать на клики по фрагменту активности
-    // И при уничтожении фрагмента не забывать её отписывать
-
     private void onChangeClick(View view) {
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
@@ -102,6 +98,4 @@ public class GameResultFragment extends Fragment {
             ((GameActivity)activity).onHome();
         }
     }
-
-
 }
