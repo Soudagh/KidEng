@@ -104,18 +104,21 @@ public class GameFragment extends Fragment {
 
     private void onSkipClick(View view) {
         mTranslate = "";
+        mTranslateTv.setText("");
+        mTick.setVisibility(View.INVISIBLE);
+        mCross.setVisibility(View.INVISIBLE);
         setWord();
         tCounter++;
     }
 
     private void onApplyClick(View view) {
         if (mTranslateTv.getText().toString().equals(mTranslate)) {
-            mTick.setVisibility(View.VISIBLE);
-            mCross.setVisibility(View.INVISIBLE);
             rCounter++;
             mTranslate = "";
             mTranslateTv.setText("");
             onSkipClick(getView());
+            mTick.setVisibility(View.VISIBLE);
+            mCross.setVisibility(View.INVISIBLE);
         } else {
             mCross.setVisibility(View.VISIBLE);
             mTick.setVisibility(View.INVISIBLE);

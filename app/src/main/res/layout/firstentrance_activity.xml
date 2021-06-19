@@ -65,11 +65,13 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear">
+
         <TextView
             android:id="@+id/userName_tv"
             style="@style/MyText"
@@ -78,8 +80,7 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="30dp"
             android:text="@string/userName_tv"
-            android:textSize="25sp"
-             />
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/userName_et"
@@ -94,21 +95,21 @@
             app:layout_constraintStart_toEndOf="@+id/userName_tv"
             app:layout_constraintTop_toBottomOf="@+id/userNickName_et" />
     </LinearLayout>
+
     <Button
         android:id="@+id/button"
-        android:backgroundTint="#E5E2CA"
-        android:fontFamily="@font/montserrat_medium"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#E5E2CA"
+        android:fontFamily="@font/montserrat_medium"
         android:onClick="confirmClick"
         android:text="@string/dialogBtn_ok"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userName_et"
-        app:layout_constraintVertical_bias="0.279" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
