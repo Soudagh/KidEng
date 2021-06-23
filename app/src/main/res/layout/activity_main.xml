@@ -18,15 +18,12 @@
         android:layout_marginTop="20dp"
         />
 
-    <TextView
-        style="@style/MyText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="KidEng"
-        android:textColor="#6FA49E"
-        android:textSize="70sp"
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="305dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="100dp"
+        android:src="@drawable/logo" />
 
     <LinearLayout
         android:layout_width="wrap_content"
