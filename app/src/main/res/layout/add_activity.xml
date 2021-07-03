@@ -84,8 +84,11 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="256dp"
                 android:layout_height="wrap_content"
+                app:errorEnabled="true"
+                app:errorIconDrawable="@drawable/error"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                app:helperText="*Обязательно"
                 android:hint="Английский перевод">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -121,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                app:helperText="*Обязательно"
                 android:hint="Русский перевод">
 
                 <com.google.android.material.textfield.TextInputEditText
