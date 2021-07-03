@@ -111,7 +111,7 @@ public class GameFragment extends Fragment {
     }
 
     private void onApplyClick(View view) {
-        if (mTranslateTv.getText().toString().equals(mTranslate)) {
+        if (mTranslateTv.getText().toString().toLowerCase().equals(mTranslate)) {
             rCounter++;
             mTranslate = "";
             mTranslateTv.setText("");

@@ -1,7 +1,9 @@
 
 package com.example.kideng.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,4 +36,8 @@ public class ChooseThemeActivity extends AppCompatActivity {
         mRecycler.setAdapter(mThemeAdapter);
     }
 
+    public void addWord(View view) {
+        Intent intent = new Intent(this, AddActivity.class);
+        startActivity(intent);
+    }
 }

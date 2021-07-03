@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 8;
+    private static final int SCHEMA = 10;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
     static final String USERS_LIST_TABLE_NAME = "USERS_LIST";
@@ -72,7 +72,8 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
                 " ('Цвета', 'Сможем назвать цвета радуги! \uD83C\uDF08')," +
                 " ('Еда', 'Назовём своё любимое блюдо \uD83D\uDE0B')," +
                 " ('Животные', 'Скажем котику, какой он милый \uD83D\uDC31')," +
-                " ('Природа и город', 'На прогулке с родителями покажем им новые умения \uD83D\uDE0E')"
+                " ('Природа и город', 'На прогулке с родителями покажем им новые умения \uD83D\uDE0E')," +
+                "('Другое', 'Слова, которые не вошли в другие категории 😶')"
         );
 
         db.execSQL("INSERT INTO " + WORDS_LIST_TABLE_NAME + " ("
@@ -271,7 +272,15 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_USER_NICKNAME, nickname);
         cv.put(COLUMN_USER_NAME, name);
         return db.insert(USERS_LIST_TABLE_NAME, null, cv);
+    }
 
+    public long insertWord(int wordTheme, String engWord, String rusWord) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_WORD_THEME, wordTheme);
+        cv.put(COLUMN_ENG, engWord);
+        cv.put(COLUMN_RU, rusWord);
+        return db.insert(WORDS_LIST_TABLE_NAME, null, cv);
     }
 
 }

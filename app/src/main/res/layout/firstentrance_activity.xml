@@ -105,6 +105,7 @@
         android:fontFamily="@font/montserrat_medium"
         android:onClick="confirmClick"
         android:text="@string/dialogBtn_ok"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

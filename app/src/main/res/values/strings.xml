@@ -31,6 +31,17 @@
     <string name="userNickName_tv">Ник</string>
     <string name="userName_tv">Имя</string>
     <string name="userGender_tv">Пол</string>
+    <string-array name="themes">
+        <item>Цифры</item>
+        <item>Приветствия и фразы</item>
+        <item>Семья</item>
+        <item>Цвета</item>
+        <item>Еда</item>
+        <item>Животные</item>
+        <item>Природа и город</item>
+        <item>Другое</item>
+    </string-array>
+
 
 
 </resources>
