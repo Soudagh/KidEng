@@ -36,81 +36,64 @@
         android:id="@+id/linear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:id="@+id/userNickName_tv"
-            style="@style/MyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:text="@string/userNickName_tv"
-            android:textSize="25sp"
-             />
 
-        <EditText
-            android:id="@+id/userNickName_et"
-            style="@style/MyText"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputNickLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:hint="Введите никнейм"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/userNickName_tv"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="15dp"
+            android:hint="Никнейм">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userNickName_et"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputNameLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:hint="Имя">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userName_et"
+                android:layout_width="256dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linear">
-
-        <TextView
-            android:id="@+id/userName_tv"
-            style="@style/MyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/userName_tv"
-            android:textSize="25sp" />
-
-        <EditText
-            android:id="@+id/userName_et"
-            style="@style/MyText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
-            android:layout_marginTop="20dp"
-            android:hint="Введите имя"
-            android:textSize="20sp"
-
-            app:layout_constraintStart_toEndOf="@+id/userName_tv"
-            app:layout_constraintTop_toBottomOf="@+id/userNickName_et" />
-    </LinearLayout>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="148dp"
+        android:layout_marginStart="15dp"
         android:backgroundTint="#E5E2CA"
         android:fontFamily="@font/montserrat_medium"
         android:onClick="confirmClick"
         android:text="@string/dialogBtn_ok"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
