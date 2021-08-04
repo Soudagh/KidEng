@@ -40,7 +40,7 @@ public class FirstEntranceActivity extends AppCompatActivity {
                 mNickLayout.setError("Обязательное поле!");
             }
         } else {
-            ThemeDBHelper dbHelper = new ThemeDBHelper(getApplicationContext());
+            ThemeDBHelper dbHelper = new ThemeDBHelper(this);
             dbHelper.insertUser(String.valueOf(mNickName.getText()),String.valueOf(mName.getText()));
             startActivity(new Intent(this, MainActivity.class));
         }

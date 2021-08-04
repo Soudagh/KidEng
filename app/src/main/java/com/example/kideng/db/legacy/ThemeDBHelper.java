@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ThemeDBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "themesList.db";
-    private static final int SCHEMA = 10;
+    private static final int SCHEMA = 14;
     static final String THEMES_LIST_TABLE_NAME = "THEMES_LIST";
     static final String WORDS_LIST_TABLE_NAME = "WORDS_LIST";
     static final String USERS_LIST_TABLE_NAME = "USERS_LIST";
@@ -228,6 +228,7 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
             while (!cursor.isAfterLast()) {
 
                 word.add(new Word(cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_ID)),
+                        cursor.getInt(cursor.getColumnIndex(COLUMN_WORD_THEME)),
                         cursor.getString(cursor.getColumnIndex(COLUMN_RU)),
                         cursor.getString(cursor.getColumnIndex(COLUMN_ENG))));
                 cursor.moveToNext();
@@ -266,21 +267,26 @@ public class ThemeDBHelper extends SQLiteOpenHelper {
         return cursor.getInt(0);
     }
 
-    public long insertUser(String nickname, String name) {
+    public void insertUser(String nickname, String name) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_USER_NICKNAME, nickname);
         cv.put(COLUMN_USER_NAME, name);
-        return db.insert(USERS_LIST_TABLE_NAME, null, cv);
+        db.insert(USERS_LIST_TABLE_NAME, null, cv);
     }
 
-    public long insertWord(int wordTheme, String engWord, String rusWord) {
+    public void insertWord(int wordTheme, String engWord, String rusWord) {
         SQLiteDatabase db = this.getReadableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_WORD_THEME, wordTheme);
         cv.put(COLUMN_ENG, engWord);
         cv.put(COLUMN_RU, rusWord);
-        return db.insert(WORDS_LIST_TABLE_NAME, null, cv);
+        db.insert(WORDS_LIST_TABLE_NAME, null, cv);
+    }
+
+    public void removeWord(long id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(WORDS_LIST_TABLE_NAME, COLUMN_WORD_ID + " = ?", new String[] { String.valueOf(id)});
     }
 
 }

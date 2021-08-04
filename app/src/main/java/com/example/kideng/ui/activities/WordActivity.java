@@ -2,9 +2,12 @@ package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
@@ -20,6 +23,7 @@ public class WordActivity extends AppCompatActivity {
 
     private RecyclerView mRecycler;
     private WordAdapter mWordAdapter;
+    public List<Word> wordList;
 
     private ThemeDBHelper mDatabaseHelper;
 
@@ -33,13 +37,36 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int id = intent.getIntExtra("id", 0);
 
+        ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,
+                ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
+        new ItemTouchHelper(callback).attachToRecyclerView(mRecycler);
+
         mDatabaseHelper = new ThemeDBHelper(this);
-        List<Word> wordList = mDatabaseHelper.getWord(id);
+        wordList = mDatabaseHelper.getWord(id);
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
     }
 
+    class SwipeItem extends ItemTouchHelper.SimpleCallback {
 
+        public SwipeItem(int dragDirs, int swipeDirs) {
+            super(dragDirs, swipeDirs);
+        }
+
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            if (viewHolder instanceof WordAdapter.ViewHolder) {
+                mDatabaseHelper.removeWord(viewHolder.getAdapterPosition() + 1);
+                Log.d("ItemId", String.valueOf(viewHolder.getAdapterPosition()));
+                mWordAdapter.removeWord(viewHolder.getAdapterPosition());
+            }
+        }
+    }
 
 
 }

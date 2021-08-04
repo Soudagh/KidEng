@@ -1,9 +1,7 @@
 package com.example.kideng.ui.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -14,8 +12,6 @@ import com.example.kideng.R;
 import com.example.kideng.db.legacy.ThemeDBHelper;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.ArrayList;
 
 public class AddActivity extends AppCompatActivity {
 
@@ -51,12 +47,10 @@ public class AddActivity extends AppCompatActivity {
                 textInputEngLayout.setErrorEnabled(true);
                 textInputEngLayout.setError("Обязательное поле!");
             }
-
             if (String.valueOf(textInputEditTextRusEt.getText()).equals("")) {
                 textInputRusLayout.setErrorEnabled(true);
                 textInputRusLayout.setError("Обязательное поле!");
             }
-
         } else {
             if (themeName.equals("Цифры")) themeId = 2;
             if (themeName.equals("Приветствия и фразы")) themeId = 3;
@@ -70,6 +64,5 @@ public class AddActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ChooseThemeActivity.class);
             startActivity(intent);
         }
-
     }
 }

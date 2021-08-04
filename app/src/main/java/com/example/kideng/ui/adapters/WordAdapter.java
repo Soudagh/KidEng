@@ -31,8 +31,7 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.wordEng.setText(words.get(position).getWordEng());
-        holder.wordRu.setText(words.get(position).getWordRus());
+        holder.bindView(position);
     }
 
     @Override
@@ -40,14 +39,24 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         return words.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public void removeWord(int pos) {
+        words.remove(pos);
+        notifyItemRemoved(pos);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
         final TextView wordEng, wordRu;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             wordEng = itemView.findViewById(R.id.wordEng_tv);
             wordRu = itemView.findViewById(R.id.wordRus_tv);
+        }
+
+        public void bindView(int position) {
+            wordEng.setText(words.get(position).getWordEng());
+            wordRu.setText(words.get(position).getWordRus());
         }
     }
 }

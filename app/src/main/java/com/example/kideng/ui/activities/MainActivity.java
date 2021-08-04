@@ -54,8 +54,4 @@ public class MainActivity extends AppCompatActivity {
         mNickname_tv.setText(mDatabaseHelper.getUser());
     }
 
-    public void profileClick (View view) {
-    }
-
-
 }
