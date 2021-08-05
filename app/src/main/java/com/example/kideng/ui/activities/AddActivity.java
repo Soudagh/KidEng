@@ -1,6 +1,7 @@
 package com.example.kideng.ui.activities;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -32,6 +33,8 @@ public class AddActivity extends AppCompatActivity {
         textInputRusLayout = findViewById(R.id.textInputRusWordLayout);
 
         dropDownTv = findViewById(R.id.autoCompleteTextView);
+
+        dropDownTv.setDropDownBackgroundResource(R.color.primary);
 
         String[] themes = getResources().getStringArray(R.array.themes);
         ArrayAdapter<String> themeAdapter = new ArrayAdapter<>(this, R.layout.dropdown_item, themes);
