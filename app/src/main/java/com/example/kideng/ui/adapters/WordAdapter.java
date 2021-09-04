@@ -58,5 +58,10 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
             wordEng.setText(words.get(position).getWordEng());
             wordRu.setText(words.get(position).getWordRus());
         }
+
+        public int getItemDBId(int id) {
+            return words.get(id).getId();
+        }
+
     }
 }

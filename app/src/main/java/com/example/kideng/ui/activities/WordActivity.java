@@ -61,9 +61,10 @@ public class WordActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof WordAdapter.ViewHolder) {
-                mDatabaseHelper.removeWord(viewHolder.getAdapterPosition() + 1);
-                Log.d("ItemId", String.valueOf(viewHolder.getAdapterPosition()));
+                mDatabaseHelper.removeWord(((WordAdapter.ViewHolder) viewHolder).getItemDBId(viewHolder.getAdapterPosition()));
+                Log.d("ID", String.valueOf(((WordAdapter.ViewHolder) viewHolder).getItemDBId(viewHolder.getAdapterPosition())));
                 mWordAdapter.removeWord(viewHolder.getAdapterPosition());
+                mWordAdapter.notifyDataSetChanged();
             }
         }
     }
