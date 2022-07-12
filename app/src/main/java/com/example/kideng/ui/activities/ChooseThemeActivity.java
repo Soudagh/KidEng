@@ -33,8 +33,8 @@ public class ChooseThemeActivity extends AppCompatActivity {
         mRecycler.setAdapter(mThemeAdapter);
     }
 
-    public void addWord(View view) {
-        Intent intent = new Intent(this, AddActivity.class);
+    public void addTheme(View view) {
+        Intent intent = new Intent(this, AddThemeActivity.class);
         startActivity(intent);
     }
 }

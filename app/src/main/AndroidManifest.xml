@@ -14,7 +14,8 @@
         <activity android:name="com.example.kideng.ui.activities.WordActivity" />
         <activity android:name="com.example.kideng.ui.activities.GameActivity" />
         <activity android:name="com.example.kideng.ui.activities.FirstEntranceActivity" />
-        <activity android:name="com.example.kideng.ui.activities.AddActivity" />
+        <activity android:name="com.example.kideng.ui.activities.AddWordActivity" />
+        <activity android:name="com.example.kideng.ui.activities.AddThemeActivity" />
 
         <activity android:name="com.example.kideng.ui.activities.MainActivity"
             android:exported="true">

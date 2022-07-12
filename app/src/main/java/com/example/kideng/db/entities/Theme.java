@@ -7,18 +7,16 @@ import java.io.Serializable;
 
 @Entity
 public class Theme implements Serializable {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
-    private String theme;
-    private String descriptionTheme;
 
-    public Theme(int id, String theme, String descriptionTheme) {
-        this.id = id;
+    private final String theme;
+    private final String descriptionTheme;
+
+    public Theme(String theme, String descriptionTheme) {
         this.theme = theme;
         this.descriptionTheme = descriptionTheme;
     }
-
-    public int getId() {return id;}
 
     public String getTheme() {
         return theme;
@@ -28,8 +26,13 @@ public class Theme implements Serializable {
         return descriptionTheme;
     }
 
+    public int getId() {
+        return id;
+    }
 
-
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
 }

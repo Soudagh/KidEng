@@ -31,6 +31,11 @@
     <string name="userNickName_tv">Ник</string>
     <string name="userName_tv">Имя</string>
     <string name="userGender_tv">Пол</string>
+    <string name="requiredField">Обязательное поле!</string>
+    <string name="input_english_translate">Введите английский перевод:</string>
+    <string name="english_translate">Английский перевод</string>
+    <string name="input_russian_translate">Введите русский перевод:</string>
+    <string name="russian_translate">Русский перевод</string>
     <string-array name="themes">
         <item>Цифры</item>
         <item>Приветствия и фразы</item>

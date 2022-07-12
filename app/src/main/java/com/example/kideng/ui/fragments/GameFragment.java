@@ -130,7 +130,7 @@ public class GameFragment extends Fragment {
         AppDatabase db = App.getInstance().getDatabase();
         WordDao wordDao = db.wordDao();
         int id = mRandom.nextInt(wordDao.getWordSize() + 1);
-        Cursor cursor = wordDao.getById(id);
+        //Cursor cursor = wordDao.getById(id);
 //        if (!cursor.isAfterLast()) {
 //            if (mLanguage.equals("English")) {
 //                mWordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 public class Word {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     private int idTheme;

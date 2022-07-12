@@ -2,6 +2,8 @@ package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,15 +36,20 @@ public class WordActivity extends AppCompatActivity {
 
         RecyclerView mRecycler = findViewById(R.id.recycler_words);
 
-        Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 0);
-
         ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         new ItemTouchHelper(callback).attachToRecyclerView(mRecycler);
-        wordList = wordDao.getAll();
+
+        int id = getIntentId();
+        wordList = wordDao.getByThemeId(id);
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
+    }
+
+    public void addWord(View view) {
+        Intent intent = new Intent(this, AddWordActivity.class);
+        intent.putExtra("id", getIntentId());
+        startActivity(intent);
     }
 
     class SwipeItem extends ItemTouchHelper.SimpleCallback {
@@ -59,10 +66,20 @@ public class WordActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof WordAdapter.ViewHolder) {
-               // wordDao.delete(((WordAdapter.ViewHolder) viewHolder).getItemDBId(viewHolder.getAdapterPosition()));
+                Log.d("getAdapterPosition", String.valueOf(viewHolder.getAdapterPosition()));
+                Log.d("getItemId", String.valueOf(viewHolder.getItemId()));
+                Log.d("toString", viewHolder.toString());
+                //int id = viewHolder.getAdapterPosition();
+                //Word word = new Word();
+               //wordDao.delete(((WordAdapter.ViewHolder) viewHolder).getItemById(viewHolder.getAdapterPosition()));
                 mWordAdapter.removeWord(viewHolder.getAdapterPosition());
             }
         }
+    }
+
+    public int getIntentId() {
+        Intent intent = getIntent();
+        return intent.getIntExtra("id", 0);
     }
 
 

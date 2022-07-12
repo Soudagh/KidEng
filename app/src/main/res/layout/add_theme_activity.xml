@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#B1D7D2">
@@ -23,42 +23,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/MyText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="Выберите категорию:"
-                android:textSize="19sp"
-                android:textStyle="bold" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                android:layout_width="256dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:background="#B1D7D2"
-                android:hint="Тема"
-                tools:layout_editor_absoluteX="1dp"
-                tools:layout_editor_absoluteY="114dp">
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:inputType="none"
-                    android:textSize="15sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-
-        </LinearLayout>
+            android:orientation="vertical" />
 
 
         <LinearLayout
@@ -74,21 +41,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Введите английский перевод:"
+                android:text="Введите название темы:"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputEngWordLayout"
+                android:id="@+id/textInputThemeNameLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="256dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Английский перевод">
+                android:hint="Название темы">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEngWordEt"
+                    android:id="@+id/textInputThemeNamedEt"
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
@@ -109,21 +76,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Введите русский перевод:"
+                android:text="Введите описание темы"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputRusWordLayout"
+                android:id="@+id/textInputThemeDescLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Русский перевод">
+                android:hint="Опишите тему">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputRusWordEt"
+                    android:id="@+id/textInputThemeDescEt"
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
@@ -134,7 +101,7 @@
 
     <Button
         style="@style/MyButton"
-        android:onClick="additionWord"
+        android:onClick="addTheme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"

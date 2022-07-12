@@ -8,7 +8,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kideng.App;
 import com.example.kideng.R;
+import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 
 import java.util.List;
@@ -39,6 +42,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
     }
 
     public void removeWord(int pos) {
+        AppDatabase db = App.getInstance().getDatabase();
+        WordDao wordDao = db.wordDao();
+        wordDao.delete(words.get(pos));
         words.remove(pos);
         notifyItemRemoved(pos);
     }
