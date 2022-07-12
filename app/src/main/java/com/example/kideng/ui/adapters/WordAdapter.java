@@ -1,6 +1,5 @@
 package com.example.kideng.ui.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,10 +56,6 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         public void bindView(int position) {
             wordEng.setText(words.get(position).getWordEng());
             wordRu.setText(words.get(position).getWordRus());
-        }
-
-        public int getItemDBId(int id) {
-            return words.get(id).getId();
         }
 
     }

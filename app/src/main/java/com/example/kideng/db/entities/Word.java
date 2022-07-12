@@ -1,16 +1,20 @@
 package com.example.kideng.db.entities;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
-public class Word implements Serializable {
-
+@Entity
+public class Word {
+    @PrimaryKey
     private int id;
+
     private int idTheme;
     private String wordRus;
     private String wordEng;
 
-    public Word(int id, int idTheme, String wordRus, String wordEng) {
-        this.id = id;
+    public Word(int idTheme, String wordRus, String wordEng) {
         this.idTheme = idTheme;
         this.wordRus = wordRus;
         this.wordEng = wordEng;
@@ -28,4 +32,7 @@ public class Word implements Serializable {
         return wordEng;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 }

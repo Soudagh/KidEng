@@ -7,29 +7,26 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.kideng.App;
 import com.example.kideng.R;
-import com.example.kideng.db.legacy.ThemeDBHelper;
+import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.UserDao;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private SharedPreferences mPrefs;
-    private boolean mWelcomeScreenShown;
     final static String showWelcomeScreenString = "showWelcome";
-
-    private TextView mNickname_tv;
-    private ThemeDBHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
+        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        boolean mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
         if (mWelcomeScreenShown) {
-            mWelcomeScreenShown = false;
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putBoolean(showWelcomeScreenString, false);
             editor.apply();
@@ -49,9 +46,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setUser() {
-        mDatabaseHelper = new ThemeDBHelper(this);
-        mNickname_tv = findViewById(R.id.user_tv);
-        mNickname_tv.setText(mDatabaseHelper.getUser());
+        AppDatabase db = App.getInstance().getDatabase();
+        UserDao userDao = db.userDao();
+
+        TextView mNickname_tv = findViewById(R.id.user_tv);
+        //mNickname_tv.setText(userDao.getUserNickname());
     }
 
 }

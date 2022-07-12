@@ -7,8 +7,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kideng.App;
 import com.example.kideng.R;
-import com.example.kideng.db.legacy.ThemeDBHelper;
+import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.UserDao;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class FirstEntranceActivity extends AppCompatActivity {
@@ -40,8 +42,9 @@ public class FirstEntranceActivity extends AppCompatActivity {
                 mNickLayout.setError("Обязательное поле!");
             }
         } else {
-            ThemeDBHelper dbHelper = new ThemeDBHelper(this);
-            dbHelper.insertUser(String.valueOf(mNickName.getText()),String.valueOf(mName.getText()));
+            AppDatabase db = App.getInstance().getDatabase();
+            UserDao userDao = db.userDao();
+            //userDao.insert(String.valueOf(mNickName.getText()),String.valueOf(mName.getText()));
             startActivity(new Intent(this, MainActivity.class));
         }
 

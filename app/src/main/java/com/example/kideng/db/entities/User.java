@@ -1,17 +1,22 @@
 package com.example.kideng.db.entities;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
-public class User implements Serializable {
 
+@Entity
+public class User implements Serializable {
+    @PrimaryKey
     private int id;
     private String nickname;
     private String name;
 
-    public User(int id, String nickname, String age) {
+    public User(int id, String nickname, String name) {
         this.id = id;
         this.nickname = nickname;
-        this.name = age;
+        this.name = name;
     }
 
     public int getId() {
@@ -25,6 +30,4 @@ public class User implements Serializable {
     public String getName() {
         return name;
     }
-
-
 }

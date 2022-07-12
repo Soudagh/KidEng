@@ -1,7 +1,6 @@
 package com.example.kideng.ui.activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -9,8 +8,11 @@ import android.widget.AutoCompleteTextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kideng.App;
 import com.example.kideng.R;
-import com.example.kideng.db.legacy.ThemeDBHelper;
+import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.WordDao;
+import com.example.kideng.db.entities.Word;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -62,8 +64,10 @@ public class AddActivity extends AppCompatActivity {
             if (themeName.equals("Еда")) themeId = 6;
             if (themeName.equals("Животные")) themeId = 7;
             if (themeName.equals("Природа и город")) themeId = 8;
-            ThemeDBHelper dbHelper = new ThemeDBHelper(getApplicationContext());
-            dbHelper.insertWord(themeId, String.valueOf(textInputEditTextEngEt.getText()).toLowerCase(), String.valueOf(textInputEditTextRusEt.getText()).toLowerCase());
+            AppDatabase db = App.getInstance().getDatabase();
+            WordDao wordDao = db.wordDao();
+            Word word = new Word(themeId, String.valueOf(textInputEditTextEngEt.getText()).toLowerCase(), String.valueOf(textInputEditTextRusEt.getText()).toLowerCase());
+            wordDao.insert(word);
             Intent intent = new Intent(this, ChooseThemeActivity.class);
             startActivity(intent);
         }
