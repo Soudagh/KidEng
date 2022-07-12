@@ -1,7 +1,7 @@
 package com.example.kideng.ui.fragments;
 
 import android.app.Activity;
-import android.database.Cursor;
+
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.LayoutInflater;
@@ -18,6 +18,7 @@ import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.WordDao;
+import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 
 import java.util.Random;
@@ -32,7 +33,7 @@ public class GameFragment extends Fragment {
     private ImageView mTick, mCross;
     private String mTranslate;
     private String mLanguage;
-    private Random mRandom;
+    private TextView mWordTv;
 
     private int rCounter = 0, wCounter = 0, tCounter = 0;
 
@@ -60,7 +61,7 @@ public class GameFragment extends Fragment {
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
         mCounterTimeTv = view.findViewById(R.id.time_counter_tv);
-        TextView mWordTv = view.findViewById(R.id.word_tv);
+        mWordTv = view.findViewById(R.id.word_tv);
         mTranslateTv = view.findViewById(R.id.translate_et);
         mTick = view.findViewById(R.id.tick_iv);
         mCross = view.findViewById(R.id.cross_iv);
@@ -69,8 +70,6 @@ public class GameFragment extends Fragment {
         mCross.setVisibility(View.INVISIBLE);
 
         mTranslate = "";
-        mRandom = new Random();
-
         setWord();
 
         Button applyButton = view.findViewById(R.id.answer_btn);
@@ -129,17 +128,15 @@ public class GameFragment extends Fragment {
     private void setWord() {
         AppDatabase db = App.getInstance().getDatabase();
         WordDao wordDao = db.wordDao();
-        int id = mRandom.nextInt(wordDao.getWordSize() + 1);
-        //Cursor cursor = wordDao.getById(id);
-//        if (!cursor.isAfterLast()) {
-//            if (mLanguage.equals("English")) {
-//                mWordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG)));
-//                mTranslate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU));
-//            } else {
-//                mWordTv.setText(cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_RU)));
-//                mTranslate += cursor.getString(cursor.getColumnIndex(ThemeDBHelper.COLUMN_ENG));
-//            }
-//        }
+        Word word = wordDao.getRandWord();
+        if (mLanguage.equals("English")) {
+            mWordTv.setText(word.getWordEng());
+            mTranslate += word.getWordRus();
+        } else {
+            mWordTv.setText(word.getWordRus());
+            mTranslate += word.getWordEng();
+        }
+
 
     }
 }

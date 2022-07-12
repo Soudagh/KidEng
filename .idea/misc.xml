@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/add_theme_activity.xml" value="0.18" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/add_word_activity.xml" value="0.1" />
-        <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/choose_theme.xml" value="0.1" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/choose_theme.xml" value="0.25" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/game_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/theme_activity.xml" value="0.36666666666666664" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/word_list.xml" value="0.1" />
       </map>

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         UserDao userDao = db.userDao();
 
         TextView mNickname_tv = findViewById(R.id.user_tv);
-        //mNickname_tv.setText(userDao.getUserNickname());
+        //mNickname_tv.setText(userDao.get());
     }
 
 }

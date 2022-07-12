@@ -9,6 +9,6 @@ public interface UserDao {
     //@Query("SELECT * FROM user")
     //String getUserNickname();
 
-    //@Insert
+   // @Insert
     //void insert(String nickname, String name);
 }
