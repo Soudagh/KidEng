@@ -4,6 +4,7 @@ package com.example.kideng.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,14 +24,21 @@ public class ChooseThemeActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.choose_theme);
+        setContentView(R.layout.theme_activity);
 
-        RecyclerView mRecycler = findViewById(R.id.recycler_themes);
         AppDatabase db = App.getInstance().getDatabase();
         ThemeDao themeDao = db.themeDao();
         List<Theme> themeList = themeDao.getAll();
+        RecyclerView mRecycler = findViewById(R.id.recycler_themes);
         ThemeAdapter mThemeAdapter = new ThemeAdapter(themeList);
         mRecycler.setAdapter(mThemeAdapter);
+
+        TextView mEmptyTv = findViewById(R.id.empty_tv);
+        if (themeList.isEmpty()) {
+            mEmptyTv.setVisibility(View.VISIBLE);
+        } else {
+            mEmptyTv.setVisibility(View.GONE);
+        }
     }
 
     @Override

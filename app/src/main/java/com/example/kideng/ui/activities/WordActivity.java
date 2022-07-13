@@ -2,8 +2,8 @@ package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,6 @@ import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 
 import com.example.kideng.ui.adapters.WordAdapter;
-import com.example.kideng.ui.fragments.dict.AddThemeFragment;
 
 
 import java.util.List;
@@ -33,7 +32,7 @@ public class WordActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.theme_activity);
+        setContentView(R.layout.word_activity);
 
         RecyclerView mRecycler = findViewById(R.id.recycler_words);
 
@@ -45,6 +44,13 @@ public class WordActivity extends AppCompatActivity {
         wordList = wordDao.getByThemeId(id);
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
+
+        TextView mEmptyTv = findViewById(R.id.empty_tv);
+        if (wordList.isEmpty()) {
+            mEmptyTv.setVisibility(View.VISIBLE);
+        } else {
+            mEmptyTv.setVisibility(View.GONE);
+        }
     }
 
     @Override

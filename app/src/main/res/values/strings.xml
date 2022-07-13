@@ -36,6 +36,8 @@
     <string name="english_translate">Английский перевод</string>
     <string name="input_russian_translate">Введите русский перевод:</string>
     <string name="russian_translate">Русский перевод</string>
+    <string name="empty_word_list">В этой теме ещё нет слов. Вы можете добавить их, нажав на +</string>
+    <string name="empty_theme_list">Список тем пуст. Вы можете добавить их, нажав на +</string>
     <string-array name="themes">
         <item>Цифры</item>
         <item>Приветствия и фразы</item>
