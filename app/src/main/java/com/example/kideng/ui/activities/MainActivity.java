@@ -13,6 +13,7 @@ import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.UserDao;
+import com.example.kideng.db.entities.User;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -32,8 +33,10 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean(showWelcomeScreenString, false);
             editor.apply();
             startActivity(new Intent(this, FirstEntranceActivity.class));
+        } else {
+            setUser();
         }
-        setUser();
+
     }
 
     public void gameClick (View view){
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         UserDao userDao = db.userDao();
 
         TextView mNickname_tv = findViewById(R.id.user_tv);
-        //mNickname_tv.setText(userDao.get());
+        mNickname_tv.setText(userDao.getUser().getNickname());
     }
 
 }

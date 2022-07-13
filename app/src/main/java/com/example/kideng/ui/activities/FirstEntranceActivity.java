@@ -11,6 +11,7 @@ import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.UserDao;
+import com.example.kideng.db.entities.User;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class FirstEntranceActivity extends AppCompatActivity {
@@ -44,7 +45,8 @@ public class FirstEntranceActivity extends AppCompatActivity {
         } else {
             AppDatabase db = App.getInstance().getDatabase();
             UserDao userDao = db.userDao();
-            //userDao.insert(String.valueOf(mNickName.getText()),String.valueOf(mName.getText()));
+            User user = new User(String.valueOf(mNickName.getText()),String.valueOf(mName.getText()));
+            userDao.insert(user);
             startActivity(new Intent(this, MainActivity.class));
         }
 
