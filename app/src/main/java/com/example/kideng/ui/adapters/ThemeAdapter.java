@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.R;
 import com.example.kideng.db.entities.Theme;
+import com.example.kideng.ui.activities.DictThemeActivity;
 import com.example.kideng.ui.activities.WordActivity;
 
 import java.util.List;
@@ -55,10 +56,25 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         public void bindView(int position) {
             themeName.setText(themes.get(position).getTheme());
             themeDescription.setText(themes.get(position).getDescriptionTheme());
+            Theme theme = themes.get(position);
             linearLayout.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), WordActivity.class);
-                intent.putExtra("id", themes.get(position).getId());
+                intent.putExtra("id", theme.getId());
                 itemView.getContext().startActivity(intent);
+            });
+
+            linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+
+                @Override
+                public boolean onLongClick(View view) {
+                    Intent intent = new Intent(itemView.getContext(), DictThemeActivity.class);
+                    intent.putExtra("status", "change");
+                    intent.putExtra("themeName", theme.getTheme());
+                    intent.putExtra("themeDesc", theme.getDescriptionTheme());
+                    itemView.getContext().startActivity(intent);
+                    return false;
+                }
+
             });
         }
 

@@ -1,8 +1,8 @@
 package com.example.kideng.ui.fragments.dict;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,22 +18,31 @@ import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.DictWordActivity;
-import com.example.kideng.ui.activities.WordActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Locale;
+
 public class AddWordFragment extends Fragment {
 
-    private int id;
+    private int themeId;
+    private int wordId;
+    private String status;
+    private String wordEng;
+    private String wordRus;
 
     private TextInputEditText textInputEditTextEngEt;
     private TextInputEditText textInputEditTextRusEt;
     private TextInputLayout textInputEngLayout;
     private TextInputLayout textInputRusLayout;
 
-    public static AddWordFragment newInstance(int id) {
+    public static AddWordFragment newInstance(int wordId, int themeId, String status, String wordEng, String wordRus) {
         Bundle args = new Bundle();
-        args.putInt("id", id);
+        args.putInt("themeId", themeId);
+        args.putInt("wordId", wordId);
+        args.putString("status", status);
+        args.putString("wordEng", wordEng);
+        args.putString("wordRus", wordRus);
         AddWordFragment fragment = new AddWordFragment();
 
         fragment.setArguments(args);
@@ -44,7 +53,11 @@ public class AddWordFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            id = getArguments().getInt("id");
+            themeId = getArguments().getInt("themeId");
+            wordId = getArguments().getInt("wordId");
+            status = getArguments().getString("status");
+            wordEng = getArguments().getString("wordEng");
+            wordRus = getArguments().getString("wordRus");
         }
     }
 
@@ -62,11 +75,47 @@ public class AddWordFragment extends Fragment {
         textInputEngLayout = view.findViewById(R.id.textInputEngWordLayout);
         textInputRusLayout = view.findViewById(R.id.textInputRusWordLayout);
         Button button = view.findViewById(R.id.word_bt);
-        button.setOnClickListener(this::addWord);
+
+        if (status.equals("add")) {
+            button.setOnClickListener(this::addWord);
+        } else {
+            button.setText("Обновить");
+            button.setOnClickListener(this::changeWord);
+
+            textInputEditTextEngEt.setText(wordEng);
+            textInputEditTextRusEt.setText(wordRus);
+        }
+
+    }
+
+    private void changeWord(View view) {
+
+        if (String.valueOf(textInputEditTextEngEt.getText()).equals("") ||
+                String.valueOf(textInputEditTextRusEt.getText()).equals("")) {
+            if (String.valueOf(textInputEditTextEngEt.getText()).equals("")) {
+                textInputEngLayout.setErrorEnabled(true);
+                textInputEngLayout.setError("Обязательное поле!");
+            }
+            if (String.valueOf(textInputEditTextRusEt.getText()).equals("")) {
+                textInputRusLayout.setErrorEnabled(true);
+                textInputRusLayout.setError("Обязательное поле!");
+            }
+        } else {
+            AppDatabase db = App.getInstance().getDatabase();
+            WordDao wordDao = db.wordDao();
+            Word word = wordDao.getWordById(wordId);
+            word.setWordEng(String.valueOf(textInputEditTextEngEt.getText()).toLowerCase());
+            word.setWordRus(String.valueOf(textInputEditTextRusEt.getText()).toLowerCase());
+            wordDao.update(word);
+            Activity activity = getActivity();
+            if (activity instanceof DictWordActivity) {
+                ((DictWordActivity)activity).onBack(this.themeId);
+            }
+        }
     }
 
     public void addWord(View view) {
-        int themeId = id;
+        int themeId = this.themeId;
 
         if (String.valueOf(textInputEditTextEngEt.getText()).equals("") ||
                 String.valueOf(textInputEditTextRusEt.getText()).equals("")) {
@@ -85,7 +134,7 @@ public class AddWordFragment extends Fragment {
             wordDao.insert(word);
             Activity activity = getActivity();
             if (activity instanceof DictWordActivity) {
-                ((DictWordActivity)activity).onBack(id);
+                ((DictWordActivity)activity).onBack(this.themeId);
             }
         }
     }

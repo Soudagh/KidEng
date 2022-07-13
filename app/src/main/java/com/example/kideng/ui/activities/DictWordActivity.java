@@ -15,12 +15,16 @@ public class DictWordActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id", 0);
+        int themeId = intent.getIntExtra("themeId", 0);
+        int wordId = intent.getIntExtra("wordId", 0);
+        String status = intent.getStringExtra("status");
+        String wordEng = intent.getStringExtra("wordEng");
+        String wordRus = intent.getStringExtra("wordRus");
         setContentView(R.layout.blank_fragment);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.container_start, AddWordFragment.newInstance(id))
+                    .add(R.id.container_start, AddWordFragment.newInstance(wordId, themeId, status, wordEng, wordRus))
                     .commit();
         }
     }

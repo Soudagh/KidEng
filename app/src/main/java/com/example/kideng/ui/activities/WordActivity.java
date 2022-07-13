@@ -2,6 +2,7 @@ package com.example.kideng.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -62,7 +63,8 @@ public class WordActivity extends AppCompatActivity {
 
     public void addWord(View view) {
         Intent intent = new Intent(this, DictWordActivity.class);
-        intent.putExtra("id", getIntentId());
+        intent.putExtra("themeId", getIntentId());
+        intent.putExtra("status", "add");
         startActivity(intent);
     }
 

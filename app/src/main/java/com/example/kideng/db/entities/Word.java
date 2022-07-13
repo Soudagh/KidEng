@@ -36,5 +36,11 @@ public class Word {
         this.id = id;
     }
 
+    public void setWordRus(String wordRus) {
+        this.wordRus = wordRus;
+    }
 
+    public void setWordEng(String wordEng) {
+        this.wordEng = wordEng;
+    }
 }

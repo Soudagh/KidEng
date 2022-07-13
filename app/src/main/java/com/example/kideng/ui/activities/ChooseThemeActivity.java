@@ -41,6 +41,7 @@ public class ChooseThemeActivity extends AppCompatActivity {
         }
     }
 
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
