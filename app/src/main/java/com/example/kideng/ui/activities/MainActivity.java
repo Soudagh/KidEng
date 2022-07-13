@@ -1,29 +1,39 @@
-
 package com.example.kideng.ui.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
+import com.example.kideng.databinding.ActivityMainBinding;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.UserDao;
-import com.example.kideng.db.entities.User;
+import com.google.android.material.navigation.NavigationView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     final static String showWelcomeScreenString = "showWelcome";
 
+    private AppBarConfiguration mAppBarConfiguration;
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        setSupportActionBar(binding.appBarMain.toolbar);
 
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
         boolean mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
@@ -34,9 +44,24 @@ public class MainActivity extends AppCompatActivity {
             editor.apply();
             startActivity(new Intent(this, FirstEntranceActivity.class));
         } else {
-            setUser();
-        }
+            DrawerLayout drawer = binding.drawerLayout;
+            NavigationView navigationView = binding.navView;
 
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_main, R.id.nav_profile, R.id.nav_statistics, R.id.nav_settings, R.id.nav_support, R.id.nav_about_us)
+                    .setOpenableLayout(drawer)
+                    .build();
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+            NavigationUI.setupWithNavController(navigationView, navController);
+        }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
+                || super.onSupportNavigateUp();
     }
 
     public void gameClick (View view){
@@ -49,12 +74,5 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void setUser() {
-        AppDatabase db = App.getInstance().getDatabase();
-        UserDao userDao = db.userDao();
-
-        TextView mNickname_tv = findViewById(R.id.user_tv);
-        mNickname_tv.setText(userDao.getUser().getNickname());
-    }
 
 }

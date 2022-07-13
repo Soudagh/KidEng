@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@+id/nav_main">
+
+    <fragment
+        android:id="@+id/nav_main"
+        android:name="com.example.kideng.ui.fragments.navigation.MainFragment"
+        android:label="Главная"
+        tools:layout="@layout/fragment_main" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.kideng.ui.fragments.navigation.ProfileFragment"
+        android:label="Профиль"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_statistics"
+        android:name="com.example.kideng.ui.fragments.navigation.StatisticsFragment"
+        android:label="Статистика"
+        tools:layout="@layout/fragment_statistics" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.kideng.ui.fragments.navigation.SettingsFragment"
+        android:label="Настройки"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/nav_support"
+        android:name="com.example.kideng.ui.fragments.navigation.SupportFragment"
+        android:label="Поддержка"
+        tools:layout="@layout/fragment_support" />
+
+    <fragment
+        android:id="@+id/nav_about_us"
+        android:name="com.example.kideng.ui.fragments.navigation.AboutUsFragment"
+        android:label="О нас"
+        tools:layout="@layout/fragment_about_us" />
+</navigation>

@@ -38,17 +38,16 @@
     <string name="russian_translate">Русский перевод</string>
     <string name="empty_word_list">В этой теме ещё нет слов. Вы можете добавить их, нажав на +</string>
     <string name="empty_theme_list">Список тем пуст. Вы можете добавить их, нажав на +</string>
-    <string-array name="themes">
-        <item>Цифры</item>
-        <item>Приветствия и фразы</item>
-        <item>Семья</item>
-        <item>Цвета</item>
-        <item>Еда</item>
-        <item>Животные</item>
-        <item>Природа и город</item>
-        <item>Другое</item>
-    </string-array>
-
+    <string name="profile">Профиль</string>
+    <string name="user_statistics">Статистика</string>
+    <string name="settings">Настройки</string>
+    <string name="others">Другое</string>
+    <string name="support">Поддержка</string>
+    <string name="about_us">О нас</string>
+    <string name="nickname">Никнейм</string>
+    <string name="name">Имя</string>
+    <string name="main">Главная</string>
+    <string name="nav_header_desc">Аватарка</string>
 
 
 </resources>

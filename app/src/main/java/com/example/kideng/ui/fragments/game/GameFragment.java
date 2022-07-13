@@ -127,6 +127,7 @@ public class GameFragment extends Fragment {
         AppDatabase db = App.getInstance().getDatabase();
         WordDao wordDao = db.wordDao();
         Word word = wordDao.getRandWord();
+        //TODO проверка на пустой список слов
         if (mLanguage.equals("English")) {
             mWordTv.setText(word.getWordEng());
             mTranslate += word.getWordRus();
@@ -134,7 +135,5 @@ public class GameFragment extends Fragment {
             mWordTv.setText(word.getWordRus());
             mTranslate += word.getWordEng();
         }
-
-
     }
 }

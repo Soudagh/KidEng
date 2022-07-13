@@ -19,6 +19,7 @@
         <activity android:name="com.example.kideng.ui.activities.DictWordActivity" />
 
         <activity android:name="com.example.kideng.ui.activities.MainActivity"
+            android:theme="@style/Theme.MyProject.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
