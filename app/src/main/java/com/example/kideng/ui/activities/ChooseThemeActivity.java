@@ -33,8 +33,15 @@ public class ChooseThemeActivity extends AppCompatActivity {
         mRecycler.setAdapter(mThemeAdapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void addTheme(View view) {
-        Intent intent = new Intent(this, AddThemeActivity.class);
+        Intent intent = new Intent(this, DictThemeActivity.class);
         startActivity(intent);
     }
 }

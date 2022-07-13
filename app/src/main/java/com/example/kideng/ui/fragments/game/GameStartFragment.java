@@ -1,4 +1,4 @@
-package com.example.kideng.ui.fragments;
+package com.example.kideng.ui.fragments.game;
 
 import android.app.Activity;
 import android.os.Bundle;

@@ -18,6 +18,7 @@ import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 
 import com.example.kideng.ui.adapters.WordAdapter;
+import com.example.kideng.ui.fragments.dict.AddThemeFragment;
 
 
 import java.util.List;
@@ -46,8 +47,15 @@ public class WordActivity extends AppCompatActivity {
         mRecycler.setAdapter(mWordAdapter);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, ChooseThemeActivity.class);
+        startActivity(intent);
+    }
+
     public void addWord(View view) {
-        Intent intent = new Intent(this, AddWordActivity.class);
+        Intent intent = new Intent(this, DictWordActivity.class);
         intent.putExtra("id", getIntentId());
         startActivity(intent);
     }
@@ -66,12 +74,6 @@ public class WordActivity extends AppCompatActivity {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             if (viewHolder instanceof WordAdapter.ViewHolder) {
-                Log.d("getAdapterPosition", String.valueOf(viewHolder.getAdapterPosition()));
-                Log.d("getItemId", String.valueOf(viewHolder.getItemId()));
-                Log.d("toString", viewHolder.toString());
-                //int id = viewHolder.getAdapterPosition();
-                //Word word = new Word();
-               //wordDao.delete(((WordAdapter.ViewHolder) viewHolder).getItemById(viewHolder.getAdapterPosition()));
                 mWordAdapter.removeWord(viewHolder.getAdapterPosition());
             }
         }

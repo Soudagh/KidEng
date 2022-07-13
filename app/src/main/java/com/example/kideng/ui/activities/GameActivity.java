@@ -5,10 +5,10 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kideng.ui.fragments.GameFragment;
-import com.example.kideng.ui.fragments.GameResultFragment;
-import com.example.kideng.ui.fragments.GameStartFragment;
-import com.example.kideng.ui.fragments.GameTextFragment;
+import com.example.kideng.ui.fragments.game.GameFragment;
+import com.example.kideng.ui.fragments.game.GameResultFragment;
+import com.example.kideng.ui.fragments.game.GameStartFragment;
+import com.example.kideng.ui.fragments.game.GameTextFragment;
 import com.example.kideng.R;
 
 public class GameActivity extends AppCompatActivity {
@@ -17,7 +17,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.game_activity);
+        setContentView(R.layout.blank_fragment);
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()

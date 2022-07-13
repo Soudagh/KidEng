@@ -1,4 +1,4 @@
-package com.example.kideng.ui.fragments;
+package com.example.kideng.ui.fragments.game;
 
 import android.app.Activity;
 
@@ -20,8 +20,6 @@ import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
-
-import java.util.Random;
 
 
 public class GameFragment extends Fragment {

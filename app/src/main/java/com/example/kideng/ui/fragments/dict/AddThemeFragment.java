@@ -1,37 +1,54 @@
-package com.example.kideng.ui.activities;
+package com.example.kideng.ui.fragments.dict;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.entities.Theme;
+import com.example.kideng.ui.activities.DictThemeActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-public class AddThemeActivity extends AppCompatActivity {
+public class AddThemeFragment extends Fragment {
 
     private TextInputEditText textInputEditTextThemeNameEt;
     private TextInputEditText textInputEditTextThemeDescEt;
     private TextInputLayout textInputThemeNameLayout;
     private TextInputLayout textInputThemeDescLayout;
 
+    public static AddThemeFragment newInstance() {
+        AddThemeFragment fragment = new AddThemeFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.add_theme_activity);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.add_theme_fragment, container, false);
+    }
 
-        textInputEditTextThemeNameEt = findViewById(R.id.textInputThemeNamedEt);
-        textInputEditTextThemeDescEt = findViewById(R.id.textInputThemeDescEt);
-        textInputThemeNameLayout = findViewById(R.id.textInputThemeNameLayout);
-        textInputThemeDescLayout = findViewById(R.id.textInputThemeDescLayout);
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        textInputEditTextThemeNameEt = view.findViewById(R.id.textInputThemeNamedEt);
+        textInputEditTextThemeDescEt = view.findViewById(R.id.textInputThemeDescEt);
+        textInputThemeNameLayout = view.findViewById(R.id.textInputThemeNameLayout);
+        textInputThemeDescLayout = view.findViewById(R.id.textInputThemeDescLayout);
+        Button button = view.findViewById(R.id.theme_bt);
+        button.setOnClickListener(this::addTheme);
     }
 
     public void addTheme(View view) {
@@ -50,13 +67,10 @@ public class AddThemeActivity extends AppCompatActivity {
             Theme theme = new Theme(String.valueOf(textInputEditTextThemeNameEt.getText()),
                     String.valueOf(textInputEditTextThemeDescEt.getText()));
             themeDao.insert(theme);
-            Intent intent = new Intent(this, ChooseThemeActivity.class);
-            startActivity(intent);
+            Activity activity = getActivity();
+            if (activity instanceof DictThemeActivity) {
+                ((DictThemeActivity)activity).onBack();
+            }
         }
     }
-
-    public void isEmpty() {
-
-    }
-
 }
