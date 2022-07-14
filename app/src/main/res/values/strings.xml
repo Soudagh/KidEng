@@ -28,8 +28,6 @@
     <string name="right_answers_tv">Правильные ответы:</string>
     <string name="hello_tv">Привет!</string>
     <string name="acquaintance_tv">Давай познакомимся?</string>
-    <string name="userNickName_tv">Ник</string>
-    <string name="userName_tv">Имя</string>
     <string name="userGender_tv">Пол</string>
     <string name="requiredField">Обязательное поле!</string>
     <string name="input_english_translate">Введите английский перевод:</string>
@@ -48,6 +46,9 @@
     <string name="name">Имя</string>
     <string name="main">Главная</string>
     <string name="nav_header_desc">Аватарка</string>
+    <string name="language">Язык</string>
+    <string name="level">Уровень</string>
+    <string name="themes">Темы</string>
 
 
 </resources>

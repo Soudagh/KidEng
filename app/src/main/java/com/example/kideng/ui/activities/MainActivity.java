@@ -12,12 +12,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.databinding.ActivityMainBinding;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.UserDao;
+import com.example.kideng.db.entities.User;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -39,16 +41,19 @@ public class MainActivity extends AppCompatActivity {
         boolean mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
         if (mWelcomeScreenShown) {
+            AppDatabase db = App.getInstance().getDatabase();
+            UserDao userDao = db.userDao();
+            userDao.insert(new User());
+
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putBoolean(showWelcomeScreenString, false);
             editor.apply();
-            startActivity(new Intent(this, FirstEntranceActivity.class));
         } else {
             DrawerLayout drawer = binding.drawerLayout;
             NavigationView navigationView = binding.navView;
 
             mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_main, R.id.nav_profile, R.id.nav_statistics, R.id.nav_settings, R.id.nav_support, R.id.nav_about_us)
+                    R.id.nav_main, R.id.nav_statistics, R.id.nav_settings, R.id.nav_support, R.id.nav_about_us)
                     .setOpenableLayout(drawer)
                     .build();
             NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);

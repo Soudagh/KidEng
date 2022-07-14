@@ -11,24 +11,11 @@ public class User implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private String nickname;
-    private String name;
+    public User() {
 
-    public User(String nickname, String name) {
-        this.nickname = nickname;
-        this.name = name;
     }
-
     public int getId() {
         return id;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public void setId(int id) {
