@@ -7,7 +7,7 @@
     <string name="btn_rus">Русский перевод</string>
     <string name="tv_choice">Выберите режим</string>
     <string name="tv_start_game">Игра начнётся через  </string>
-    <string name="theme_name">Тема:</string>
+    <string name="theme_name">Тема</string>
     <string name="theme_number">Номер темы:</string>
     <string name="theme_description">Описание темы:</string>
     <string name="dialog_title">Начать заново</string>
@@ -49,6 +49,7 @@
     <string name="language">Язык</string>
     <string name="level">Уровень</string>
     <string name="themes">Темы</string>
+    <string name="write_theme_name">Название темы</string>
 
 
 </resources>

@@ -41,7 +41,9 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
-                android:hint="Название темы">
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black"
+                android:hint="@string/write_theme_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputThemeNamedEt"
@@ -67,6 +69,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black"
                 android:hint="Опишите тему">
 
                 <com.google.android.material.textfield.TextInputEditText

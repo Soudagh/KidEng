@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 
@@ -29,11 +31,18 @@ public class WordActivity extends AppCompatActivity {
     public List<Word> wordList;
     AppDatabase db = App.getInstance().getDatabase();
     WordDao wordDao = db.wordDao();
+    ThemeDao themeDao = db.themeDao();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.word_activity);
+
+        int id = getIntentId();
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setTitle(themeDao.getThemeById(id).getTheme());
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         RecyclerView mRecycler = findViewById(R.id.recycler_words);
 
@@ -41,7 +50,6 @@ public class WordActivity extends AppCompatActivity {
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         new ItemTouchHelper(callback).attachToRecyclerView(mRecycler);
 
-        int id = getIntentId();
         wordList = wordDao.getByThemeId(id);
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
