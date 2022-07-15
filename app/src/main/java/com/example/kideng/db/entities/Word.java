@@ -10,7 +10,7 @@ public class Word {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    private int idTheme;
+    private final int idTheme;
     private String wordRus;
     private String wordEng;
 

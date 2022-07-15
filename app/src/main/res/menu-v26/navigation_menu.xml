@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/menu_top"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_main"
+            android:icon="@drawable/ic_home"
+            android:iconTint="@color/secondary"
+            android:title="@string/main"/>
+
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_statistics"
+            android:iconTint="@color/secondary"
+            android:title="@string/user_statistics"/>
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:iconTint="@color/secondary"
+            android:title="@string/settings"/>
+    </group>
+
+    <item android:title="Другое">
+        <menu>
+            <item android:id="@+id/nav_support"
+                android:icon="@drawable/ic_help"
+                android:iconTint="@color/secondary"
+                android:title="@string/support"/>
+
+            <item android:id="@+id/nav_about_us"
+                android:icon="@drawable/ic_about_us"
+                android:iconTint="@color/secondary"
+                android:title="@string/about_us"/>
+        </menu>
+    </item>
+</menu>

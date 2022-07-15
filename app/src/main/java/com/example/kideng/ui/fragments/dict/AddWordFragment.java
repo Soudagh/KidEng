@@ -70,6 +70,7 @@ public class AddWordFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         textInputEditTextEngEt = view.findViewById(R.id.textInputEngWordEt);
         textInputEditTextRusEt = view.findViewById(R.id.textInputRusWordEt);
         textInputEngLayout = view.findViewById(R.id.textInputEngWordLayout);
@@ -89,7 +90,6 @@ public class AddWordFragment extends Fragment {
     }
 
     private void changeWord(View view) {
-
         if (String.valueOf(textInputEditTextEngEt.getText()).equals("") ||
                 String.valueOf(textInputEditTextRusEt.getText()).equals("")) {
             if (String.valueOf(textInputEditTextEngEt.getText()).equals("")) {
@@ -130,7 +130,7 @@ public class AddWordFragment extends Fragment {
         } else {
             AppDatabase db = App.getInstance().getDatabase();
             WordDao wordDao = db.wordDao();
-            Word word = new Word(themeId, String.valueOf(textInputEditTextEngEt.getText()).toLowerCase(), String.valueOf(textInputEditTextRusEt.getText()).toLowerCase());
+            Word word = new Word(themeId, String.valueOf(textInputEditTextRusEt.getText()).toLowerCase(), String.valueOf(textInputEditTextEngEt.getText()).toLowerCase());
             wordDao.insert(word);
             Activity activity = getActivity();
             if (activity instanceof DictWordActivity) {
