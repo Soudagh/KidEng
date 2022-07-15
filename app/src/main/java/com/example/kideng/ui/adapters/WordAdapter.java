@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,14 +19,19 @@ import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.DictWordActivity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
-public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
+public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> implements Filterable {
 
-    private final List<Word> words;
+    private final List<Word> wordList;
+    private List<Word> wordListFull;
 
     public WordAdapter(List<Word> words) {
-        this.words = words;
+        this.wordList = words;
+        wordListFull = new ArrayList<>(wordList);
     }
 
     @NonNull
@@ -41,16 +48,52 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return words.size();
+        return wordList.size();
     }
 
     public void removeWord(int pos) {
         AppDatabase db = App.getInstance().getDatabase();
         WordDao wordDao = db.wordDao();
-        wordDao.delete(words.get(pos));
-        words.remove(pos);
+        wordDao.delete(wordList.get(pos));
+        wordList.remove(pos);
         notifyItemRemoved(pos);
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+    Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+           List<Word> filteredList = new ArrayList<>();
+
+           if (charSequence.toString().isEmpty()) {
+               filteredList.addAll(wordListFull);
+           } else {
+               String filterPattern = charSequence.toString().toLowerCase().trim();
+
+               for (Word word : wordListFull) {
+                   if (word.getWordEng().toLowerCase().contains(filterPattern) ||
+                   word.getWordRus().toLowerCase().contains(filterPattern)) {
+                       filteredList.add(word);
+                   }
+               }
+           }
+
+           FilterResults results = new FilterResults();
+           results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            wordList.clear();
+            wordList.addAll((Collection<? extends Word>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -65,9 +108,9 @@ public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> {
         }
 
         public void bindView(int position) {
-            wordEng.setText(words.get(position).getWordEng());
-            wordRu.setText(words.get(position).getWordRus());
-            Word word = words.get(position);
+            wordEng.setText(wordList.get(position).getWordEng());
+            wordRu.setText(wordList.get(position).getWordRus());
+            Word word = wordList.get(position);
             layout.setOnLongClickListener(view -> {
                 Intent intent = new Intent(itemView.getContext(), DictWordActivity.class);
                 intent.putExtra("themeId", word.getIdTheme());

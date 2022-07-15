@@ -3,12 +3,15 @@ package com.example.kideng.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +31,7 @@ import java.util.List;
 public class WordActivity extends AppCompatActivity {
 
     private WordAdapter mWordAdapter;
+    RecyclerView mRecycler;
     public List<Word> wordList;
     AppDatabase db = App.getInstance().getDatabase();
     WordDao wordDao = db.wordDao();
@@ -39,12 +43,14 @@ public class WordActivity extends AppCompatActivity {
         setContentView(R.layout.word_activity);
 
         int id = getIntentId();
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setTitle(themeDao.getThemeById(id).getTheme());
         toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
-        RecyclerView mRecycler = findViewById(R.id.recycler_words);
+        mRecycler = findViewById(R.id.recycler_words);
 
         ItemTouchHelper.SimpleCallback callback = new SwipeItem(0,
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
@@ -60,6 +66,29 @@ public class WordActivity extends AppCompatActivity {
         } else {
             mEmptyTv.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.theme_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mWordAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
