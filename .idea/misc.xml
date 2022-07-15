@@ -45,16 +45,20 @@
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/layout_navigation_header.xml" value="0.365625" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/nav_header.xml" value="0.290625" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/nav_header_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/searchable.xml" value="0.2677083333333333" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/theme_activity.xml" value="0.1" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/theme_item.xml" value="0.26875" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/word_activity.xml" value="0.22" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/word_item.xml" value="0.26875" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/layout/word_list.xml" value="0.1" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/menu-v26/navigation_menu.xml" value="0.25885416666666666" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/menu-v26/theme_menu.xml" value="0.365625" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/menu/activity_main2_drawer.xml" value="0.2203125" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/menu/activity_main_drawer.xml" value="0.28958333333333336" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/menu/main2.xml" value="0.2203125" />
         <entry key="..\:/AS projects/MyProject/app/src/main/res/menu/navigation_menu.xml" value="0.2" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/menu/theme_menu.xml" value="0.2677083333333333" />
+        <entry key="..\:/AS projects/MyProject/app/src/main/res/xml/searchable.xml" value="0.2677083333333333" />
       </map>
     </option>
   </component>

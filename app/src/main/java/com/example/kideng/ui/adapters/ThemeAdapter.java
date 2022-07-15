@@ -1,9 +1,12 @@
 package com.example.kideng.ui.adapters;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,13 +18,17 @@ import com.example.kideng.db.entities.Theme;
 import com.example.kideng.ui.activities.DictThemeActivity;
 import com.example.kideng.ui.activities.WordActivity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> {
-    private final List<Theme> themes;
+public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> implements Filterable {
+    private final List<Theme> themeList;
+    private List<Theme> themeListFull;
 
-    public ThemeAdapter(List<Theme> themes) {
-        this.themes = themes;
+    public ThemeAdapter(List<Theme> themeList) {
+        this.themeList = themeList;
+        themeListFull = new ArrayList<>(themeList);
     }
 
     @NonNull
@@ -38,8 +45,46 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return themes.size();
+        return themeList.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return filter;
+    }
+
+   Filter filter = new Filter() {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Theme> filteredList = new ArrayList<>();
+
+            if (charSequence.toString().isEmpty()) {
+                filteredList.addAll(themeListFull);
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for (Theme theme : themeListFull) {
+                    if (theme.getTheme().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(theme);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            themeList.clear();
+            themeList.addAll((Collection<? extends Theme>) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
         final TextView themeName, themeDescription;
@@ -54,9 +99,9 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
         }
 
         public void bindView(int position) {
-            themeName.setText(themes.get(position).getTheme());
-            themeDescription.setText(themes.get(position).getDescriptionTheme());
-            Theme theme = themes.get(position);
+            themeName.setText(themeList.get(position).getTheme());
+            themeDescription.setText(themeList.get(position).getDescriptionTheme());
+            Theme theme = themeList.get(position);
             linearLayout.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), WordActivity.class);
                 intent.putExtra("id", theme.getId());
@@ -77,9 +122,6 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
 
             });
         }
-
-
     }
-
 
 }
