@@ -2,7 +2,6 @@ package com.example.kideng.ui.fragments.dict;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,6 @@ import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.DictWordActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.Locale;
 
 public class AddWordFragment extends Fragment {
 
@@ -75,7 +72,7 @@ public class AddWordFragment extends Fragment {
         textInputEditTextRusEt = view.findViewById(R.id.textInputRusWordEt);
         textInputEngLayout = view.findViewById(R.id.textInputEngWordLayout);
         textInputRusLayout = view.findViewById(R.id.textInputRusWordLayout);
-        Button button = view.findViewById(R.id.word_bt);
+        Button button = view.findViewById(R.id.word_btn);
 
         if (status.equals("add")) {
             button.setOnClickListener(this::addWord);

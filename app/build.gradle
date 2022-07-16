@@ -41,10 +41,9 @@ dependencies {
 
     //ROOM ORM
     implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 
     // Navigation Component
     implementation 'androidx.navigation:navigation-ui:2.5.0'
     implementation 'androidx.navigation:navigation-fragment:2.5.0'
-
-    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 }

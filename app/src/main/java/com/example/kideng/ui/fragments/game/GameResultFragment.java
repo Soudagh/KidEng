@@ -88,7 +88,8 @@ public class GameResultFragment extends Fragment {
     private void onAgainClick(View view) {
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
-            ((GameActivity)activity).onAgain(mLanguage);
+            //TODO: изменить значения
+            ((GameActivity)activity).onAgain("1", "3");
         }
     }
 

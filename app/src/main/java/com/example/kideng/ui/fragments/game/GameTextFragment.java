@@ -17,15 +17,17 @@ import com.example.kideng.ui.activities.GameActivity;
 
 public class GameTextFragment extends Fragment {
 
-    private static final String ARG_L = "language";
+    private static final String ARG_T = "translate";
+    private static final String ARG_G = "goal";
 
     private String mLanguage;
     private TextView mTextView;
 
-    public static GameTextFragment newInstance(String language) {
+    public static GameTextFragment newInstance(String translate, String goal) {
         GameTextFragment fragment = new GameTextFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_L, language);
+        args.putString(ARG_T, translate);
+        args.putString(ARG_G, goal);
 
         fragment.setArguments(args);
         return fragment;
@@ -35,7 +37,7 @@ public class GameTextFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mLanguage = getArguments().getString(ARG_L);
+            mLanguage = getArguments().getString(ARG_T);
         }
     }
 

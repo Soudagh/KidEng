@@ -51,6 +51,16 @@
     <string name="themes">Темы</string>
     <string name="write_theme_name">Название темы</string>
     <string name="search">Поиск</string>
+    <string name="translate">Перевод</string>
+    <string name="show_translate">Видимый перевод</string>
+    <string name="goal">Вид цели</string>
+    <string name="time">Время</string>
+    <string name="words">Слова</string>
+    <string name="set_a_goal">Поставьте цель</string>
+    <string name="choose_themes">Выбрать темы</string>
+    <string name="start">Начать</string>
+    <string name="five">5</string>
+    <string name="value">Значение</string>
 
 
 </resources>

@@ -39,8 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
 
         SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        boolean mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
 
+        boolean mWelcomeScreenShown = mPrefs.getBoolean(showWelcomeScreenString, true);
         if (mWelcomeScreenShown) {
             AppDatabase db = App.getInstance().getDatabase();
             UserDao userDao = db.userDao();
@@ -79,6 +79,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ChooseThemeActivity.class);
         startActivity(intent);
     }
-
 
 }

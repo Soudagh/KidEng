@@ -38,7 +38,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputEngWordLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxStrokeColor="@color/black"
+                app:boxStrokeColor="@color/teal_700"
                 android:textColorHint="@color/black"
                 android:layout_width="256dp"
                 android:layout_height="wrap_content"
@@ -51,6 +51,7 @@
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/teal_700"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +76,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputRusWordLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxStrokeColor="@color/black"
+                app:boxStrokeColor="@color/teal_700"
                 android:textColorHint="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +89,7 @@
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/teal_700"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
@@ -95,7 +97,7 @@
 
     <Button
         style="@style/MyButton"
-        android:id="@+id/word_bt"
+        android:id="@+id/word_btn"
         android:onClick="additionWord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

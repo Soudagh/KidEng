@@ -13,6 +13,9 @@ public interface ThemeDao {
     @Query("SELECT * FROM theme")
     List<Theme> getAll();
 
+    @Query("SELECT theme FROM theme")
+    String[] getAllThemes();
+
     @Query("SELECT * FROM theme WHERE id = :id")
     Theme getThemeById(int id);
 

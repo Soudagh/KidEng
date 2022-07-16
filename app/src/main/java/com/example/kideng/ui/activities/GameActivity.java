@@ -26,10 +26,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void onGameCountDown(String language) {
+    public void onGameCountDown(String translate, String goal) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, GameTextFragment.newInstance(language))
+                .replace(R.id.container_start, GameTextFragment.newInstance(translate, goal))
                 .commit();
     }
 
@@ -52,10 +52,10 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onAgain(String language) {
+    public void onAgain(String translate, String goal) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, GameTextFragment.newInstance(language))
+                .replace(R.id.container_start, GameTextFragment.newInstance(translate, goal))
                 .commit();
     }
 
