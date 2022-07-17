@@ -17,28 +17,46 @@ import androidx.fragment.app.Fragment;
 import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 
+import java.util.ArrayList;
+
 
 public class GameFragment extends Fragment {
 
-    private static final String ARG_L = "language";
+    private static final String ARG_L = "translate";
+    private static final String ARG_G = "goal";
+    private static final String ARG_D = "duration";
+    private static final String ARG_LIST = "themeList";
+
+    AppDatabase db = App.getInstance().getDatabase();
+    WordDao wordDao = db.wordDao();
+    ThemeDao themeDao = db.themeDao();
 
     private TextView mCounterTimeTv;
-    private EditText mTranslateTv;
-    private ImageView mTick, mCross;
-    private String mTranslate;
-    private String mLanguage;
     private TextView mWordTv;
+    private EditText mTranslateTv;
+
+    private ImageView mTick, mCross;
+
+    private String rightAnswer;
+    private String langMode;
+    private String goal;
+    private String duration;
+    private ArrayList<Integer> themeIds;
 
     private int rCounter = 0, wCounter = 0, tCounter = 0;
 
-    public static GameFragment newInstance(String language) {
+    public static GameFragment newInstance(String translate, String goal, String duration, ArrayList<Integer> themeList) {
         GameFragment fragment = new GameFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_L, language);
+        args.putString(ARG_L, translate);
+        args.putString(ARG_G, goal);
+        args.putString(ARG_D, duration);
+        args.putIntegerArrayList(ARG_LIST, themeList);
 
         fragment.setArguments(args);
         return fragment;
@@ -48,7 +66,10 @@ public class GameFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mLanguage = getArguments().getString(ARG_L);
+            langMode = getArguments().getString(ARG_L);
+            goal = getArguments().getString(ARG_G);
+            duration = getArguments().getString(ARG_D);
+            themeIds = getArguments().getIntegerArrayList(ARG_LIST);
         }
     }
 
@@ -67,7 +88,7 @@ public class GameFragment extends Fragment {
         mTick.setVisibility(View.INVISIBLE);
         mCross.setVisibility(View.INVISIBLE);
 
-        mTranslate = "";
+        rightAnswer = "";
         setWord();
 
         Button applyButton = view.findViewById(R.id.answer_btn);
@@ -75,30 +96,26 @@ public class GameFragment extends Fragment {
         applyButton.setOnClickListener(this::onApplyClick);
         skipButton.setOnClickListener(this::onSkipClick);
 
-        new CountDownTimer(60000, 1000) {
-            @Override
-            public void onTick(final long l) {
-                mCounterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
-            }
-
-            @Override
-            public void onFinish() {
-                mCounterTimeTv.setText("");
-                onApplyClick(view);
-                Activity activity = getActivity();
-                if (activity instanceof GameActivity) {
-                    String rString = String.valueOf(rCounter);
-                    String wString = String.valueOf(wCounter);
-                    String tString = String.valueOf(tCounter);
-                    ((GameActivity) activity).onGameStop(rString, wString, tString, mLanguage);
+        if (goal.equals("time")) {
+            new CountDownTimer(60000L * Integer.parseInt(duration), 1000) {
+                @Override
+                public void onTick(final long l) {
+                    mCounterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
                 }
-            }
-        }.start();
+
+                @Override
+                public void onFinish() {
+                    onApplyClick(view);
+                }
+            }.start();
+        } else {
+            mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
+        }
         return view;
     }
 
     private void onSkipClick(View view) {
-        mTranslate = "";
+        rightAnswer = "";
         mTranslateTv.setText("");
         mTick.setVisibility(View.INVISIBLE);
         mCross.setVisibility(View.INVISIBLE);
@@ -107,13 +124,17 @@ public class GameFragment extends Fragment {
     }
 
     private void onApplyClick(View view) {
-        if (mTranslateTv.getText().toString().toLowerCase().equals(mTranslate)) {
+        if (mTranslateTv.getText().toString().toLowerCase().equals(rightAnswer)) {
             rCounter++;
-            mTranslate = "";
+            if (rCounter == Integer.parseInt(duration)) {
+                endGame();
+            }
+            rightAnswer = "";
             mTranslateTv.setText("");
             onSkipClick(getView());
             mTick.setVisibility(View.VISIBLE);
             mCross.setVisibility(View.INVISIBLE);
+            mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
         } else {
             mCross.setVisibility(View.VISIBLE);
             mTick.setVisibility(View.INVISIBLE);
@@ -124,16 +145,30 @@ public class GameFragment extends Fragment {
     }
 
     private void setWord() {
-        AppDatabase db = App.getInstance().getDatabase();
-        WordDao wordDao = db.wordDao();
-        Word word = wordDao.getRandWord();
-        //TODO проверка на пустой список слов
-        if (mLanguage.equals("English")) {
+        Word word;
+        if (themeIds.isEmpty()) {
+            themeIds.addAll(themeDao.getAllIds());
+        }
+
+        word = wordDao.getRandWord(themeIds);
+
+        if (langMode.equals("ENG")) {
             mWordTv.setText(word.getWordEng());
-            mTranslate += word.getWordRus();
+            rightAnswer += word.getWordRus();
         } else {
             mWordTv.setText(word.getWordRus());
-            mTranslate += word.getWordEng();
+            rightAnswer += word.getWordEng();
+        }
+    }
+
+    private void endGame() {
+        mCounterTimeTv.setText("");
+        Activity activity = getActivity();
+        if (activity instanceof GameActivity) {
+            String rString = String.valueOf(rCounter);
+            String wString = String.valueOf(wCounter);
+            String tString = String.valueOf(tCounter);
+            ((GameActivity) activity).onGameStop(rString, wString, tString, langMode, themeIds);
         }
     }
 }

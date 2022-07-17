@@ -13,12 +13,14 @@ public interface ThemeDao {
     @Query("SELECT * FROM theme")
     List<Theme> getAll();
 
+    @Query("SELECT id FROM theme")
+    List<Integer> getAllIds();
+
     @Query("SELECT theme FROM theme")
     String[] getAllThemes();
 
     @Query("SELECT * FROM theme WHERE id = :id")
     Theme getThemeById(int id);
-
 
     @Insert
     void insert(Theme theme);

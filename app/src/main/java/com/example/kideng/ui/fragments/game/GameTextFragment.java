@@ -12,22 +12,34 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kideng.R;
+import com.example.kideng.db.entities.Theme;
 import com.example.kideng.ui.activities.GameActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class GameTextFragment extends Fragment {
 
     private static final String ARG_T = "translate";
     private static final String ARG_G = "goal";
+    private static final String ARG_D = "duration";
+    private static final String ARG_LIST = "themeList";
 
-    private String mLanguage;
+    private String translate;
+    private String goal;
+    private String duration;
+    private ArrayList<Integer> themeList;
     private TextView mTextView;
 
-    public static GameTextFragment newInstance(String translate, String goal) {
+    public static GameTextFragment newInstance(String translate, String goal, String duration, ArrayList<Integer> themeList) {
         GameTextFragment fragment = new GameTextFragment();
         Bundle args = new Bundle();
         args.putString(ARG_T, translate);
         args.putString(ARG_G, goal);
+        args.putString(ARG_D, duration);
+        args.putIntegerArrayList(ARG_LIST, themeList);
+
 
         fragment.setArguments(args);
         return fragment;
@@ -37,7 +49,10 @@ public class GameTextFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mLanguage = getArguments().getString(ARG_T);
+            translate = getArguments().getString(ARG_T);
+            goal = getArguments().getString(ARG_G);
+            duration = getArguments().getString(ARG_D);
+            themeList = getArguments().getIntegerArrayList(ARG_LIST);
         }
     }
 
@@ -59,7 +74,7 @@ public class GameTextFragment extends Fragment {
                 mTextView.setText("");
                 Activity activity = getActivity();
                 if (activity instanceof GameActivity) {
-                    ((GameActivity)activity).onGameStart(mLanguage);
+                    ((GameActivity)activity).onGameStart(translate, goal, duration, themeList);
                 }
             }
         }.start();

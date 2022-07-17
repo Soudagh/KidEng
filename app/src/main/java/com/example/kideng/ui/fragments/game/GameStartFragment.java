@@ -7,13 +7,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.kideng.App;
@@ -39,8 +37,8 @@ public class GameStartFragment extends Fragment {
     TextInputEditText mGoal;
     TextInputLayout mGoalLayout;
 
-
     ArrayList<Integer> themeList = new ArrayList<>();
+    ArrayList<Integer> themeList1 = new ArrayList<>();
     AppDatabase db = App.getInstance().getDatabase();
     ThemeDao themeDao = db.themeDao();
     String[] themeNamesList = themeDao.getAllThemes();
@@ -77,23 +75,25 @@ public class GameStartFragment extends Fragment {
         startButton.setOnClickListener(this::onStartClick);
 
         timeButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("мин"));
-
         wordButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("слов"));
 
         mThemesTv.setOnClickListener(view1 -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(
-                    getContext()
+                    getContext(), R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
             );
 
+            //TODO: проверка на пустой список
             builder.setTitle("Выбор темы");
             builder.setCancelable(false);
 
             builder.setMultiChoiceItems(themeNamesList, selectedThemes, (dialogInterface, i, b) -> {
                 if (b) {
                     themeList.add(i);
+                    themeList1.add(i + 1);
                     Collections.sort(themeList);
                 } else {
-                    themeList.remove(i);
+                    themeList.remove((Integer) i);
+                    themeList1.remove(i + 1);
                 }
             });
 
@@ -110,18 +110,16 @@ public class GameStartFragment extends Fragment {
             });
             builder.show();
         });
-
-
     }
 
     private void onStartClick(View view) {
         String translate = ruButton.isActivated() ? "RU" : "ENG";
         String goal = timeButton.isActivated() ? "time" : "words";
-        int value = Integer.parseInt(String.valueOf(mGoal.getText()));
+        String duration = String.valueOf(mGoal.getText());
 
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
-            ((GameActivity)activity).onGameCountDown(translate, goal);
+            ((GameActivity)activity).onGameCountDown(translate, goal, duration, themeList1);
         }
     }
 

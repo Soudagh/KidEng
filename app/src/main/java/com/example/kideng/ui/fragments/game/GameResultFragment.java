@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.kideng.R;
+import com.example.kideng.db.entities.Theme;
 import com.example.kideng.ui.activities.GameActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 
 public class GameResultFragment extends Fragment {
@@ -22,13 +25,15 @@ public class GameResultFragment extends Fragment {
     private static final String ARG_Int2 = "2";
     private static final String ARG_Int3 = "3";
     private static final String ARG_L = "language";
+    private static final String ARG_LIST = "themeList";
 
     private String mRCount;
     private String mWCount;
     private String mTCount;
     private String mLanguage;
+    private ArrayList<Integer> themeList;
 
-    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String language) {
+    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String language, ArrayList<Integer> themeList) {
         GameResultFragment fragment = new GameResultFragment();
         Bundle args = new Bundle();
         args.putString(ARG_Int1, rCounter);
@@ -47,6 +52,7 @@ public class GameResultFragment extends Fragment {
             mWCount = getArguments().getString(ARG_Int2);
             mTCount = getArguments().getString(ARG_Int3);
             mLanguage = getArguments().getString(ARG_L);
+            themeList = getArguments().getIntegerArrayList(ARG_LIST);
         }
     }
 
@@ -89,7 +95,7 @@ public class GameResultFragment extends Fragment {
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             //TODO: изменить значения
-            ((GameActivity)activity).onAgain("1", "3");
+            ((GameActivity)activity).onAgain("1", "3", "5", themeList);
         }
     }
 

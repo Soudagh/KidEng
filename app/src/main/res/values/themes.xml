@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/teal_700</item>
         <item name="colorPrimaryVariant">@color/primary</item>
         <item name="colorOnPrimary">@color/white</item>
+        <item name="android:textColor">@color/teal_700</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_700</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
@@ -16,11 +17,19 @@
 
     </style>
 
+    <!-- Alert Dialog -->
+    <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_Background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <!-- Background Color-->
+        <item name="android:background">@color/teal_200</item>
+        <!-- Text Color for title and message -->
+        <item name="colorOnSurface">@color/teal_700</item>
+        <item name="colorControlNormal">@color/teal_700</item>
+        <item name="android:textColorAlertDialogListItem">@color/teal_700</item>
+
+    </style>
+
     <style name="MyButton" parent="Widget.AppCompat.Button">
-        <item name="android:layout_width">312dp</item>
-        <item name="android:layout_height">59dp</item>
         <item name="backgroundTint">@color/secondary</item>
-        <item name="layout_constraintEnd_toEndOf">parent</item>
         <item name="fontFamily">@font/montserrat_medium</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
@@ -30,7 +39,10 @@
         <item name="fontFamily">@font/montserrat_bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="MyDialog">
+        <item name="backgroundColor">@color/primary</item>
     </style>
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
