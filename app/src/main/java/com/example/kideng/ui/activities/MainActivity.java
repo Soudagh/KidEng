@@ -12,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         if (mWelcomeScreenShown) {
             AppDatabase db = App.getInstance().getDatabase();
             UserDao userDao = db.userDao();
-            userDao.insert(new User());
+            userDao.insert(new User(0, 0, 0, 0));
 
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putBoolean(showWelcomeScreenString, false);

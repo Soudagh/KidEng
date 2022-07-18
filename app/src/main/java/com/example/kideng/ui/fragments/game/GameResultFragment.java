@@ -11,8 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.kideng.App;
 import com.example.kideng.R;
+import com.example.kideng.db.AppDatabase;
+import com.example.kideng.db.dao.UserDao;
 import com.example.kideng.db.entities.Theme;
+import com.example.kideng.db.entities.User;
 import com.example.kideng.ui.activities.GameActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -69,6 +73,17 @@ public class GameResultFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_result_fragment, container, false);
+
+        AppDatabase db = App.getInstance().getDatabase();
+        UserDao userDao = db.userDao();
+
+        User user = userDao.getUser();
+        user.setTotalTrains(user.getTotalTrains() + 1);
+        user.setRightAnswers(user.getRightAnswers() + Integer.parseInt(mRCount));
+        user.setWrongAnswers(user.getWrongAnswers() + Integer.parseInt(mWCount));
+        user.setTotalWords(user.getTotalWords() + Integer.parseInt(mTCount));
+
+        userDao.update(user);
 
         TextView rAnswer_tv = view.findViewById(R.id.right_counter_tv);
         TextView wAnswer_tv = view.findViewById(R.id.wrong_counter_tv);

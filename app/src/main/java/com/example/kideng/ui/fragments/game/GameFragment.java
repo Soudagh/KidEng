@@ -121,7 +121,6 @@ public class GameFragment extends Fragment {
         mTick.setVisibility(View.INVISIBLE);
         mCross.setVisibility(View.INVISIBLE);
         setWord();
-        tCounter++;
     }
 
     private void onApplyClick(View view) {
@@ -143,7 +142,6 @@ public class GameFragment extends Fragment {
             mTick.setVisibility(View.INVISIBLE);
             mTranslateTv.setText("");
             wCounter++;
-            tCounter++;
         }
     }
 
@@ -153,8 +151,9 @@ public class GameFragment extends Fragment {
             themeIds.addAll(themeDao.getAllIds());
         }
 
-        word = wordDao.getRandWord(themeIds);
+        tCounter++;
 
+        word = wordDao.getRandWord(themeIds);
         if (langMode.equals("ENG")) {
             mWordTv.setText(word.getWordEng());
             rightAnswer += word.getWordRus();
@@ -166,6 +165,7 @@ public class GameFragment extends Fragment {
 
     private void endGame() {
         mCounterTimeTv.setText("");
+
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             String rString = String.valueOf(rCounter);

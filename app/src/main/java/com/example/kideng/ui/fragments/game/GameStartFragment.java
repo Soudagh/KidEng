@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -19,6 +21,7 @@ import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
+import com.example.kideng.ui.activities.DictWordActivity;
 import com.example.kideng.ui.activities.GameActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -65,7 +68,15 @@ public class GameStartFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view1 -> {
+            Activity activity = getActivity();
+            if (activity instanceof GameActivity) {
+                ((GameActivity)activity).onHome();
+            }
+        });
 
         mThemesTv = view.findViewById(R.id.choose_themes_tv);
         mGoalLayout = view.findViewById(R.id.goal_in_layout);
