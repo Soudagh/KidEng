@@ -46,6 +46,13 @@
         <item name="backgroundColor">@color/primary</item>
     </style>
 
+    <style name="MyToolBar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/teal_700</item>
+        <item name="navigationIcon">?attr/homeAsUpIndicator</item>
+    </style>
+
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/teal_700</item>
         <item name="boxStrokeWidth">2dp</item>

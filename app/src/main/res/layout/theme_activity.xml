@@ -10,14 +10,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_700"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/themes"
-        style="@style/MyText">
-
-    </androidx.appcompat.widget.Toolbar>
+        style="@style/MyToolBar"
+        app:title="@string/themes" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_themes"

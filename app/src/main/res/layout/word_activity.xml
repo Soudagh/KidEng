@@ -9,12 +9,8 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_700"
-        app:navigationIcon="?attr/homeAsUpIndicator"
-        app:title="@string/theme_name"
-        style="@style/MyText"/>
+        style="@style/MyToolBar"
+        app:title="@string/theme_name" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="?attr/actionBarSize"
