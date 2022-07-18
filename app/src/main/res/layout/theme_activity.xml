@@ -12,11 +12,10 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/teal_500"
+        android:background="@color/teal_700"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/themes"
-        style="@style/MyText"
-        app:titleTextColor="@color/secondary">
+        style="@style/MyText">
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -35,18 +34,17 @@
         android:layout_height="wrap_content"
         android:layout_margin="50dp"
         android:textSize="20sp"
-        android:textColor="#FF008577"
+        android:textColor="@color/teal_500"
         android:text="@string/empty_theme_list"
         app:layout_anchor="@id/recycler_themes"
         app:layout_anchorGravity="center"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:onClick="addTheme"
-        android:backgroundTint="#FF008577"
+        android:backgroundTint="@color/teal_500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add"
         android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        android:contentDescription="+" />
+        android:layout_margin="16dp" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

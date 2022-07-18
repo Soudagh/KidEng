@@ -1,6 +1,7 @@
 package com.example.kideng.ui.fragments.dict;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.kideng.App;
@@ -43,6 +46,17 @@ public class AddThemeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view1 -> {
+            Activity activity = getActivity();
+            if (activity instanceof DictThemeActivity) {
+                ((DictThemeActivity)activity).onBack();
+            }
+        });
+
         textInputEditTextThemeNameEt = view.findViewById(R.id.textInputThemeNamedEt);
         textInputEditTextThemeDescEt = view.findViewById(R.id.textInputThemeDescEt);
         textInputThemeNameLayout = view.findViewById(R.id.textInputThemeNameLayout);

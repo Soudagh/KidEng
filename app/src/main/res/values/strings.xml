@@ -61,6 +61,8 @@
     <string name="start">Начать</string>
     <string name="five">5</string>
     <string name="value">Значение</string>
+    <string name="add_theme">Добавить тему</string>
+    <string name="add_word">Добавить слово</string>
 
 
 </resources>

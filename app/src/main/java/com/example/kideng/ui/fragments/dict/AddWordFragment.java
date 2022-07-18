@@ -9,6 +9,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.kideng.App;
@@ -16,6 +18,7 @@ import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
+import com.example.kideng.ui.activities.DictThemeActivity;
 import com.example.kideng.ui.activities.DictWordActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -67,6 +70,16 @@ public class AddWordFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view1 -> {
+            Activity activity = getActivity();
+            if (activity instanceof DictWordActivity) {
+                ((DictWordActivity)activity).onBack(themeId);
+            }
+        });
 
         textInputEditTextEngEt = view.findViewById(R.id.textInputEngWordEt);
         textInputEditTextRusEt = view.findViewById(R.id.textInputRusWordEt);

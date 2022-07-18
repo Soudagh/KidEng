@@ -44,10 +44,10 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void onGameStop(String counter1, String counter2, String counter3, String language, ArrayList<Integer> themeList) {
+    public void onGameStop(String counter1, String counter2, String counter3, String translate, String goal, String duration, ArrayList<Integer> themeList) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3, language, themeList))
+                .replace(R.id.container_start, GameResultFragment.newInstance(counter1, counter2, counter3, translate, goal, duration, themeList))
                 .commit();
     }
 

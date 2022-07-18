@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B1D7D2"
-    >
+    android:background="@color/primary">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/teal_700"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:title="@string/add_theme"
+        style="@style/MyText" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
 
             <TextView
                 style="@style/MyText"
@@ -65,12 +65,12 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputThemeDescLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                app:boxStrokeColor="@color/black"
-                android:textColorHint="@color/black"
                 android:hint="Опишите тему">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -80,7 +80,6 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
     </LinearLayout>
 
     <Button
@@ -93,9 +92,7 @@
         android:onClick="addTheme"
         android:text="@string/dialogBtn_ok"
 
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </FrameLayout>

@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,6 @@ import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 
 import java.util.ArrayList;
-
 
 public class GameFragment extends Fragment {
 
@@ -106,6 +106,7 @@ public class GameFragment extends Fragment {
                 @Override
                 public void onFinish() {
                     onApplyClick(view);
+                    endGame();
                 }
             }.start();
         } else {
@@ -126,15 +127,17 @@ public class GameFragment extends Fragment {
     private void onApplyClick(View view) {
         if (mTranslateTv.getText().toString().toLowerCase().equals(rightAnswer)) {
             rCounter++;
-            if (rCounter == Integer.parseInt(duration)) {
-                endGame();
+            if (goal.equals("words") ) {
+                if (rCounter == Integer.parseInt(duration)) {
+                    endGame();
+                }
+                mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
             }
             rightAnswer = "";
             mTranslateTv.setText("");
             onSkipClick(getView());
             mTick.setVisibility(View.VISIBLE);
             mCross.setVisibility(View.INVISIBLE);
-            mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
         } else {
             mCross.setVisibility(View.VISIBLE);
             mTick.setVisibility(View.INVISIBLE);
@@ -168,7 +171,8 @@ public class GameFragment extends Fragment {
             String rString = String.valueOf(rCounter);
             String wString = String.valueOf(wCounter);
             String tString = String.valueOf(tCounter);
-            ((GameActivity) activity).onGameStop(rString, wString, tString, langMode, themeIds);
+            Log.d("themeIds", String.valueOf(themeIds));
+            ((GameActivity) activity).onGameStop(rString, wString, tString, langMode, goal, duration, themeIds);
         }
     }
 }

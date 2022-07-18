@@ -14,10 +14,7 @@
         android:background="@color/teal_700"
         app:navigationIcon="?attr/homeAsUpIndicator"
         app:title="@string/theme_name"
-        style="@style/MyText"
-        app:titleTextColor="@color/secondary">
-
-    </androidx.appcompat.widget.Toolbar>
+        style="@style/MyText"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="?attr/actionBarSize"
@@ -44,6 +41,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:onClick="addWord"
+        android:backgroundTint="@color/teal_500"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/add"

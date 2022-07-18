@@ -25,21 +25,28 @@ public class GameResultFragment extends Fragment {
     private static final String ARG_Int2 = "2";
     private static final String ARG_Int3 = "3";
     private static final String ARG_L = "language";
+    private static final String ARG_D = "duration";
+    private static final String ARG_G = "goal";
     private static final String ARG_LIST = "themeList";
 
     private String mRCount;
     private String mWCount;
     private String mTCount;
-    private String mLanguage;
+    private String translate;
+    private String duration;
+    private String goal;
     private ArrayList<Integer> themeList;
 
-    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String language, ArrayList<Integer> themeList) {
+    public static GameResultFragment newInstance(String rCounter, String wCounter, String tCounter, String translate, String goal, String duration,  ArrayList<Integer> themeList) {
         GameResultFragment fragment = new GameResultFragment();
         Bundle args = new Bundle();
         args.putString(ARG_Int1, rCounter);
         args.putString(ARG_Int2, wCounter);
         args.putString(ARG_Int3, tCounter);
-        args.putString(ARG_L, language);
+        args.putString(ARG_L, translate);
+        args.putString(ARG_D, duration);
+        args.putString(ARG_G, goal);
+        args.putIntegerArrayList(ARG_LIST, themeList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,7 +58,9 @@ public class GameResultFragment extends Fragment {
             mRCount = getArguments().getString(ARG_Int1);
             mWCount = getArguments().getString(ARG_Int2);
             mTCount = getArguments().getString(ARG_Int3);
-            mLanguage = getArguments().getString(ARG_L);
+            translate = getArguments().getString(ARG_L);
+            duration = getArguments().getString(ARG_D);
+            goal = getArguments().getString(ARG_G);
             themeList = getArguments().getIntegerArrayList(ARG_LIST);
         }
     }
@@ -94,8 +103,7 @@ public class GameResultFragment extends Fragment {
     private void onAgainClick(View view) {
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
-            //TODO: изменить значения
-            ((GameActivity)activity).onAgain("1", "3", "5", themeList);
+            ((GameActivity)activity).onAgain(translate, goal, duration, themeList);
         }
     }
 
