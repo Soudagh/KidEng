@@ -10,6 +10,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="100dp"
         android:orientation="horizontal">
 
         <TextView
@@ -17,8 +19,6 @@
             style="@style/MyText"
             android:textSize="25sp"
             android:text="@string/right_answers_tv"
-            android:layout_gravity="top"
-            android:layout_marginTop="200dp"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,20 +26,18 @@
 
         <TextView
             android:id="@+id/right_counter_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             style="@style/MyText"
             android:textSize="25sp"
             android:text=""
-            android:layout_gravity="top"
-            android:layout_marginTop="200dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_marginStart="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
@@ -47,29 +45,26 @@
             style="@style/MyText"
             android:textSize="25sp"
             android:text="@string/wrong_answers_tv"
-            android:layout_gravity="top"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="300dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <TextView
             android:id="@+id/wrong_counter_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             style="@style/MyText"
             android:textSize="25sp"
             android:text=""
-            android:layout_gravity="top"
-            android:layout_marginTop="300dp"
-            android:layout_marginStart="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+            android:layout_marginStart="20dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="80dp">
 
         <TextView
             android:id="@+id/total_questions_tv"
@@ -78,21 +73,17 @@
             android:text="@string/total_questions_tv"
             android:layout_gravity="top"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="400dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/total_counter_tv"
             style="@style/MyText"
             android:textSize="25sp"
             android:layout_gravity="top"
-            android:layout_marginTop="400dp"
             android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 

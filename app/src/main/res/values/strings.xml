@@ -63,6 +63,10 @@
     <string name="value">Значение</string>
     <string name="add_theme">Добавить тему</string>
     <string name="add_word">Добавить слово</string>
+    <string name="total_games">Всего игр</string>
+    <string name="total_answers">Всего ответов</string>
+    <string name="right_answers">Правильных ответов</string>
+    <string name="wrong_answers">Неправильных ответов</string>
 
 
 </resources>

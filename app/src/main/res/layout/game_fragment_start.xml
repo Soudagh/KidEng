@@ -146,7 +146,7 @@
             android:textAppearance="@style/MyText"
             android:textColor="@color/black"
             android:background="@android:drawable/editbox_background"
-            android:backgroundTint="@color/teal_200"
+            android:backgroundTint="@color/teal_700"
             app:drawableEndCompat="@drawable/ic_arrow_drop_down"
             />
 
