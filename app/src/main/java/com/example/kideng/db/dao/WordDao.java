@@ -16,6 +16,9 @@ public interface WordDao {
     @Query("SELECT * FROM word WHERE idTheme = :id")
     List<Word> getByThemeId(int id);
 
+    @Query("SELECT * FROM word WHERE wordEng = :word OR wordRus = :word")
+    Word getWordByName(String word);
+
     @Query("SELECT * FROM word WHERE id = :id")
     Word getWordById(int id);
 

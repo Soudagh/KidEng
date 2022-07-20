@@ -22,7 +22,6 @@ import com.example.kideng.ui.activities.DictWordActivity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Locale;
 
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> implements Filterable {
 

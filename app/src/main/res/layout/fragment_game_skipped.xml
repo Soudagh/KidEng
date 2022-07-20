@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".ui.fragments.game.GameSkippedFragment">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MyToolBar"
+        app:title="@string/skipped_words" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_words"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/word_item"
+        />
+
+    <TextView
+        android:id="@+id/empty_tv"
+        style="@style/MyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:textSize="20sp"
+        android:textColor="#FF008577"
+        android:text="Вы не пропускали слов в этой тренировке!"
+        app:layout_anchor="@id/recycler_words"
+        app:layout_anchorGravity="center"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

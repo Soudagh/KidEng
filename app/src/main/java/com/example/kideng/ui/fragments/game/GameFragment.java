@@ -24,6 +24,7 @@ import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class GameFragment extends Fragment {
 
@@ -47,6 +48,7 @@ public class GameFragment extends Fragment {
     private String goal;
     private String duration;
     private ArrayList<Integer> themeIds;
+    private ArrayList<Integer> skippedWords = new ArrayList<>();
 
     private int rCounter = 0, wCounter = 0, tCounter = 0;
 
@@ -116,6 +118,8 @@ public class GameFragment extends Fragment {
     }
 
     private void onSkipClick(View view) {
+        Word word = wordDao.getWordByName(String.valueOf(mWordTv.getText()));
+        if (!skippedWords.contains(word.getId())) skippedWords.add(word.getId());
         rightAnswer = "";
         mTranslateTv.setText("");
         mTick.setVisibility(View.INVISIBLE);
@@ -165,14 +169,12 @@ public class GameFragment extends Fragment {
 
     private void endGame() {
         mCounterTimeTv.setText("");
-
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             String rString = String.valueOf(rCounter);
             String wString = String.valueOf(wCounter);
             String tString = String.valueOf(tCounter);
-            Log.d("themeIds", String.valueOf(themeIds));
-            ((GameActivity) activity).onGameStop(rString, wString, tString, langMode, goal, duration, themeIds);
+            ((GameActivity) activity).onGameStop(rString, wString, tString, langMode, goal, duration, themeIds, skippedWords);
         }
     }
 }

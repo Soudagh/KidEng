@@ -58,8 +58,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textAppearance="@style/MyText"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:text="5" />
+                android:textSize="30sp" />
 
         </LinearLayout>
 
@@ -90,8 +89,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textAppearance="@style/MyText"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:text="5" />
+                android:textSize="30sp" />
 
         </LinearLayout>
 
@@ -135,8 +133,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textAppearance="@style/MyText"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:text="5" />
+                android:textSize="30sp" />
 
         </LinearLayout>
 
@@ -167,31 +164,7 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:textAppearance="@style/MyText"
                 android:textColor="@color/black"
-                android:textSize="30sp"
-                android:text="5" />
+                android:textSize="30sp" />
         </LinearLayout>
-
     </LinearLayout>
-
-
-
-
-    <!--    <Button-->
-<!--        android:id="@+id/btLeft"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentLeft="true"-->
-<!--        android:layout_toLeftOf="@+id/centerShim"-->
-<!--        android:text="Left Button" />-->
-
-<!--    &lt;!&ndash;Same deal, but on the right &ndash;&gt;-->
-<!--    <Button-->
-<!--        android:id="@+id/btRight"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_toRightOf="@+id/centerShim"-->
-<!--        android:layout_below="@+id/tvLeft"-->
-<!--        android:text="Right Button" />-->
-
 </RelativeLayout>
