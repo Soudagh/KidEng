@@ -81,6 +81,9 @@ public class GameFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
+        skippedWords.clear();
+        Log.d("asfasf", String.valueOf(skippedWords));
+
         mCounterTimeTv = view.findViewById(R.id.time_counter_tv);
         mWordTv = view.findViewById(R.id.word_tv);
         mTranslateTv = view.findViewById(R.id.translate_et);
@@ -138,7 +141,7 @@ public class GameFragment extends Fragment {
             }
             rightAnswer = "";
             mTranslateTv.setText("");
-            onSkipClick(getView());
+            setWord();
             mTick.setVisibility(View.VISIBLE);
             mCross.setVisibility(View.INVISIBLE);
         } else {
@@ -169,6 +172,7 @@ public class GameFragment extends Fragment {
 
     private void endGame() {
         mCounterTimeTv.setText("");
+        Log.d("asfasf", String.valueOf(skippedWords));
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             String rString = String.valueOf(rCounter);

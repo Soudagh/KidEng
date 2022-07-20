@@ -38,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_start, GameTextFragment.newInstance(translate, goal, duration, themeList))
+                .addToBackStack(null)
                 .commit();
     }
 

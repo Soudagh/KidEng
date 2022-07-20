@@ -6,6 +6,9 @@
     android:background="#B1D7D2"
     tools:context=".ui.fragments.game.GameTextFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MyToolBar" />
 
     <LinearLayout
         android:layout_width="wrap_content"

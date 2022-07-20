@@ -1,15 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.MyProject" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Theme.MyProject" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
+        <item name="android:forceDarkAllowed" tools:targetApi="q">true</item>
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/teal_700</item>
-        <item name="colorPrimaryVariant">@color/primary</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="android:textColor">@color/teal_700</item>
+        <item name="colorPrimary">@color/primary</item>>
+        <item name="android:textColor">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_700</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">@color/secondary</item>
         <item name="colorOnSecondary">@color/secondary</item>
 
         <!-- Status bar color. -->
@@ -50,12 +48,18 @@
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">@color/teal_700</item>
+        <item name="titleTextColor">@color/white</item>
         <item name="navigationIcon">?attr/homeAsUpIndicator</item>
+        <item name="navigationIconTint">@color/white</item>
     </style>
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="boxStrokeColor">@color/teal_700</item>
         <item name="boxStrokeWidth">2dp</item>
+    </style>
+
+    <style name="DrawerLayoutStyle" parent="Widget.Material3.DrawerLayout">
+        <item name="android:textColor">@color/teal_700</item>
     </style>
 
     <style name="Theme.MyApplicationTet.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -3,6 +3,8 @@ package com.example.kideng.ui.fragments.game;
 import android.app.Activity;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -62,6 +64,16 @@ public class GameTextFragment extends Fragment {
         View view = inflater.inflate(R.layout.game_text_fragment, container, false);
 
         mTextView = view.findViewById(R.id.seconds_start_tv);
+
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view1 -> {
+            Activity activity = getActivity();
+            if (activity instanceof GameActivity) {
+                activity.onBackPressed();
+            }
+        });
 
         new CountDownTimer(6000, 1000) {
             @Override
