@@ -74,6 +74,8 @@
     <string name="tg_link"><a href="https://www.t.me/soudagh">Telegram</a></string>
     <string name="gh_link"><a href="https://github.com/Soudagh">GitHub</a></string>
     <string name="ds_link"><a href="https://discord.gg/89squad">Discord</a></string>
+    <string name="help_text">Если у Вас есть какие-то жалобы или предложения на тему работоспособности приложения, вы можете заполнить форму по кнопке ниже.</string>
+    <string name="fill_form">Заполнить форму</string>
 
 
 </resources>

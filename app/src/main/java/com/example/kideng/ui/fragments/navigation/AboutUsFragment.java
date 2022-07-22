@@ -36,6 +36,7 @@ public class AboutUsFragment extends Fragment {
         TextView mTgLink = view.findViewById(R.id.tg_link);
         TextView mDsLink = view.findViewById(R.id.ds_link);
         TextView mGhLink = view.findViewById(R.id.gh_link);
+
         if (mTgLink != null) {
             mTgLink.setMovementMethod(LinkMovementMethod.getInstance());
         }
