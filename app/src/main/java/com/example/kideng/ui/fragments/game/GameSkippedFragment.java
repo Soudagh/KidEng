@@ -8,7 +8,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 import com.example.kideng.ui.adapters.SkippedAdapter;
-import com.example.kideng.ui.adapters.WordAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +81,7 @@ public class GameSkippedFragment extends Fragment {
         toolbar.setNavigationOnClickListener(view1 -> {
             Activity activity = getActivity();
             if (activity instanceof GameActivity) {
-                ((GameActivity)activity).onBack();
+                ((GameActivity)activity).onBackResults();
             }
         });
 

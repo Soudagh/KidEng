@@ -38,11 +38,12 @@ public class GameActivity extends AppCompatActivity {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_start, GameTextFragment.newInstance(translate, goal, duration, themeList))
-                .addToBackStack(null)
+                .addToBackStack("game_settings")
                 .commit();
     }
 
     public void onGameStart(String translate, String goal, String duration, ArrayList<Integer> themeList) {
+        clearBackStack();
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container_start, GameFragment.newInstance(translate, goal, duration, themeList))
@@ -85,7 +86,16 @@ public class GameActivity extends AppCompatActivity {
                 .commit();
     }
 
-    public void onBack() {
+    public void onBackResults() {
         getSupportFragmentManager().popBackStack("results", FragmentManager.POP_BACK_STACK_INCLUSIVE);
     }
+
+    private void clearBackStack() {
+        FragmentManager manager = getSupportFragmentManager();
+        if (manager.getBackStackEntryCount() > 0) {
+            FragmentManager.BackStackEntry first = manager.getBackStackEntryAt(0);
+            manager.popBackStack(first.getId(), FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+    }
+
 }

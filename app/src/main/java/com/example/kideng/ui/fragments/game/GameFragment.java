@@ -4,7 +4,6 @@ import android.app.Activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.kideng.App;
@@ -24,7 +25,6 @@ import com.example.kideng.db.entities.Word;
 import com.example.kideng.ui.activities.GameActivity;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class GameFragment extends Fragment {
 
@@ -81,8 +81,14 @@ public class GameFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.game_fragment, container, false);
 
+        Toolbar toolbar = view.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view1 -> {
+            endGame();
+        });
+
         skippedWords.clear();
-        Log.d("asfasf", String.valueOf(skippedWords));
 
         mCounterTimeTv = view.findViewById(R.id.time_counter_tv);
         mWordTv = view.findViewById(R.id.word_tv);
@@ -172,7 +178,6 @@ public class GameFragment extends Fragment {
 
     private void endGame() {
         mCounterTimeTv.setText("");
-        Log.d("asfasf", String.valueOf(skippedWords));
         Activity activity = getActivity();
         if (activity instanceof GameActivity) {
             String rString = String.valueOf(rCounter);

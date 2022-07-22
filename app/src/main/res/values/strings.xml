@@ -69,6 +69,7 @@
     <string name="wrong_answers">Неправильных ответов</string>
     <string name="skipped_words">Пропущенные слова</string>
     <string name="skipped_words_game">Пропущенных слов</string>
+    <string name="game">Игра</string>
 
 
 </resources>

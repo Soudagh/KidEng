@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckedTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -16,17 +17,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
+import com.example.kideng.db.dao.WordDao;
+import com.example.kideng.db.entities.Theme;
 import com.example.kideng.ui.activities.DictWordActivity;
 import com.example.kideng.ui.activities.GameActivity;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 
 public class GameStartFragment extends Fragment {
@@ -46,10 +51,14 @@ public class GameStartFragment extends Fragment {
 
     ArrayList<Integer> themeList = new ArrayList<>();
     ArrayList<Integer> themeList1 = new ArrayList<>();
+
     AppDatabase db = App.getInstance().getDatabase();
     ThemeDao themeDao = db.themeDao();
+    WordDao wordDao = db.wordDao();
+
     String[] themeNamesList = themeDao.getAllThemes();
     boolean[] selectedThemes = new boolean[themeNamesList.length];
+    boolean[] disabledThemes = new boolean[themeNamesList.length];
 
     public static GameStartFragment newInstance() {
         GameStartFragment fragment = new GameStartFragment();
@@ -77,6 +86,12 @@ public class GameStartFragment extends Fragment {
                 ((GameActivity)activity).onHome();
             }
         });
+
+        for (int i = 1; i <= themeNamesList.length; i++) {
+            if (!wordDao.getByThemeId(i).isEmpty()) {
+                disabledThemes[i - 1] = true;
+            }
+        }
 
         mThemesTv = view.findViewById(R.id.choose_themes_tv);
         mGoalLayout = view.findViewById(R.id.goal_in_layout);
@@ -109,7 +124,6 @@ public class GameStartFragment extends Fragment {
                     getContext(), R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
             );
 
-            //TODO: проверка на пустой список
             builder.setTitle("Выбор темы");
             builder.setCancelable(false);
 
@@ -135,18 +149,48 @@ public class GameStartFragment extends Fragment {
                     mThemesTv.setText("");
                 }
             });
-            builder.show();
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.getListView().setOnHierarchyChangeListener(
+                    new ViewGroup.OnHierarchyChangeListener() {
+                        @Override
+                        public void onChildViewAdded(View parent, View child) {
+                            CharSequence text = ((AppCompatCheckedTextView)child).getText();
+                            int itemIndex = Arrays.asList(themeNamesList).indexOf(text);
+                            boolean disabledTheme = disabledThemes[itemIndex];
+                            if (!disabledTheme) {
+                                child.setOnClickListener(view2 -> {
+                                    Log.d("asfasfas", "asfasf");
+                                    child.setEnabled(false);
+                                    Toast.makeText(getActivity(), "В теме нет слов", Toast.LENGTH_LONG).show();
+                                });
+
+                            }
+                        }
+
+                        @Override
+                        public void onChildViewRemoved(View view, View view1) {
+                        }
+                    });
+
+            alertDialog.show();
         });
     }
 
     private void onStartClick(View view) {
-        //TODO: Проверка на пустой список
         String duration = String.valueOf(mGoal.getText());
-
-        Activity activity = getActivity();
-        if (activity instanceof GameActivity) {
-            ((GameActivity)activity).onGameCountDown(translate, goal, duration, themeList1);
+        if ((ruButton.isChecked() || engButton.isChecked())
+                && (timeButton.isChecked() || wordButton.isChecked())
+                && (duration.length() > 0)
+                && (Integer.parseInt(duration) > 0)) {
+            Activity activity = getActivity();
+            if (activity instanceof GameActivity) {
+                ((GameActivity)activity).onGameCountDown(translate, goal, duration, themeList1);
+            }
+        } else {
+            Log.d("asfasf", "net");
         }
+
     }
 
 }
