@@ -10,7 +10,6 @@ import androidx.appcompat.widget.AppCompatCheckedTextView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,9 +23,8 @@ import com.example.kideng.R;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.dao.WordDao;
-import com.example.kideng.db.entities.Theme;
-import com.example.kideng.ui.activities.DictWordActivity;
 import com.example.kideng.ui.activities.GameActivity;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -103,21 +101,11 @@ public class GameStartFragment extends Fragment {
         timeButton = view.findViewById(R.id.time_btn);
         wordButton = view.findViewById(R.id.word_btn);
 
+        timeButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("мин"));
+        wordButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("слов"));
+
         Button startButton = view.findViewById(R.id.start_bt);
         startButton.setOnClickListener(this::onStartClick);
-
-        ruButton.setOnClickListener(view13 -> translate = "RU");
-
-        engButton.setOnClickListener(view14 -> translate = "ENG");
-
-        timeButton.setOnClickListener(view12 -> {
-            goal = "time";
-            mGoalLayout.setSuffixText("мин");
-        });
-        wordButton.setOnClickListener(view12 -> {
-            mGoalLayout.setSuffixText("слов");
-            goal = "words";
-        });
 
         mThemesTv.setOnClickListener(view1 -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(
@@ -140,14 +128,13 @@ public class GameStartFragment extends Fragment {
 
             builder.setPositiveButton("OK", (dialogInterface, i) -> mThemesTv.setText("Темы выбраны"));
 
-            builder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
+            builder.setNegativeButton("Отмена", (dialogInterface, i) -> dialogInterface.dismiss());
 
-            builder.setNeutralButton("Clear all", (dialogInterface, i) -> {
-                for (int j = 0; j < selectedThemes.length; j++) {
-                    selectedThemes[j] = false;
-                    themeList.clear();
-                    mThemesTv.setText("");
-                }
+            builder.setNeutralButton("Очистить", (dialogInterface, i) -> {
+                Arrays.fill(selectedThemes, false);
+
+                themeList.clear();
+                mThemesTv.setText("");
             });
 
             AlertDialog alertDialog = builder.create();
@@ -160,11 +147,9 @@ public class GameStartFragment extends Fragment {
                             boolean disabledTheme = disabledThemes[itemIndex];
                             if (!disabledTheme) {
                                 child.setOnClickListener(view2 -> {
-                                    Log.d("asfasfas", "asfasf");
                                     child.setEnabled(false);
                                     Toast.makeText(getActivity(), "В теме нет слов", Toast.LENGTH_LONG).show();
                                 });
-
                             }
                         }
 
@@ -179,6 +164,10 @@ public class GameStartFragment extends Fragment {
 
     private void onStartClick(View view) {
         String duration = String.valueOf(mGoal.getText());
+
+        translate = ruButton.isChecked() ? "RU" : "ENG";
+        goal = timeButton.isChecked() ? "time" : "words";
+
         if ((ruButton.isChecked() || engButton.isChecked())
                 && (timeButton.isChecked() || wordButton.isChecked())
                 && (duration.length() > 0)
@@ -188,9 +177,30 @@ public class GameStartFragment extends Fragment {
                 ((GameActivity)activity).onGameCountDown(translate, goal, duration, themeList1);
             }
         } else {
-            Log.d("asfasf", "net");
+            StringBuilder sb = new StringBuilder();
+            sb.append("Вы не выбрали ");
+            if (!(ruButton.isChecked() || engButton.isChecked())) {
+                sb.append("перевод");
+
+                if (!(timeButton.isChecked() || wordButton.isChecked())) {
+                    sb.append(", цель");
+                }
+                if (duration.isEmpty()) {
+                    sb.append(", значение цели");
+                }
+            } else if (!(timeButton.isChecked() || wordButton.isChecked())) {
+                sb.append("цель");
+                if (duration.isEmpty()) {
+                    sb.append(", значение цели");
+                }
+            } else if (duration.isEmpty()) {
+                sb.append("значение цели");
+            }
+            Snackbar snackbar = Snackbar.make(view, sb, Snackbar.LENGTH_LONG);
+            snackbar.setTextColor(getResources().getColor(R.color.white));
+            snackbar.show();
         }
-
     }
-
 }
+
+

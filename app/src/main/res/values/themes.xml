@@ -14,15 +14,15 @@
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/primary</item>
 
+        <item name="snackbarStyle">@style/MySnackBar</item>
     </style>
 
     <!-- Alert Dialog -->
     <style name="ThemeOverlay.MaterialComponents.MaterialAlertDialog_Background" parent="@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <!-- Background Color-->
         <item name="android:background">@color/teal_200</item>
-<!--        &lt;!&ndash; Text Color for title and message &ndash;&gt;-->
-<!--        <item name="colorOnSurface">@color/teal_700</item>-->
-<!--        <item name="colorControlNormal">@color/teal_700</item>-->
+        <!-- Text Color for title and message -->
+        <item name="android:textColor">@color/teal_700</item>
         <item name="android:textColorAlertDialogListItem">@color/teal_700</item>
 
     </style>
@@ -40,10 +40,6 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="MyDialog">
-        <item name="backgroundColor">@color/primary</item>
-    </style>
-
     <style name="MyToolBar" parent="Widget.AppCompat.Toolbar">
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="android:layout_width">match_parent</item>
@@ -51,6 +47,14 @@
         <item name="titleTextColor">@color/white</item>
         <item name="navigationIcon">?attr/homeAsUpIndicator</item>
         <item name="navigationIconTint">@color/white</item>
+    </style>
+
+    <style name="MySnackBar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.SnackBar</item>
+    </style>
+
+    <style name="ThemeOverlay.SnackBar" parent="">
+        <item name="colorOnSurface">@color/teal_700</item>
     </style>
 
     <style name="InputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">

@@ -16,32 +16,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="100dp"
-        android:layout_marginStart="30dp"
-        android:orientation="horizontal">
+        android:layout_marginTop="120dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/translate_tv"
             style="@style/MyText"
-            android:layout_width="168dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:maxLines="2"
             android:text="@string/show_translate"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <RadioGroup
             android:id="@+id/eng_group"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="60dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/ru_btn"
                 style="@style/MyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:layout_marginEnd="50dp"
                 android:text="RU" />
 
             <RadioButton
@@ -49,7 +51,6 @@
                 style="@style/MyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
                 android:text="ENG" />
         </RadioGroup>
     </LinearLayout>
@@ -59,33 +60,35 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="30dp"
         android:layout_marginBottom="50dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/goal"
             style="@style/MyText"
-            android:layout_width="168dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:maxLines="2"
             android:layout_marginTop="70dp"
             android:text="@string/goal"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <RadioGroup
             android:id="@+id/values_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="60dp">
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:textSize="16sp"
+            android:orientation="horizontal">
 
             <RadioButton
                 android:id="@+id/time_btn"
                 style="@style/MyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:layout_marginEnd="50dp"
                 android:text="@string/time" />
 
             <RadioButton
@@ -94,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="4dp"
-                android:textSize="16sp"
                 android:text="@string/words" />
         </RadioGroup>
     </LinearLayout>
@@ -145,7 +147,7 @@
             android:textAppearance="@style/MyText"
             android:textColor="@color/black"
             android:background="@android:drawable/editbox_background"
-            android:backgroundTint="@color/teal_700"
+            android:backgroundTint="@color/teal_200"
             app:drawableEndCompat="@drawable/ic_arrow_drop_down"
             />
 
