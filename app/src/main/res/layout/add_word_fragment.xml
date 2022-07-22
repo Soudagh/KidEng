@@ -51,8 +51,8 @@
                     android:id="@+id/textInputEngWordEt"
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/teal_700"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,8 +80,8 @@
                     android:id="@+id/textInputRusWordEt"
                     android:layout_width="256dp"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/teal_700"
                     android:textSize="15sp" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

@@ -48,18 +48,18 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putBoolean(showWelcomeScreenString, false);
             editor.apply();
-        } else {
-            DrawerLayout drawer = binding.drawerLayout;
-            NavigationView navigationView = binding.navView;
-
-            mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_main, R.id.nav_statistics, R.id.nav_settings, R.id.nav_support, R.id.nav_about_us)
-                    .setOpenableLayout(drawer)
-                    .build();
-            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-            NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-            NavigationUI.setupWithNavController(navigationView, navController);
         }
+        DrawerLayout drawer = binding.drawerLayout;
+        NavigationView navigationView = binding.navView;
+
+        mAppBarConfiguration = new AppBarConfiguration.Builder(
+                R.id.nav_main, R.id.nav_statistics, R.id.nav_settings, R.id.nav_support, R.id.nav_about_us)
+                .setOpenableLayout(drawer)
+                .build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
+        NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     @Override
