@@ -34,12 +34,19 @@ import java.util.Collections;
 
 public class GameStartFragment extends Fragment {
 
+    View translateLayout;
+    View goalLayout;
+    View valueLayout;
+
     TextView mThemesTv;
+    TextView mEmptyTv;
 
     RadioButton ruButton;
     RadioButton engButton;
     RadioButton timeButton;
     RadioButton wordButton;
+
+    Button emptyButton;
 
     TextInputEditText mGoal;
     TextInputLayout mGoalLayout;
@@ -91,15 +98,32 @@ public class GameStartFragment extends Fragment {
             }
         }
 
+        translateLayout = view.findViewById(R.id.translate_layout);
+        goalLayout = view.findViewById(R.id.goal_layout);
+        valueLayout = view.findViewById(R.id.value_layout);
+
         mThemesTv = view.findViewById(R.id.choose_themes_tv);
         mGoalLayout = view.findViewById(R.id.goal_in_layout);
         mGoal = view.findViewById(R.id.number_goal);
+        mEmptyTv = view.findViewById(R.id.empty_tv);
+
+        emptyButton = view.findViewById(R.id.empty_bt);
 
         ruButton = view.findViewById(R.id.ru_btn);
         engButton = view.findViewById(R.id.eng_btn);
 
         timeButton = view.findViewById(R.id.time_btn);
         wordButton = view.findViewById(R.id.word_btn);
+
+        emptyButton.setOnClickListener(this::onEmpty);
+
+        if (wordDao.getAllWords().size() == 0) {
+            emptyButton.setVisibility(View.VISIBLE);
+            mEmptyTv.setVisibility(View.VISIBLE);
+            translateLayout.setVisibility(View.INVISIBLE);
+            goalLayout.setVisibility(View.INVISIBLE);
+            valueLayout.setVisibility(View.INVISIBLE);
+        }
 
         timeButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("мин"));
         wordButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("слов"));
@@ -160,6 +184,14 @@ public class GameStartFragment extends Fragment {
 
             alertDialog.show();
         });
+    }
+
+    private void onEmpty(View view) {
+        Activity activity = getActivity();
+        if (activity instanceof GameActivity) {
+            ((GameActivity)activity).onEmpty();
+        }
+
     }
 
     private void onStartClick(View view) {

@@ -13,6 +13,10 @@ import java.util.List;
 
 @Dao
 public interface WordDao {
+
+    @Query("SELECT * FROM word")
+    List<Word> getAllWords();
+
     @Query("SELECT * FROM word WHERE idTheme = :id")
     List<Word> getByThemeId(int id);
 

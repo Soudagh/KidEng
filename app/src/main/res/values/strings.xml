@@ -76,6 +76,8 @@
     <string name="ds_link"><a href="https://discord.gg/89squad">Discord</a></string>
     <string name="help_text">Если у Вас есть какие-то жалобы или предложения на тему работоспособности приложения, вы можете заполнить форму по кнопке ниже.</string>
     <string name="fill_form">Заполнить форму</string>
+    <string name="no_words">У вас нет ни одного добавленного слова. Нажмите на кнопку ниже, чтобы перейти к списку тем.</string>
+    <string name="go_to_themes">Перейти к списку тем.</string>
 
 
 </resources>

@@ -10,7 +10,7 @@
         app:title="@string/add_theme" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/translate_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -89,7 +89,7 @@
         android:onClick="addTheme"
         android:text="@string/dialogBtn_ok"
 
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/translate_layout" />
 
 
 </FrameLayout>

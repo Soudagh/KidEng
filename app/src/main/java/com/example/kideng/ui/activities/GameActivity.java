@@ -64,6 +64,11 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onEmpty() {
+        Intent intent = new Intent(this, ChooseThemeActivity.class);
+        startActivity(intent);
+    }
+
     public void onAgain(String translate, String goal, String duration, ArrayList<Integer> themeList) {
         getSupportFragmentManager()
                 .beginTransaction()
