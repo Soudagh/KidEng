@@ -108,18 +108,13 @@ public class ThemeAdapter extends RecyclerView.Adapter<ThemeAdapter.ViewHolder> 
                 itemView.getContext().startActivity(intent);
             });
 
-            linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
-
-                @Override
-                public boolean onLongClick(View view) {
-                    Intent intent = new Intent(itemView.getContext(), DictThemeActivity.class);
-                    intent.putExtra("status", "change");
-                    intent.putExtra("themeName", theme.getTheme());
-                    intent.putExtra("themeDesc", theme.getDescriptionTheme());
-                    itemView.getContext().startActivity(intent);
-                    return false;
-                }
-
+            linearLayout.setOnLongClickListener(view -> {
+                Intent intent = new Intent(itemView.getContext(), DictThemeActivity.class);
+                intent.putExtra("status", "change");
+                intent.putExtra("themeName", theme.getTheme());
+                intent.putExtra("themeDesc", theme.getDescriptionTheme());
+                itemView.getContext().startActivity(intent);
+                return false;
             });
         }
     }

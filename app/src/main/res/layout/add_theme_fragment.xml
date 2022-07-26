@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Введите название темы:"
+                android:text="@string/enter_theme_title"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:text="Введите описание темы"
+                android:text="@string/enter_theme_description"
                 android:textSize="19sp"
                 android:textStyle="bold" />
 
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:hint="Опишите тему">
+                android:hint="@string/describe_theme">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputThemeDescEt"
@@ -87,7 +87,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="150dp"
         android:onClick="addTheme"
-        android:text="@string/dialogBtn_ok"
+        android:text="@string/ok"
 
         app:layout_constraintTop_toBottomOf="@+id/translate_layout" />
 

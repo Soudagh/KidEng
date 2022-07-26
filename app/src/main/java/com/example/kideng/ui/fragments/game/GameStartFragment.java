@@ -125,8 +125,8 @@ public class GameStartFragment extends Fragment {
             valueLayout.setVisibility(View.INVISIBLE);
         }
 
-        timeButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("мин"));
-        wordButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText("слов"));
+        timeButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText(getString(R.string.minutes)));
+        wordButton.setOnClickListener(view12 -> mGoalLayout.setSuffixText(getString(R.string.words_count)));
 
         Button startButton = view.findViewById(R.id.start_bt);
         startButton.setOnClickListener(this::onStartClick);
@@ -136,7 +136,7 @@ public class GameStartFragment extends Fragment {
                     getContext(), R.style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Background
             );
 
-            builder.setTitle("Выбор темы");
+            builder.setTitle(R.string.theme_selection);
             builder.setCancelable(false);
 
             builder.setMultiChoiceItems(themeNamesList, selectedThemes, (dialogInterface, i, b) -> {
@@ -150,11 +150,11 @@ public class GameStartFragment extends Fragment {
                 }
             });
 
-            builder.setPositiveButton("OK", (dialogInterface, i) -> mThemesTv.setText("Темы выбраны"));
+            builder.setPositiveButton(getString(R.string.ok), (dialogInterface, i) -> mThemesTv.setText(R.string.themes_choosed));
 
-            builder.setNegativeButton("Отмена", (dialogInterface, i) -> dialogInterface.dismiss());
+            builder.setNegativeButton(R.string.cancel, (dialogInterface, i) -> dialogInterface.dismiss());
 
-            builder.setNeutralButton("Очистить", (dialogInterface, i) -> {
+            builder.setNeutralButton(R.string.clear, (dialogInterface, i) -> {
                 Arrays.fill(selectedThemes, false);
 
                 themeList.clear();
@@ -172,7 +172,7 @@ public class GameStartFragment extends Fragment {
                             if (!disabledTheme) {
                                 child.setOnClickListener(view2 -> {
                                     child.setEnabled(false);
-                                    Toast.makeText(getActivity(), "В теме нет слов", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getActivity(), getString(R.string.theme_empty), Toast.LENGTH_LONG).show();
                                 });
                             }
                         }
@@ -210,23 +210,23 @@ public class GameStartFragment extends Fragment {
             }
         } else {
             StringBuilder sb = new StringBuilder();
-            sb.append("Вы не выбрали ");
+            sb.append(getString(R.string.didnt_choosed));
             if (!(ruButton.isChecked() || engButton.isChecked())) {
-                sb.append("перевод");
+                sb.append(getString(R.string.translate_snack));
 
                 if (!(timeButton.isChecked() || wordButton.isChecked())) {
-                    sb.append(", цель");
+                    sb.append(getString(R.string.goal_snack));
                 }
                 if (duration.isEmpty()) {
-                    sb.append(", значение цели");
+                    sb.append(getString(R.string.value_goal_snack));
                 }
             } else if (!(timeButton.isChecked() || wordButton.isChecked())) {
-                sb.append("цель");
+                sb.append(getString(R.string.goal_snack));
                 if (duration.isEmpty()) {
-                    sb.append(", значение цели");
+                    sb.append(getString(R.string.value_goal_snack));
                 }
             } else if (duration.isEmpty()) {
-                sb.append("значение цели");
+                sb.append(getString(R.string.value_goal_snack_without));
             }
             Snackbar snackbar = Snackbar.make(view, sb, Snackbar.LENGTH_LONG);
             snackbar.setTextColor(getResources().getColor(R.color.white));

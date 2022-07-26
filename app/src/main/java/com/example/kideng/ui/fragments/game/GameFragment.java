@@ -111,7 +111,7 @@ public class GameFragment extends Fragment {
             new CountDownTimer(60000L * Integer.parseInt(duration), 1000) {
                 @Override
                 public void onTick(final long l) {
-                    mCounterTimeTv.setText("Осталось времени: " + (int) (l * .001f));
+                    mCounterTimeTv.setText(getString(R.string.time_left) + " " + (int) (l * .001f));
                 }
 
                 @Override
@@ -121,7 +121,7 @@ public class GameFragment extends Fragment {
                 }
             }.start();
         } else {
-            mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
+            mCounterTimeTv.setText(getString(R.string.words_left) + " " + (Integer.parseInt(duration) - rCounter));
         }
         return view;
     }
@@ -143,7 +143,7 @@ public class GameFragment extends Fragment {
                 if (rCounter == Integer.parseInt(duration)) {
                     endGame();
                 }
-                mCounterTimeTv.setText("Осталось слов: " + (Integer.parseInt(duration) - rCounter));
+                mCounterTimeTv.setText(getString(R.string.words_left) + " " + (Integer.parseInt(duration) - rCounter));
             }
             rightAnswer = "";
             mTranslateTv.setText("");

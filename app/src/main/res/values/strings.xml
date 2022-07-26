@@ -1,34 +1,22 @@
 <resources>
-    <string name="app_name">KidEng</string>
-    <string name="btn_continue">Тренировка</string>
+    <string name="app_name" translatable="false">KidEng</string>
     <string name="btn_theme">Словарик по темам</string>
-    <string name="btn_restart">Сброс статистики</string>
     <string name="btn_eng">Английский перевод</string>
     <string name="btn_rus">Русский перевод</string>
     <string name="tv_choice">Выберите режим</string>
     <string name="tv_start_game">Игра начнётся через  </string>
     <string name="theme_name">Тема</string>
-    <string name="theme_number">Номер темы:</string>
     <string name="theme_description">Описание темы:</string>
     <string name="dialog_title">Начать заново</string>
-    <string name="dialog_description">После нажатия кнопки \"OK\" весь полученный вами прогресс будет сброшен.</string>
-    <string name="dialog_agreement">Вы точно хотите сделать это?</string>
-    <string name="dialogBtn_ok">OK</string>
-    <string name="dialogBtn_cancel">Отмена</string>
     <string name="word_English">Английское</string>
     <string name="word_Russian">Перевод</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="time_counter_tv">Осталось времени: </string>
     <string name="check_answer_btn">Проверить</string>
     <string name="enter_translate_et">Введите перевод</string>
     <string name="skip_answer_btn">Пропустить</string>
     <string name="total_questions_tv">Всего вопросов:</string>
-    <string name="mark_tv">Оценка:</string>
     <string name="wrong_answers_tv">Неправильные ответы:</string>
     <string name="right_answers_tv">Правильные ответы:</string>
-    <string name="hello_tv">Привет!</string>
-    <string name="acquaintance_tv">Давай познакомимся?</string>
-    <string name="userGender_tv">Пол</string>
     <string name="requiredField">Обязательное поле!</string>
     <string name="input_english_translate">Введите английский перевод:</string>
     <string name="english_translate">Английский перевод</string>
@@ -59,7 +47,7 @@
     <string name="set_a_goal">Поставьте цель</string>
     <string name="choose_themes">Выбрать темы</string>
     <string name="start">Начать</string>
-    <string name="five">5</string>
+    <string name="five" translatable="false">5</string>
     <string name="value">Значение</string>
     <string name="add_theme">Добавить тему</string>
     <string name="add_word">Добавить слово</string>
@@ -70,14 +58,31 @@
     <string name="skipped_words">Пропущенные слова</string>
     <string name="skipped_words_game">Пропущенных слов</string>
     <string name="game">Игра</string>
-    <string name="link"><a href="https://www.google.com/">Google</a></string>
-    <string name="tg_link"><a href="https://www.t.me/soudagh">Telegram</a></string>
-    <string name="gh_link"><a href="https://github.com/Soudagh">GitHub</a></string>
-    <string name="ds_link"><a href="https://discord.gg/89squad">Discord</a></string>
+    <string name="link" translatable="false"><a href="https://www.google.com/">Google</a></string>
+    <string name="tg_link" translatable="false"><a href="https://www.t.me/soudagh">Telegram</a></string>
+    <string name="gh_link" translatable="false"><a href="https://github.com/Soudagh">GitHub</a></string>
+    <string name="ds_link" translatable="false"><a href="https://discord.gg/89squad">Discord</a></string>
     <string name="help_text">Если у Вас есть какие-то жалобы или предложения на тему работоспособности приложения, вы можете заполнить форму по кнопке ниже.</string>
     <string name="fill_form">Заполнить форму</string>
     <string name="no_words">У вас нет ни одного добавленного слова. Нажмите на кнопку ниже, чтобы перейти к списку тем.</string>
-    <string name="go_to_themes">Перейти к списку тем.</string>
-
-
+    <string name="go_to_themes">Перейти к списку тем</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="training">Тренировка</string>
+    <string name="describe_theme">Опишите тему</string>
+    <string name="enter_theme_description">Введите описание темы</string>
+    <string name="enter_theme_title">Введите название темы:</string>
+    <string name="minutes">мин</string>
+    <string name="words_count">слов</string>
+    <string name="theme_selection">Выбор темы</string>
+    <string name="themes_choosed">Темы выбраны</string>
+    <string name="cancel">Отмена</string>
+    <string name="clear">Очистить</string>
+    <string name="theme_empty">В теме нет слов</string>
+    <string name="didnt_choosed">Вы не выбрали</string>
+    <string name="translate_snack">перевод</string>
+    <string name="goal_snack">, цель</string>
+    <string name="value_goal_snack">, значение цели</string>
+    <string name="value_goal_snack_without">значение цели</string>
+    <string name="time_left">Осталось времени:</string>
+    <string name="words_left">Осталось слов:</string>
 </resources>
