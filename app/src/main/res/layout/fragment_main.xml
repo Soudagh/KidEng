@@ -23,11 +23,10 @@
             android:layout_gravity="center">
 
             <Button
-                android:id="@+id/btn_continue"
+                android:id="@+id/btn_game"
                 style="@style/MyButton"
                 android:layout_width="192dp"
                 android:layout_height="match_parent"
-                android:onClick="gameClick"
                 android:text="@string/training" />
 
             <Button
@@ -35,7 +34,6 @@
                 style="@style/MyButton"
                 android:layout_width="192dp"
                 android:layout_height="match_parent"
-                android:onClick="themeClick"
                 android:text="@string/btn_theme" />
         </LinearLayout>
     </LinearLayout>

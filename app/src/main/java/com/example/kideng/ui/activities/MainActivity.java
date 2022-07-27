@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
@@ -59,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Button themeButton = findViewById(R.id.btn_theme);
+        Button continueButton = findViewById(R.id.btn_game);
+        themeButton.setOnClickListener(this::themeClick);
+        continueButton.setOnClickListener(this::gameClick);
 
     }
 

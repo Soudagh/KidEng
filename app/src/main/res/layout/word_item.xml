@@ -8,9 +8,7 @@
     android:layout_marginVertical="2dp"
     android:layout_marginHorizontal="2dp"
     app:contentPadding="2dp"
-    android:backgroundTint="#E5E2CA"
-
-    >
+    android:backgroundTint="#E5E2CA">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"

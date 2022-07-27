@@ -30,7 +30,6 @@ public class GameSkippedFragment extends Fragment {
 
     private ArrayList<Integer> skippedWords;
     public List<Word> wordList = new ArrayList<>();
-    private SkippedAdapter mSkippedAdapter;
 
     AppDatabase db = App.getInstance().getDatabase();
     WordDao wordDao = db.wordDao();
@@ -65,7 +64,7 @@ public class GameSkippedFragment extends Fragment {
         }
 
 
-        mSkippedAdapter = new SkippedAdapter(wordList);
+        SkippedAdapter mSkippedAdapter = new SkippedAdapter(wordList);
         mRecycler.setAdapter(mSkippedAdapter);
 
         TextView mEmptyTv = view.findViewById(R.id.empty_tv);

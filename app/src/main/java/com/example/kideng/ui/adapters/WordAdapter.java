@@ -26,7 +26,7 @@ import java.util.List;
 public class WordAdapter extends RecyclerView.Adapter<WordAdapter.ViewHolder> implements Filterable {
 
     private final List<Word> wordList;
-    private List<Word> wordListFull;
+    private final List<Word> wordListFull;
 
     public WordAdapter(List<Word> words) {
         this.wordList = words;

@@ -26,10 +26,10 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center|left"
+        android:layout_gravity="center|start"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="11dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="11dp"
         android:padding="2dp"
         android:backgroundTint="@color/secondary">
 
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/tick"
              />
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/close"
              />
 
@@ -55,7 +55,7 @@
             android:id="@+id/word_tv"
             style="@style/MyText"
             android:textSize="15sp"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_margin="15dp"
             android:layout_width="158dp"
             android:layout_height="wrap_content"
@@ -67,9 +67,9 @@
 
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:layout_margin="5dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:fontFamily="@font/montserrat_medium"
             android:hint="@string/enter_translate_et"
             android:inputType="text"
@@ -90,7 +90,7 @@
             style="@style/MyButton"
             android:textSize="12sp"
             android:text="@string/check_answer_btn"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginTop="50dp"
             android:layout_width="130dp"
             android:layout_height="50dp" />
@@ -100,7 +100,7 @@
             style="@style/MyButton"
             android:textSize="12sp"
             android:text="@string/skip_answer_btn"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="50dp"
             android:layout_width="130dp"
             android:layout_height="50dp" />

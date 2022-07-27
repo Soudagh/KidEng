@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -60,6 +61,9 @@ public class WordActivity extends AppCompatActivity {
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
 
+        Button addButton = findViewById(R.id.add_word_btn);
+        addButton.setOnClickListener(this::addWord);
+
         TextView mEmptyTv = findViewById(R.id.empty_tv);
         if (wordList.isEmpty()) {
             mEmptyTv.setVisibility(View.VISIBLE);
@@ -106,7 +110,6 @@ public class WordActivity extends AppCompatActivity {
     }
 
     class SwipeItem extends ItemTouchHelper.SimpleCallback {
-
         public SwipeItem(int dragDirs, int swipeDirs) {
             super(dragDirs, swipeDirs);
         }
@@ -128,6 +131,4 @@ public class WordActivity extends AppCompatActivity {
         Intent intent = getIntent();
         return intent.getIntExtra("id", 0);
     }
-
-
 }

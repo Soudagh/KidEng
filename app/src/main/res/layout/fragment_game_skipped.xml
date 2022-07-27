@@ -33,7 +33,7 @@
         android:layout_margin="50dp"
         android:textSize="20sp"
         android:textColor="#FF008577"
-        android:text="Вы не пропускали слов в этой тренировке!"
+        android:text="@string/no_skipped_words"
         app:layout_anchor="@id/recycler_words"
         app:layout_anchorGravity="center"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

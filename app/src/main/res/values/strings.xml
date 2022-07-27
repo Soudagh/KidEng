@@ -85,4 +85,7 @@
     <string name="value_goal_snack_without">значение цели</string>
     <string name="time_left">Осталось времени:</string>
     <string name="words_left">Осталось слов:</string>
+    <string name="no_skipped_words">Вы не пропускали слов в этой тренировке!</string>
+    <string name="ru" translatable="false">RU</string>
+    <string name="eng" translatable="false">ENG</string>
 </resources>

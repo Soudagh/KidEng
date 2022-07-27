@@ -61,6 +61,7 @@ public class AddThemeFragment extends Fragment {
         textInputEditTextThemeDescEt = view.findViewById(R.id.textInputThemeDescEt);
         textInputThemeNameLayout = view.findViewById(R.id.textInputThemeNameLayout);
         textInputThemeDescLayout = view.findViewById(R.id.textInputThemeDescLayout);
+
         Button button = view.findViewById(R.id.theme_bt);
         button.setOnClickListener(this::addTheme);
     }

@@ -1,14 +1,12 @@
 
 package com.example.kideng.ui.activities;
 
-import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,8 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kideng.App;
 import com.example.kideng.R;
-import com.example.kideng.databinding.ActivityMainBinding;
-import com.example.kideng.databinding.ThemeActivityBinding;
 import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.entities.Theme;
@@ -54,6 +50,9 @@ public class ChooseThemeActivity extends AppCompatActivity {
 
         mThemeAdapter = new ThemeAdapter(themeList);
         mRecycler.setAdapter(mThemeAdapter);
+
+        Button addButton = findViewById(R.id.add_theme_btn);
+        addButton.setOnClickListener(this::addTheme);
 
         TextView mEmptyTv = findViewById(R.id.empty_tv);
         if (themeList.isEmpty()) {
