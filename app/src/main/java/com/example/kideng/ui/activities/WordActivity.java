@@ -25,6 +25,7 @@ import com.example.kideng.db.dao.WordDao;
 import com.example.kideng.db.entities.Word;
 
 import com.example.kideng.ui.adapters.WordAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class WordActivity extends AppCompatActivity {
         mWordAdapter = new WordAdapter(wordList);
         mRecycler.setAdapter(mWordAdapter);
 
-        Button addButton = findViewById(R.id.add_word_btn);
+        FloatingActionButton addButton = findViewById(R.id.add_word_btn);
         addButton.setOnClickListener(this::addWord);
 
         TextView mEmptyTv = findViewById(R.id.empty_tv);

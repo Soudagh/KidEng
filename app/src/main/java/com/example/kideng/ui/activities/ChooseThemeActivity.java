@@ -22,6 +22,7 @@ import com.example.kideng.db.AppDatabase;
 import com.example.kideng.db.dao.ThemeDao;
 import com.example.kideng.db.entities.Theme;
 import com.example.kideng.ui.adapters.ThemeAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -51,7 +52,7 @@ public class ChooseThemeActivity extends AppCompatActivity {
         mThemeAdapter = new ThemeAdapter(themeList);
         mRecycler.setAdapter(mThemeAdapter);
 
-        Button addButton = findViewById(R.id.add_theme_btn);
+        FloatingActionButton addButton = findViewById(R.id.add_theme_btn);
         addButton.setOnClickListener(this::addTheme);
 
         TextView mEmptyTv = findViewById(R.id.empty_tv);
